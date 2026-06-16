@@ -1,0 +1,352 @@
+--- Slide 1 ---
+Presenter
+MaxAcademy Lecture Series – V1.0, September 2011
+Dataflow Programming with MaxCompiler
+--- Slide 2 ---
+Programming FPGAs
+MaxCompiler
+Streaming Kernels
+Compile and build
+Java meta-programming
+Lecture Overview
+2
+--- Slide 3 ---
+Reconfigurable Computing with FPGAs
+DSP Block
+Block RAM (20TB/s)
+IO Block
+3
+--- Slide 4 ---
+FPGA Acceleration Hardware Solutions
+MaxRack
+10U, 20U or 40U
+MaxCard
+1U server
+4 MAX3 Cards
+Intel Xeon CPUs
+MaxNode
+MaxRack
+PCI-Express Gen 2 
+Typical 50W-80W
+24-48GB RAM
+10U, 20U or 40U Rack
+4
+--- Slide 5 ---
+Schematic entry of circuits 
+Traditional Hardware Description Languages
+VHDL, Verilog, SystemC.org
+Object-oriented languages 
+C/C++, Python, Java, and related languages
+Functional languages: e.g. Haskell
+High level interface: e.g. Mathematica, MatLab
+Schematic block diagram e.g. Simulink
+Domain specific languages (DSLs)
+How could we program it?
+5
+--- Slide 6 ---
+Accelerator Programming Models
+Possible applications
+Level of Abstraction
+Flexible Compiler System: MaxCompiler
+6
+--- Slide 7 ---
+Acceleration Development Flow
+7
+Start
+Original Application
+Identify code for acceleration and analyze bottlenecks
+Write MaxCompiler code
+Simulate
+Functions correctly?
+Build for Hardware
+Integrate with Host code
+Meets performance goals?
+Accelerated Application
+NO
+YES
+YES
+NO
+Transform app, architect and model performance
+--- Slide 8 ---
+Complete development environment for Maxeler FPGA accelerator platforms
+Write MaxJ code to describe the dataflow accelerator
+MaxJ is an extension of Java for MaxCompiler
+Execute the Java  generate the accelerator
+C software on CPUs uses the accelerator
+MaxCompiler
+class MyAccelerator extends Kernel {
+	public MyAccelerator(…) {
+		HWVar x = io.input("x", hwFloat(8, 24));
+		HWVar y = io.input(“y", hwFloat(8, 24));
+
+		HWVar x2 = x * x;
+		HWVar y2 = y * y;
+		HWVar result = x2 + y2 + 30;
+
+		io.output(“z", result, hwFloat(8, 24));
+	}
+}
+8
+--- Slide 9 ---
+Application Components
+9
+MaxCompilerRT
+MaxelerOS
+CPU
+FPGA
+Memory
+PCI Express
+Kernels
+Manager
+Host application
+--- Slide 10 ---
+Programming with MaxCompiler
+10
+--- Slide 11 ---
+for (int i =0; i < DATA_SIZE; i++)
+    y[i]= x[i] * x[i] + 30;
+Simple Application Example
+11
+int*x, *y;
+--- Slide 12 ---
+Manager m = new Manager();
+Kernel k = 
+     new MyKernel();
+
+m.setKernel(k);
+m.setIO(
+    link(“x", PCIE),
+
+m.build();
+link(“y", PCIE));
+device = max_open_device(maxfile,
+    "/dev/maxeler0");
+
+
+
+max_run(device,
+    max_input("x", x, DATA_SIZE*4),
+
+    max_runfor("Kernel", DATA_SIZE));
+for (int i =0; i < DATA_SIZE; i++)
+    y[i]= x[i] * x[i] + 30;
+Development Process
+12
+int*x, *y;
+max_output("y", y, DATA_SIZE*4),
+y
+--- Slide 13 ---
+Manager m = new Manager();
+Kernel k = 
+     new MyKernel();
+
+m.setKernel(k);
+m.setIO(
+    link(“x", PCIE),
+
+m.build();
+device = max_open_device(maxfile,
+    "/dev/maxeler0");
+
+
+
+max_run(device,
+    max_input("x", x, DATA_SIZE*4),
+
+    max_runfor("Kernel", DATA_SIZE));
+Development Process
+13
+device = max_open_device(maxfile,
+    "/dev/maxeler0");
+int*x, *y;
+--- Slide 14 ---
+public class MyKernel extends Kernel {
+
+	public MyKernel (KernelParameters parameters) {
+		super(parameters);
+
+		HWVar x = io.input("x", hwInt(32));
+
+		HWVar result = x * x + 30;
+
+		io.output("y", result, hwInt(32));
+	}
+}
+14
+The Full Kernel
+--- Slide 15 ---
+Streaming Data through the Kernel
+15
+30
+0
+0
+--- Slide 16 ---
+Streaming Data through the Kernel
+16
+31
+1
+1
+--- Slide 17 ---
+Streaming Data through the Kernel
+17
+34
+4
+2
+--- Slide 18 ---
+Streaming Data through the Kernel
+18
+39
+9
+3
+--- Slide 19 ---
+Streaming Data through the Kernel
+19
+46
+16
+4
+--- Slide 20 ---
+Streaming Data through the Kernel
+20
+55
+25
+5
+--- Slide 21 ---
+Java program generates a MaxFile when it runs
+
+Compile the Java into .class files
+Execute the .class file
+Builds the dataflow graph in memory
+Generates the hardware .max file
+Link the generated .max file with your host program
+Run the host program
+Host code automatically configures FPGA(s) and interacts with them at run-time
+21
+Compile, Build and Run
+--- Slide 22 ---
+You can use the full power of Java to write a program that generates the dataflow graph
+Java variables can be used as constants in hardware
+int y; HWVar x; x = x + y; 
+Hardware variables can not be read in Java!
+Cannot do: int y; HWVar x; y = x;
+Java conditionals and loops choose how to generate hardware  not make run-time decisions
+22
+Java meta-programming
+--- Slide 23 ---
+Dataflow Graph Generation: Simple
+23
+What dataflow graph is generated?
+
+HWVar x = io.input(“x”, type);
+HWVar y;
+
+y = x + 1;
+
+io.output(“y”, y, type);
+--- Slide 24 ---
+Dataflow Graph Generation: Simple
+24
+What dataflow graph is generated?
+
+HWVar x = io.input(“x”, type);
+HWVar y;
+
+y = x + x + x;
+
+io.output(“y”, y, type);
+--- Slide 25 ---
+Dataflow Graph Generation: Variables
+25
+What’s the value of h if we stream in 1?
+
+HWVar h = io.input(“h”, type);
+int s = 2;
+
+s = s + 5
+h = h + 10
+
+h = h + s;
+What’s the value of s if we stream in 1?
+
+HWVar h = io.input(“h”, type);
+int s = 2;
+
+s = s + 5
+h = h + 10
+
+s = h + s;
+--- Slide 26 ---
+Dataflow Graph Generation: Conditionals
+26
+What dataflow graph is generated?
+
+HWVar x = io.input(“x”, type);
+int s = 10;
+HWVar y;
+
+if (s < 100) { y = x + 1; }
+else { y = x – 1; }
+
+io.output(“y”, y, type);
+What dataflow graph is generated?
+
+HWVar x = io.input(“x”, type);
+HWVar y;
+
+if (x < 10) { y = x + 1; }
+else { y = x – 1; }
+
+io.output(“y”, y, type);
+--- Slide 27 ---
+Compute both values and use a multiplexer.
+x = control.mux(select, option0, option1, …, optionN)
+x = select ? option1 : option0
+27
+Conditional Choice in Kernels
+HWVar x = io.input(“x”, type);
+HWVar y;
+
+y =  (x > 10) ? x + 1 : x – 1
+
+io.output(“y”, y, type);
+Ternary-if operator is overloaded
+--- Slide 28 ---
+Dataflow Graph Generation: Java Loops
+28
+What dataflow graph is generated?
+
+HWVar x = io.input(“x”, type);
+HWVar y = x;
+for (int i = 1; i <= 3; i++) {
+	y = y + i;
+}
+io.output(“y”, y, type);
+Can make the loop any size – until you run out of space on the chip!  
+Larger loops can be partially unrolled in space and used multiple times in time – see Lecture on loops and cyclic graphs
+--- Slide 29 ---
+29
+Real data flow graph as 
+generated by MaxCompiler 
+4866 nodes;10,000s of stages/cycles
+--- Slide 30 ---
+Write a MaxCompiler kernel program that takes three input streams x, y and z which are hwInt(32) and computes an output stream p, where:
+
+
+
+
+
+
+Draw the dataflow graph generated by the following program:
+30
+Exercises
+for (int i = 0; i < 6; i++) {
+	HWVar x = io.input(“x”+i, hwInt(32));
+	HWVar y = x;
+	if (i % 3 != 0) {
+		for (int j = 0; j < 3; j++) {
+			y = y + x*j;
+		}
+	} else {
+		y = y * y; 
+	}
+	io.output(“y”+i, y, hwInt(32));
+}

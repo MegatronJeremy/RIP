@@ -1,0 +1,179 @@
+--- Slide 1 ---
+The Ultimate SuperComputer-on-a-Chip for Big Data and Machine Learning
+Veljko Milutinović
+--- Slide 2 ---
+The Optimal Architecture
+ControlFlow:
+N MultiCore CPUs
+1000N ManyCore GPUs
+
+DataFlow:
+An ASIC SystolicArray (Fixed)
+An FPGA ExecutionGraph (Reconfigurable)
+
+w Peripherals for External Accelerators (EnergyFlow):
+Bio
+Molecular
+Opto
+Quantum
+
++ w Memory and I/O (DiffusionFlow)
+--- Slide 3 ---
+Optimal Distribution of Transistor Budget
+Ceiling-Dependent:
+VLSI: 100BTr
+WSI: 1TTr
+Application-Dependent:
+SW DataFlow
+ML
+Strategy-Dependent:
+CF-Oriented
+DF-Oriented
+Memory-Dependent!
+--- Slide 4 ---
+Company
+Product name
+Country
+City
+Number of CPU cores
+Number of GPU cores
+CPU clock rate
+Launched
+Alibaba
+XT910
+China
+Hangzhou
+1/2/4 per cluster
+N/A
+2.0 – 2.5 GHz
+2020
+RISC-V
+Micro Magic RISC-V Core [39]
+US
+San Francisco
+1
+N/A
+4.25 – 5.19 GHz
+2020
+SiFive
+FU740 RISC-V SoC [25]
+US
+San Francisco
+4
+1
+1.4 – 1.5 GHz
+2020
+AMD
+AMD Ryzen™ 5 3400G with Radeon™ RX Vega 11 Graphics [24]
+US
+Santa Clara
+4
+11
+3.7 – 4.2 GHz
+2019
+Nvidia
+Tegra Xavier [28]
+US
+Santa Clara
+8
+512 CUDA
+N/A
+2019
+Esperanto Technologies
+N/A
+US
+Mountain View
+16 ET-Maxion cores
+4096 
+ET-Minion cores + ET-Graphics [26,27]
+2+GHz
+2018
+Intel
+Intel Sandy Bridge [23]
+US
+Santa Clara
+1-4 (4-6 Extreme, 2-8 Xeon)
+6
+1.60 – 3.60 GHz
+2011
+Moscow Center of SPARC Technologies (MCST)
+Elbrus-2S+ 
+(1891ВМ7Я) [29]
+Russia
+Moscow
+2 Elbrus 2000 cores
+4 DSP Elcore-09 cores
+300 – 800 MHz
+2011
+The Current Efforts
+--- Slide 5 ---
+Past Experiences: MultiCore
+Split Cache
+Milutinovic, V. (1996). The Split Temporal/Spatial Cache: Initial Performance Analysis. SCIzzL-5, March 1996, 63-69.
+--- Slide 6 ---
+Past Experiences: ManyCore
+GaAs Microprocessor
+Milutinovic, V., Fura, D., & Helbig, W. (1986).An Introduction To GaAs Microprocessor Architecture for VLSI.Computer, (3), 30-42.
+--- Slide 7 ---
+Past Experiences: SystolicArrays
+GaAs Systolics
+Fortes, J. A., Milutinovic, V.,(1986, January).A High-Level Systolic Architecture for GaAs. In Proc. 19th Ann. Hawaii Int'l Conf. System Sciences (pp. 253-258).
+--- Slide 8 ---
+Past Experiences: ExecutionFlow
+DataFlow
+Milutinović, V., Salom, J., Trifunović, N., & Giorgi, R. (2015). Guide to DataFlow Supercomputing. Cham: Springer Nature.
+--- Slide 10 ---
+Current Research: Miljan Đorđević, at al.
+--- Slide 11 ---
+Handbook of Research on Methodologies and Applications of Supercomputing
+--- Slide 12 ---
+An introduction to Controlflow and Dataflow Supercomputing
+Introduction to Control Flow
+Optimal Scheduling of Parallel Jobs With Unknown Service Requirements
+Intelligent Management of Mobile Systems Through Computational Self-Awareness
+Paradigms for Effective Parallelization of Inherently Sequential Graph Algorithms on Multi-Core Architectures
+Introduction to Dataflow Computing
+Data Flow Implementation of Erosion and Dilation
+Transforming the Method of Least Squares to the Dataflow Paradigm
+Forest Fire Simulation: Efficient Realization Based on Cellular Automata
+High Performance Computing for Understanding Natural Language
+Deposition of Submicron Particles by Chaotic Mixing in the Pulmonary Acinus: Aciner Chaotic Moxing
+Table of Contents
+--- Slide 13 ---
+Recommender Systems in Digital Libraries Using Artificial Intelligence and Machine Learning:A Proposal to Create Automated Links Between Different Articles Dealing With Similar Topics
+Unified Modeling for Emulating Electric Energy Systems: Toward Digital Twin That Might Work
+A Backtracking Algorithmic Toolbox for Solving the Subgraph Isomorphism Problem
+AI Storm ... From Logical Inference and Chatbots to Signal Weighting, Entropy Pooling...:Future of AI in Marketing
+Efficient End-to-End Asynchronous Time-Series Modeling With Deep Learning to Predict Customer Attrition
+Mind Genomics With Big Data for Digital Marketing on the Internet
+Supercomputing in the Study and Stimulation of the Brain
+An Experimental Healthcare System: Essence and Challenges
+What Supercomputing Will Be Like in the Coming Years
+The Ultimate Data Flow for Ultimate Super Computers-on-a-Chip
+Table of Contents #2
+--- Slide 14 ---
+Reviews and Testimonials of 8 Nobel Laureates
+--- Slide 15 ---
+"I want to commend Dr. Veljko Milutinovic and Dr. Milos Kotlar for having completed this volume in the timely field of supercomputing in these difficult times, and I want to share their optimism regarding its use as a textbook around the world."
+– Prof. Kurt Wüthrich, Nobel Laureate, Switzerland
+--- Slide 16 ---
+"Our complex and fast-moving world meets big data issues that call for reliable, efficient analysis and prompt response. A most advanced approach to dealing with these issues is presented in this book where algorithms of Control Flow represent the host architecture of supercomputers and Data Flow represents the acceleration architecture. A comprehensive list of applications is illustrated in the book including natural language processing, medical research, customer-oriented studies, and many more.“
+ – Prof. Dan Shechtman, Nobel Laureate, Israel
+--- Slide 17 ---
+"Supercomputers have become a ubiquitous instrument in many areas of science and technology. Very hard to imagine modern physics, biology or chemistry without the use of this versatile tool. The breakthroughs in the development of supercomputers expand the range of problems we can tackle. Supercomputers, as well as specialised computers will undoubtedly contribute significantly to the overall landscape of discoveries in many different disciplines in the future."
+– Prof. Konstantin Novoselov, Nobel Laureate, National University of Singapore, Singapore– Prof. Kurt Wüthrich, Nobel Laureate, Switzerland
+--- Slide 18 ---
+"It’s clear that computers can do anything, as the pioneers already recognised, and it’s probably only a matter of time before they can perform any of the kinds of tasks we humans take for granted quicker than blinking. I guess this book represents a stage on this exciting and very important journey."
+– Prof. Tim Hunt, Nobel Laureate, UK
+--- Slide 19 ---
+"Computers have become essential tools for the pursuit of both experimental and theoretical physics, as well as synthetic chemistry, paleontology, the medical sciences, economics the social sciences and so much more. Science, being the most international of all endeavors, will be well served by this important book, which honors the golden anniversary of the creation of Montinegro’s Academy of Science."
+– Prof. Sheldon Glashow, Nobel Laureate, Boston University and Harvard University, USA
+--- Slide 20 ---
+"Humankind’s continuing quests to uncover, understand, and utilize the secrets of nature have been greatly enhanced and will be further extended by the power of supercomputers."
+– Prof. Jerome I Friedman, Nobel Laureate, USA
+--- Slide 21 ---
+"I wish to congratulate very warmly the Montenegrin Academy of Arts and Sciences on the occasion of its 50th Anniversary and wish the CANU a highly successful future. Science shapes the Future of Mankind."
+– Prof. Jean-Marie Lehn, Nobel Laureate, France
+--- Slide 22 ---
+"Aim high, stay grounded! These four crisp words of wisdom accompany the best wishes for the 50th anniversary of the Montenegrin Academy of Sciences and Arts."
+– Prof. Stefan Hell, Nobel Laureate, Germany

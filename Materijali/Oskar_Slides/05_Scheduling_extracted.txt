@@ -1,0 +1,342 @@
+--- Slide 1 ---
+Presenter
+MaxAcademy Lecture Series – V1.0, September 2011
+Stream Scheduling
+--- Slide 2 ---
+Latencies in stream computing
+Scheduling algorithms
+Stream offsets
+2
+Overview
+--- Slide 3 ---
+Consider a simple arithmetic pipeline
+
+
+
+Each operation has a latency
+Number of cycles from input to output
+May be zero
+Throughput is still 1 value per cycle, L values can be in-flight in the pipeline
+3
+Latencies in Stream Computing
+(A + B) + C
+--- Slide 4 ---
+4
++
++
+Basic hardware 
+implementation
+--- Slide 5 ---
++
++
+5
+3
+2
+1
+Data propagates 
+through the circuit 
+in “lock step”
+--- Slide 6 ---
++
++
+6
+3
+2
+1
+--- Slide 7 ---
++
++
+7
+3
+2
+1
+X
+Data arrives at 
+wrong time due to 
+pipeline latency
+--- Slide 8 ---
+8
++
++
+Insert buffering 
+to correct
+--- Slide 9 ---
++
++
+9
+1
+2
+3
+Now with buffering
+--- Slide 10 ---
++
++
+10
+1
+2
+3
+--- Slide 11 ---
++
++
+11
+3
+3
+--- Slide 12 ---
++
++
+12
+3
+3
+--- Slide 13 ---
++
++
+13
+6
+--- Slide 14 ---
++
++
+14
+6
+Success!
+--- Slide 15 ---
+A stream scheduling algorithm transforms an abstract dataflow graph into one that produces the correct results given the latencies of the operations
+Can be automatically applied on a large dataflow graph (many thousands of nodes)
+Can try to optimize for various metrics
+Latency from inputs to outputs
+Amount of buffering inserted  generally most interesting
+Area (resource sharing)
+15
+Stream Scheduling Algorithms
+--- Slide 16 ---
+16
+ASAP
+As Soon As Possible
+--- Slide 17 ---
+17
+0
+0
+0
+Build up circuit incrementally
+Keeping track of latencies
+--- Slide 18 ---
+18
++
+0
+0
+0
+1
+--- Slide 19 ---
+19
++
++
+1
+0
+0
+0
+Input latencies are mismatched
+--- Slide 20 ---
+20
++
++
+0
+0
+0
+1
+1
+2
+Insert buffering
+--- Slide 21 ---
+21
++
++
+0
+0
+0
+1
+1
+2
+--- Slide 22 ---
+22
+ALAP
+As Late As Possible
+--- Slide 23 ---
+23
+0
+Start at output
+--- Slide 24 ---
+24
++
+-1
+0
+-1
+Latencies are negative
+relative to end of circuit
+--- Slide 25 ---
+25
++
++
+-2
+-2
+-1
+-1
+0
+--- Slide 26 ---
+26
++
++
+-2
+-2
+-1
+-1
+0
+--- Slide 27 ---
+27
++
++
+-2
+-2
+-1
+-1
+0
+Buffering is saved
+--- Slide 28 ---
+28
++
++
+Sometimes this is suboptimal
+What if we add
+an extra output?
+--- Slide 29 ---
+29
++
++
+-2
+-2
+-1
+-1
+0
+Unnecessary buffering
+is added
+0
+Neither ASAP nor ALAP
+can schedule this design
+optimally
+--- Slide 30 ---
+ASAP and ALAP both fix either inputs or outputs in place
+More complex scheduling algorithms may be able to develop a more optimal schedule e.g. using ILP
+30
+Optimal Scheduling
+--- Slide 31 ---
+Consider:
+
+
+We can see that we might need some explicit buffering to hold more than one data element on-chip
+We could do this explicitly, with buffering elements
+31
+Buffering data on-chip
+a = a + (buffer(a, 1) + buffer(b, 1))
+a[i] = a[i] + (a[i - 1] + b[i - 1])
+--- Slide 32 ---
+32
++
++
+Buffer(1)
+Buffer(1)
+The buffer has zero latency in the schedule
+--- Slide 33 ---
+33
++
++
+Buffer(1)
+Buffer(1)
+This will schedule thus
+
+Buffering = 3
+0
+0
+0
+0
+1
+1
+2
+--- Slide 34 ---
+Accessing previous values with buffers is looking backwards in the stream
+This is equivalent to having a wire with negative latency
+Can not be implemented directly, but can affect the schedule
+34
+Buffers and Latency
+--- Slide 35 ---
+35
++
++
+0
+0
+-1
+-1
+0
+1
+Offset wires can have negative latency
+Offset(-1)
+Offset(-1)
+-1
+-1
+--- Slide 36 ---
+36
++
++
+0
+0
+-1
+-1
+0
+1
+This is scheduled
+
+Buffering = 0
+Offset(-1)
+Offset(-1)
+-1
+-1
+--- Slide 37 ---
+A stream offset is just a wire with a positive or negative latency
+Negative latencies look backwards in the stream
+Positive latencies look forwards in the stream
+The entire dataflow graph will re-schedule to make sure the right data value is present when needed
+Buffering could be placed anywhere, or pushed into inputs or outputs  more optimal than manual instantiation
+37
+Stream Offsets
+--- Slide 38 ---
+38
++
+0
+Offset(1)
+a = a + stream.offset(a, +1)
+a[i] = a + a[i + 1]
+--- Slide 39 ---
+39
++
+Scheduling produces a circuit
+with 1 buffer
+0
+Offset(1)
+1
+1
+2
+--- Slide 40 ---
+For the questions below, assume that the latency of an addition operation is 10 cycles, and a multiply takes 5 cycles, while inputs/outputs take 0 cycles.
+
+Write pseudo-code algorithms for ASAP and ALAP scheduling of a dataflow graph
+
+Consider a MaxCompiler kernel with inputs a1, a2, a3, a4 and an output c. Draw the dataflow graph and draw the buffering introduced by ASAP scheduling to:
+
+c =  ( (a1 + a2) + a3) + a4
+c =  (a1 + a2) + (a3 + a4)
+
+Consider a MaxCompiler kernel with inputs a1, a2, a3, a4 and an output c. Draw the dataflow graph and write out the inequalities that must be satisfied to schedule:
+
+c = ((a1 * a2) + (a3 * a4)) + a1
+c = stream.offset(a1, -10)*a2 + stream.offset(a1, -5)*a3 + stream.offset(a1, +15)*a4 
+
+How many values of stream a1 will be buffered on-chip for (b)?
+40
+Exercises

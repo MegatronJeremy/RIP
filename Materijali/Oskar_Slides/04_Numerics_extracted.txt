@@ -1,0 +1,829 @@
+--- Slide 1 ---
+Presenter
+MaxAcademy Lecture Series – V1.0, September 2011
+Number Representationsand Arithmetic
+--- Slide 2 ---
+Why we care
+Number representation
+Number types in MaxCompiler
+Rounding
+Arithmetic styles
+Error and other numerics issues
+2
+Lecture Overview
+--- Slide 3 ---
+Performance depends on the number of arithmetic units that fit in the FPGA  lower precision = more units = higher performance
+Accuracy and performance may be competing objectives
+FPGA resource usage depends on data representation and bitwidths
+Custom computers give us greater control over number representation, but we need to achieve enough accuracy with small enough resource usage
+3
+Why we care
+--- Slide 4 ---
+Microprocessors: 
+	- Integer: unsigned, two’s complement
+	- Floating Point
+
+others:
+Fixed point
+Logarithmic number representation
+Redundant number systems: use more bits 
+Signed-digit representation
+Residue number system (modulo arithmetic)
+Decimal: decimal floating point, binary coded decimal
+4
+Number Representation
+--- Slide 5 ---
+One’s Complement
+5
+--- Slide 6 ---
+Two’s Complement
+6
+--- Slide 7 ---
+Sign-magnitude representation for integer x.
+	Most significant bit (msb) is the sign bit.
+	Advantages: symmetry around 0, easy access to |x|, simple overflow detection
+	Disadvantages: complexity of add/sub.
+One’s complement numbers: 
+      Represent -x by inverting each bit. Overflow=Sign_Carry_In ^ Sign_Carry_Cout
+	Advantages: fast negation
+	Disadvantages: add/sub correction: carry-out of sign bit is added to lsb
+Two’s complement:
+      Represent -x by inverting each bit and adding ‘1’. Overflow=same as One’s c.
+    	Advantages: fast add/sub
+	Disadvantages: magnitude computation requires full addition
+7
+Signed N-bit Integers
+--- Slide 8 ---
+Generalisation of integers, with a ‘radix point’
+Digits to the right of the radix point represent negative powers of 2
+
+
+
+F = number of fractional bits
+Bits to the right of the ‘radix point’
+For integers, F = 0
+8
+Fixed Point Numbers
+24
+23
+22
+21
+20
+2-1
+2-2
+2-3
+2-4
+2-5
+Digit weights:
+(unsigned)
+I bits
+F bits
+--- Slide 9 ---
+Think of each number as: (V  2-F)
+Addition and subtraction: (V1  2-F1) + (V2  2-F2)
+Align radix points and compute the same as for integers
+
+
+
+Multiplication: (V1  2-F1)  (V2  2-F2) = V1V2  2-(F1+F2)
+
+
+
+Division: (V1  2-F1) / (V2  2-F2) = (V1/V2)  2-(F1-F2)
+9
+Fixed Point Maths
+1
+0
+0
+1
+0
+1
+0
+0
+1
+0
+1
+0
+1
+1
+0
+1
+0
+0
+1
+0
+1
+1
+1
+0
+1
+1
+1
+0
+1
+1
+0
++
+=
+1
+0
+1
+0
+1
+0
+1
+0
+0
+1
+0
+0
+1
+1
+0
+0
+1
+1
+0
+1
+0
+0
+
+=
+--- Slide 10 ---
+regular mantissa = 1.xxxxxx
+denormal numbers: mantissa = 0.xxxxxx with min exponent
+IEEE FP Standard: base=2, single, double, extended widths
+Custom Computing: choose widths of fields + choose base
+Tradeoff: 
+ Performance: small widths, larger base, truncation. 
+ versus Accuracy: wide, base=2, round to even.
+Disadvantage: FP arithmetic units tend to be very large compared to Integer/fixed point units.
+10
+Floating Point Representation
+--- Slide 11 ---
+Addition and subtraction: 
+Align exponents: shift smaller mantissa to the larger number’s exponent
+Add mantissas
+Normalize: shift mantissa until starts with ‘1’, adjust exponent
+Multiplication:
+Multiply mantissas, add exponents
+Division:
+Divide mantissas, subtract exponents
+11
+Floating Point Maths
+--- Slide 12 ---
+MaxCompiler has in-built support for floating point and fixed point/integer arithmetic
+Depends on the type of the HWVar
+Can type inputs, outputs and constants
+Or can cast HWVars from one type to another
+Types are Java objects, just like HWVars,
+12
+Number Representation in MaxCompiler
+// Create an input of type t
+HWVar io.input(String name, HWType t); 
+
+// Create an HWVar of type t with constant value
+HWVar constant.var(HWType t, double value);
+
+// Cast HWVar y to type t
+HWVar x = y.cast(HWType t);
+--- Slide 13 ---
+Floating point numbers with base 2, flexible exponent and mantissa
+Compatible with IEEE floating point except does not support denormal numbers
+In custom computers choose to use a larger exponent
+
+Examples:
+13
+hwFloat
+HWType t = hwFloat(int exponent_bits, int mantissa_bits);
+Exponent bits
+Mantissa bits
+IEEE single precision
+8
+24
+IEEE double precision
+11
+53
+FPGA optimized low precision
+7
+17
+Including the sign bit
+Why hwFloat(7,17)…?
+--- Slide 14 ---
+Fixed point numbers
+Flexible integer and fraction bits
+Flexible sign mode
+SignMode.UNSIGNED or SignMode.TWOSCOMPLEMENT
+
+Common cases have useful aliases
+14
+hwFix
+HWType t = hwFix(int integer_bits, int fraction_bits, SignMode sm);
+Integer bits
+Fraction bits
+Sign mode
+hwInt(N)
+N
+0
+TWOSCOMPLEMENT
+hwUInt(N)
+N
+0
+UNSIGNED
+hwBool()
+1
+0
+UNSIGNED
+--- Slide 15 ---
+Can mix different types in a MaxCompiler kernel to use the most appropriate type for each operation
+Type conversions costs area – must cast manually
+Types can be parameter to a kernel program
+Can generate the same kernel with different types
+15
+Mixed Types
+class MyKernel extends Kernel {
+	public MyKernel(KernelParameters k, HWType t_in, HWType t_out) {
+		super(k);
+		
+		HWVar p = io.input(“p”, hwFloat(8,24)); 
+		HWVar q = io.input(“q”, t_in);
+
+		HWVar r = p * p;
+
+		HWVar s = r + q.cast(r.getType());
+		io.output(“s”, s.cast(t_out), t_out);
+	}
+}
+--- Slide 16 ---
+When we remove bits from the RHS of a number we may want to perform rounding. 
+Casting / type conversion
+Inside arithmetic operations
+Different possibilities
+TRUNCATE: throw away unwanted bits
+TONEAR: if >=0.5, round up (add 1)
+TONEAREVEN: if >0.5 round up, if <0.5 round down, if =0.5 then round to the nearest even number
+Lots of less common alternatives:
+Towards zero, towards positive infinity, towards negative infinity, random…. 
+Very important in iterative calculations – may affect convergence behaviour
+16
+Rounding
+--- Slide 17 ---
+Floating point arithmetic uses TONEAREVEN
+Fixed point rounding is flexible, controlled by the RoundingMode
+TRUNCATE, TONEAR and TONEAREVEN are in-built
+17
+Rounding in MaxCompiler
+HWVar z;
+...
+optimization.pushRoundingMode(RoundingMode.TRUNCATE);
+z = z.cast(smaller_type);
+optimization.popRoundingMode();
+--- Slide 18 ---
+Arithmetic Styles
+18
+Sequential
+- loop x times
+Pipelined
+- loop unrolled
+Combinational
+- loop unrolled
+- no registers
+- logic minimization
+Digit-Serial
+Parallel
+--- Slide 19 ---
+By default uses deeply pipelined arithmetic functions
+Objective is high operating frequency
+Can reduce pipelining gradually to produce combinatorial functions, controlled by pushing and popping a “pipelining factor”
+1.0 = maximum pipelining ; 0.0 = no pipelining
+19
+Arithmetic in MaxCompiler
+HWVar x, y, z; // floating point numbers
+...
+z = x * y; // fully pipelined
+optimization.pushPipeliningFactor(0.5);
+z += x; // half pipelined – lower latency
+optimization.pushPipeliningFactor(0.0);
+z += y; // no pipelining
+optimization.popPipeliningFactor();
+optimization.popPipeliningFactor();
+z = z * 2; // fully pipelined again
+--- Slide 20 ---
+Addition/subtraction:
+~1 LUT/bit for fixed point, hundreds of LUTs for floating point
+Multiplication: Can use DSP blocks 
+18x25bit multiply on Xilinx
+Number of DSPs depends on total bits (fixed point) or mantissa bitwidth (floating point)
+20
+Cost for arithmetic
+Floating point: hwFloat(E, M)
+Fixed point: hwFix(I, F, TWOSCMP)
+DSPs
+LUTs
+DSPs
+LUTs
+Add/subtract
+0
+O( Mlog2(E) )
+0
+I+F
+Multiply
+O( ceil(M/18)2 )
+O(E)
+O( ceil((I+F)/18)2 )
+0
+Divide
+0
+O( M2 )
+0
+O( (I+F)2 )
+Approximate cost models
+I = Integer bits, F = Fraction bits. E = Exponent bits, M = Mantissa Bits
+--- Slide 21 ---
+DSP usage for N x M multiplication
+21
+Bits
+18
+20
+22
+24
+26
+28
+30
+32
+34
+36
+38
+40
+42
+44
+46
+48
+50
+52
+54
+18
+1
+1
+1
+1
+2
+2
+2
+2
+2
+2
+2
+2
+2
+3
+3
+3
+3
+3
+3
+20
+1
+2
+2
+2
+2
+2
+2
+2
+2
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+22
+1
+2
+2
+2
+2
+2
+2
+2
+2
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+24
+1
+2
+2
+2
+2
+2
+2
+2
+2
+3
+3
+3
+3
+3
+3
+3
+3
+3
+3
+26
+2
+2
+2
+2
+4
+4
+4
+4
+4
+4
+4
+4
+4
+6
+6
+6
+6
+6
+6
+28
+2
+2
+2
+2
+4
+4
+4
+4
+4
+4
+4
+4
+4
+6
+6
+6
+6
+6
+6
+30
+2
+2
+2
+2
+4
+4
+4
+4
+4
+4
+4
+4
+4
+6
+6
+6
+6
+6
+6
+32
+2
+2
+2
+2
+4
+4
+4
+4
+4
+4
+4
+4
+4
+6
+6
+6
+6
+6
+6
+34
+2
+2
+2
+2
+4
+4
+4
+4
+4
+4
+4
+4
+4
+6
+6
+6
+6
+6
+6
+36
+2
+3
+3
+3
+4
+4
+4
+4
+4
+5
+5
+5
+5
+6
+6
+6
+6
+6
+7
+38
+2
+3
+3
+3
+4
+4
+4
+4
+4
+5
+5
+5
+5
+6
+6
+6
+6
+6
+7
+40
+2
+3
+3
+3
+4
+4
+4
+4
+4
+5
+5
+5
+5
+6
+6
+6
+6
+6
+7
+42
+2
+3
+3
+3
+4
+4
+4
+4
+4
+5
+5
+5
+5
+6
+6
+6
+6
+6
+7
+44
+3
+3
+3
+3
+6
+6
+6
+6
+6
+6
+6
+6
+6
+9
+9
+9
+9
+9
+9
+46
+3
+3
+3
+3
+6
+6
+6
+6
+6
+6
+6
+6
+6
+9
+9
+9
+9
+9
+9
+48
+3
+3
+3
+3
+6
+6
+6
+6
+6
+6
+6
+6
+6
+9
+9
+9
+9
+9
+9
+50
+3
+3
+3
+3
+6
+6
+6
+6
+6
+6
+6
+6
+6
+9
+9
+9
+9
+9
+9
+52
+3
+3
+3
+3
+6
+6
+6
+6
+6
+6
+6
+6
+6
+9
+9
+9
+9
+9
+9
+54
+3
+4
+4
+4
+6
+6
+6
+6
+6
+7
+7
+7
+7
+9
+9
+9
+9
+9
+10
+N
+M
+--- Slide 22 ---
+LUT usage for floating point addition
+22
+--- Slide 23 ---
+Consider fixed point compared to single precision floating point
+If range is tightly confined, we could use 24-bit fixed point 
+If data has a wider range, may need 32-bit fixed point 
+
+
+
+
+Arithmetic is not 100% of the chip. In practice, often see ~5x performance boost from fixed point.
+23
+Benefits of Fixed Point
+hwFloat(8,24)
+hwFix(24,...)
+hwFix(32,...)
+Add
+500 LUTs
+24 LUTs
+32 LUTs
+Multiply
+2 DSPs
+2 DSPs
+4 DSPs
+--- Slide 24 ---
+A,B:. A (op) B = result + error
+Floating point introduces (dynamic) relative error
+Error = f(exponent of result)  relative error
+Fixed point introduces (static) absolute error
+Error = f(rightmost bit position of result)  static error
+Error is minimized by good rounding
+24
+Error
+--- Slide 25 ---
+Overflow
+Number is too large (positive or negative) to be represented
+Usually catastrophic – important data is lost/invalid
+Underflow
+Number is too small to be represented and rounds to zero
+With fixed point, happens gradually
+With floating point without denormals, happens suddenly
+Usually underflowing data is not so important (numbers are very small)
+Bias 
+If errors do not have a mean of zero, they will grow with repeated computation.
+Big issue in iterative calculations  numbers gradually get more and more wrong!
+TONEAREVEN rounding mode minimizes bias
+25
+Other numerics issues
+--- Slide 26 ---
+Recommended reading: 
+Goldberg, “What Every Computer Scientist Should Know About Floating-Point Arithmetic”, ACM Computing Surveys, March 1991
+
+Textbooks:
+Koren, “Computer Arithmetic Algorithms,” 1998.
+Pahrami, ”Computer Arithmetic: Algorithms and Hardware Designs,” Oxford University Press, 2000.
+Waser, Flynn, “Introduction for Arithmetic for Digital Systems Designers,” Holt, Rinehard & Winston, 1982.
+Omondi, “Computer Arithmetic Systems,” Prentice Hall, 1994.
+Hwang, “Computer Arithmetic: Principles, Architectures and Design,” Wiley, 1978.
+26
+Further Reading on Computer Arithmetic
+--- Slide 27 ---
+Write a MaxCompiler kernel that takes one hwFloat(8,24) input stream and adds it to a hwFloat(11, 53)input stream to produce a hwFloat(11, 53) result. 
+
+What will be the result of trying to represent X=232 and Y=2-2 in each of the following number types:
+
+
+
+
+
+
+
+Construct a test to show the difference between rounding modes on a multiplication operation of two hwFix(4, 4, TWOSCOMPLEMENT) numbers. Vary the number of fraction bits – what is the impact on the bias difference between TONEAR and TONEAREVEN and why?
+27
+Exercises
+hwFix(32, 0, UNSIGNED)
+hwFix(32, 0, TWOSCOMPLEMENT)
+hwFix(28, 4, UNSIGNED)
+hwFix(32, 4, UNSIGNED)
+hwFloat(11, 53)
+hwFloat(8, 24)
+hwFloat(8, 32)
+hwFloat(8, 33)

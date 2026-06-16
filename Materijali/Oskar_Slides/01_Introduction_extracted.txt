@@ -1,0 +1,227 @@
+--- Slide 1 ---
+Presenter
+MaxAcademy Lecture Series – V1.0, September 2011
+Introduction and Motivation
+--- Slide 2 ---
+Challenges of the Exaflop Supercomputer
+How much of a processor does processing?
+Custom computers
+FPGA accelerator hardware
+Programmability
+Lecture Overview
+2
+--- Slide 3 ---
+Rise of x86 Supercomputers
+3
+--- Slide 4 ---
+1 exaflop = 1018 FLOPS
+Using processor cores with 8FLOPS/clock at 2.5GHz
+50M CPU cores
+What about power?
+Assume power envelope of 100W per chip
+Moore’s Law scaling: 6 cores today  ~100 cores/chip
+500k CPU chips
+50MW (just for CPUs!)  100MW likely
+‘Jaguar’ power consumption: 6MW
+4
+The Exaflop Supercomputer (2018)
+How do we program this?
+Who pays for this?
+--- Slide 5 ---
+What do 50M cores look like?
+Spatial decomposition on a 100003 regular grid
+1.0 Terapoints
+20k points per core
+273 region per core
+Computing a 13x13x13 convolution stencil:66% halo
+5
+--- Slide 6 ---
+Power Efficiency
+Green500 list identifies the most energy efficient supercomputers from the Top500 list
+
+
+
+
+
+At 1.6 GFLOPs/W; 1 exaflop = 625MW
+To deliver 1 Exaflop at 6MW we need 170 GFLOPS/W
+6
+Power efficiency (GFLOPS/W)
+Best (BlueGene/Q)
+1.6
+Average accelerator
+0.76
+Average non-accelerator
+0.21
+3.6x
+--- Slide 7 ---
+Memory controller
+Shared L3 cache
+Uncore
+Core
+I/O and QPI
+I/O and QPI
+Shared L3 cache
+Core
+Core
+Core
+Core
+Core
+Intel 6-Core X5680 “Westmere”
+7
+Core
+--- Slide 8 ---
+A custom chip for a specific application
+No instructions  no instruction decode logic
+No branches  no branch prediction
+Explicit parallelism  No out-of-order scheduling
+Data streamed onto-chip  No multi-level caches
+A Special Purpose Computer
+MyApplication Chip
+(Lots of) Memory
+Rest of the world
+8
+--- Slide 9 ---
+But we have more than one application
+Generally impractical to have machines that are completely optimized for only one code
+Need to run many applications on a typical cluster
+A Special Purpose Computer
+9
+--- Slide 10 ---
+Use a reconfigurable chip that can be reprogrammed at runtime to implement:
+Different applications
+Or different versions of the same application
+A Special Purpose Computer
+Optimized for Application A
+Optimized for Application B
+Optimized for Application C
+Optimized for Application D
+Optimized for Application E
+10
+--- Slide 11 ---
+Instruction Processors
+11
+--- Slide 12 ---
+Dataflow/Stream Processors
+12
+--- Slide 13 ---
+Lines of code
+Total Application
+1,000,000
+Kernel to accelerate
+2,000
+Software to restructure
+20,000
+Accelerating Real Applications
+The majority of LoC in most applications are scalar
+CPUs are good for: latency-sensitive, control-intensive, non-repetitive code 
+Dataflow engines are good for: high throughput repetitive processing on large data volumes	
+
+			 A system should contain both
+13
+--- Slide 14 ---
+14
+Custom Computing in a PC
+Processor 
+Register 
+file
+L1$
+L2$
+Where is the Custom Architecture?
+On-Chip w/ access to register file
+Co-processor w/ access to level 1 cache
+Next to level 2 cache 
+In an adjacent processor socket, connected using QPI/Hypertransport
+As Memory Controller instead of North/South Bridge
+As main memory (DIMMs)
+As a peripheral on PCI Express bus
+Inside the peripheral, i.e. a customizable Disk controller
+North/South Bridge
+QPI/Hypertransport
+PCI Bus
+Disk
+Dimms
+--- Slide 15 ---
+15
+Embedded Systems
+“Harvard” Architecture
+Partitioning of Programs into software and hardware (custom architecture) is called Hardware Software Co-design
+System-on-a-Chip (SoC)
+Custom architecture as extension of the processor instruction set.
+Processor 
+Register 
+file
+Data
+Instructions
+Custom
+Architecture
+--- Slide 16 ---
+Depends on the application 
+More specifically it depends on the 
+	systems “Bottleneck” for the application
+Possible Bottlenecks:
+Memory access latency
+Memory access bandwidth
+Memory size 
+Processor local memory size 
+Processor ALU resource
+Processor ALU operation latency
+Various bus bandwidths
+Is there an optimal location?
+16
+--- Slide 17 ---
+Throughput
+Latency
+Memory
+Convolution
+Graph algorithms
+CPU
+Monte Carlo
+Optimization
+17
+Major Bottlenecks: Examples
+--- Slide 18 ---
+Examples
+for(int i=0;i<N;i++){
+	a[i]=b[i];
+}
+
+is limited by: ………………………….
+
+for(int i=0;i<N;i++){
+	for(int j=0;j<1000;j++){
+		a[i]=a[i]+j;
+  }
+}
+
+is limited by: ………………………….
+18
+--- Slide 19 ---
+Reconfigurable Computing with FPGAs
+DSP Block
+Block RAM (20TB/s)
+IO Block
+19
+--- Slide 20 ---
+CPU and FPGA Scaling
+FPGAs on the same curve as CPUs (Moore’s law)
+20
+--- Slide 21 ---
+1U Form Factor 
+4x MAX3 cards with Virtex-6 FPGAs
+12 Intel Xeon cores
+Up to 192GB FPGA RAM
+Up to 192GB host RAM
+MaxRing interconnect
+Infiniband/10GE
+High Density Compute with FPGAs
+21
+--- Slide 22 ---
+Given a computer system which is never limited by the memory bus with N Mb memory and a processor with 2 ALUs (write down any additional assumptions you make). For each of the points below write a pseudo program which is limited in performance by:
+Memory access latency
+Memory size  
+Processor ALU resources
+
+Find 3 research projects on the web, working on something related to this lecture and describe what they do and why in your own words.
+Exercises
+22

@@ -1,0 +1,456 @@
+Vertical Acceleration: From Algorithms to Logic Gates 
+considering Economics of Computation 
+Oskar Mencer 
+Beograd, August 2010 
+Maxeler Technologies 
+MaxCard 
+e.g. HFT Solution 
+MaxBox 
+4 MaxCards in a 1U box 
+MaxRack 
+Storage, Network and Compute 
+Real-time trace processing 
+ Finite Difference (with Chevron) 
+•
+Local Vol Approximation 
+2/27 
+Chevron 3D Finite Difference 
+1000 
+10000 
+100000 
+1000000 time [s] 
+Maxeler FPGA Card 
+Single CPU core w/ -O3 
+Speedup of 3D Finite Difference 
+30x 
+faster than 
+an 8-core Intel node 
+Chevron Case Study 
+1
+10 
+100 
+1000 
+240 336 432 528 624 720 816 912 1008 
+Problem Size (x^3) 
+time [s] 11x 
+faster than 
+an 8-core Intel node 
+* published by the Society of Exploration Geophysicists in 2008 
+3/27 
+● Can be dominant cost in shot profile migration 
+● Cross-correlating two fields by various shifts: 
+),,,(),,,(),,( * swzhxGswzhxSzxhI
+s w
++⋅−= ∑∑
+Angle gathers from CPU computed 
+48x Speedup of Angle Gathers 
+with Stanford Center for Earth and Environmental Sciences 
+*) 
+Maxeler 
+April 2010 
+Slide 4
+SPEEDUP RESULTS FROM CUSTOM 
+TRACE MEMORY SYSTEM: 
+/square4Trace = Unit of Transfer 
+/square4Buffers Prefetch Right Traces in Advance 
+*) Case Study: Subsurface Offset Gathers, 
+presented at SEG 2008 
+Angle gathers from FPGA computed 
+subsurface offsets 
+Angle gathers from CPU computed 
+subsurface offsets 
+Seismic Detectors Seismic Source 
+Recording Vessel 
+Sea Surface 
+Water Bottom 
+Seismic Data Acquisition 
+Oil 
+Gas 
+Hydrocarbon "trap" 
+Seismic Wave 
+Ray Paths 
+Courtesy of Schlumberger 
+5/27 
+ENI-AGIP Seismic Trace App: Conjugate Gradient Optimization 
+100 MAX2 cards delivering performance of 21,800 CPU cores[EAGE2010] 
+Data Use with 1 t 0 Data Use with 4 t 0
+Maxeler 
+June 2010 
+Slide 6
+Data Use with 16 t 0 Data Use with 64 t 0
+Acceleration Projects end up at 20-30x 
+Customer A 
+ Customer B 
+1.2GB/s per card 
+Customer C 
+App1: 19x, App2:  25x 1.2GB/s per card App1: 22x, App2: 22x 
+Customer D 
+App1: 32x, App2: 29x 
+Customer E 
+App1: 30x 
+Customer F 
+App1: 26x, App2: 30x 
+
+A Maxeler Sparse Matrix Solution 
+60 
+GREE0A 
+1new01 
+0
+10 
+20 
+30 
+40 
+50 
+0 1 2 3 4 5 6 7 8 9 10 
+Compression Ratio 
+Speedup per 1U Node 
+1new01 
+624 
+624 Maxeler Domain Specific Address and Data Encoding 
+SPEEDUP is 20x-40x per 1U 
+at 200MHz 
+8/23 
+Computing Technology 2010 
+Microprocessor                      FPGA 
+Xilinx Virtex-6 FPGA 
+/square45MB at >1TB/s 
+/square42000 multipliers 
+/square4~1M logic elements 
+computational 
+paper 
+Computing with CPUs versus FPGAs 
+Streaming Data through a data flow machine 
+10/27 
+Acceleration is Hard 
+
+Vertical Optimizations in a Horizontal world 
+Science/Numerics 
+Programming, 
+Performance 
+Hardware/IT 
+ACCELERATE 
+INTEGRATE 
+MAINTAIN 
+OPTIMIZATION 
+Hardware/IT 
+Infrastructure 
+ACCELERATE 
+INTEGRATE 
+MAINTAIN 
+Customer 
+MAXELER 
+OPTIMIZATION 
+12/27 
+“With C you can shoot yourself in the foot. 
+with C++ you can blow your whole leg away.” 
+Abstraction 
+/square4The enemy of acceleration? 
+/square4We balance abstraction with modelling of underlying dataflow 
+/square4In the process we make the code easier to read and maintain 
+/square4Requires the support of the people who wrote the code 
+Managing a Complex C++ Acceleration Project 
+/square4Requires the support of the people who wrote the code 
+/square4Focus on large “chunk size”, the unit of data and computation 
+/square4Requires adaption of the job distribution system 
+Fast & Reliable 
+/square4Acceleration has to track a moving target; ongoing development 
+/square4Accelerating the acceleration process: Agile Programming 
+/square4Coding standards to achieve fast deliveries 
+Software 
+Transformation 
+13/23 
+Maxeler Loop Flow Graphs 
+for JP Morgan Credit Derivatives 
+Transformation Options 
+14/23 
+30x Accelerated 2-Fluid Lattice Boltzmann: 
+Changing the sorting step inside the iteration 
+MAX2 Results: Output for Finney model with PP=50 
+2
+4
+6
+8
+10 
+12 
+14 
+16 
+18 
+20 Flux in x axis 
+CPU Fluid 0 
+CPU Fluid 1 
+FPGA Fluid 0 
+FPGA Fluid 1 Effect of 
+modifying sort in 
+both software and 
+FPGA 
+Maxeler 
+April 2010 
+Slide 15 
+MAX2 Results: Output for Finney with PP=50 with modified sort 
+0
+2
+4
+6
+8
+10 
+12 
+14 
+16 
+18 
+20 
+0 100 200 300 400 500 600 700 800 900 1000 
+Timestep 
+Flux in x axis 
+CPU Fluid 0 
+CPU Fluid 1 
+FPGA Fluid 0 
+FPGA Fluid 1 
+0
+2
+0 100 200 300 400 500 600 700 800 900 1000 
+Timestep 
+Avg. Rel. Diff. 
+CPU vs. FPGA 
+Original sort 7.9E-2
+Modified sort 6.9E-7
+Combining Algorithms & Acceleration 
+Iteration 
+Method ACCELERATION 
+Bit Level 
+Representation 
+Custom 
+Memory 
+Systems 
+Stream 
+Computing 
+Discretization 
+Iteration 
+NUMERICS 
+16/27 
+Slow and Fast Memories 
+John von Neumann, 1946: 
+“We are forced to recognize the 
+possibility of constructing a 
+possibility of constructing a 
+hierarchy of memories, each 
+of which has greater capacity 
+than the preceding, but which 
+is less quickly accessible.” 
+17/27 
+dt dZ dW 
+dZ d
+dW FdF 
+ttt
+tttt
+ρ
+ασ 
+σ
+σ
+β
+>= <
+=
+=
+,
+SABR model: 
+we integrate in time (Euler in log-forward, Milstein in vol.) 
+( )dt ZZ
+WFdt FFF
+tttttt
+ttttttt
+−Δ+Δ+=
+Δ−+−−=
++
++
+2
+2
+1
+1
+2
+2
+1
+1
+))( (
+)ln ) 1exp(( .)) ln ) 1exp(( (ln ln 
+α
+ασ 
+ασ 
+σ
+σ
+β
+σ
+β
+σ
+),(
+),ln ,(ln 
+1
+1
+ttt
+tttt
+ZH
+WFGF
+Δ=
+Δ=
++
++
+σ
+σ
+σFor each t: 
+For each path, initialize: 00,ln 
+σF
+… How do we compute G and H optimally? 
+( )tttttt −Δ+Δ+=+ 21 ))( (
+α
+ασ 
+ασ 
+σ
+σ
+18/27 
+Design Space for Function Evaluation 
+Computing f(x) in the range [a,b] with |E| ≤ 2 ⁻ⁿ
+Table                   Table+Arithmetic                     Arithmetic 
+and +, -,×,÷ +, -,×,÷
+/square4uniform vs non-uniform 
+/square4number of table entries 
+/square4how many coefficients 
+/square4polynomial or rational approx 
+/square4continued fractions 
+/square4multi-partite tables 
+Underlying hardware/technology changes the optimum 
+19/27 
+Variable Segments and Approximations 
+F(x) 
+segment 
+x
+Approximate in each segment separately: 
+⋅ ⋅ ⋅+++= 3
+3
+2
+210 ''') '( xcxcxccxp ⋅ ⋅ ⋅+++
+⋅ ⋅ ⋅+++= 3
+3
+2
+210
+3
+3
+2
+210)( xbxbxbb
+xaxaxaaxr
+x’ 
+Compute Coefficients: Taylor Series, MiniMax (Remez), Splines,... 
+Precision: How many coefficients AND how many bits per variable? 
+20/27 
+Finite Difference Stencils and Coefficients 
+/square4Monte Carlo vs Finite Difference vs Finite Elements
+/square4Explicit versus implicit 
+/square4Discretization, delta_t  versus  accuracy 
+/square4Example: 3D stencil shape for Finite Difference 
+joint Stanford/Maxeler presentation at the SEG meeting 2009. 
+21/27 
+MaxCompiler 
+22/27 
+Generic Acceleration Architecture 
+CPU 
+FPGA 
+Memory 
+Memory 
+MaxelerOS 
+Kernels 
+Host application 
+MaxCompilerRT 
+Memory Memory 
+Memory 
+PCI Express 
+*+
++
+Manager 
+23/27 
+Host PC 
+Main memory 
+PCI 
+Express 
+Software 
+MaxelerOS 
+MAX2 FPGA Card 
+DRAM Memory 
+FPGA 
+A
+-1 +1 
++
++
+/
+3
+B
+A
+B
+24 / 30 
+Software 
+C
+float A[SIZE]; 
+…
+…
+Manager 
+Java 
+Kernel 
+MaxJava 
+for (int i=0; i<SIZE; ++i) { 
+B[i] = ( A[i-1] + A[i] + A[i+1] )/3; 
+}
+class mav_kernel 
+extends kernel{ 
+input (“A",hwFloat (12 ,52) ) ; 
+output (“B",hwFloat (12 ,52) ) ; 
+A_prev=streamOffset(-1,A); 
+A_next=streamOffset(1,A); 
+B = (A_prev+A+A_next) / 3 ; 
+}
+Manager m = new 
+Manager(“Loop", MAX2); 
+m.kernel(mav_kernel, 
+link(“A", PCIE), 
+link(“B", DRAM(LINEAR)); 
+m.build(); 
+stream_data(device, A); 
+device = max_open_device( 
+maxfile, "/dev/max0"); 
+Maxeler offers complete hardware, software and application acceleration solutions 
+for high performance computing 
+Hardware 
+/square4Card: PCI Express x16, compute, memory and local interconnect 
+/square4Box: 1U solutions with 1 or 4 Cards 
+/square4Rack: 10U, 20U or 40U, balancing compute, storage & network 
+/square4MaxelerOS: Resource management of Stream Computing 
+Providing Complete Solutions 
+/square4MaxelerOS: Resource management of Stream Computing 
+/square4Runtime support: memory management and data choreography 
+/square4MaxCompiler: providing programmability 
+Consulting 
+/square4HPC System Performance Architecture 
+/square4Algorithms and Numerical Optimization 
+/square4Integration into business and technical processes 
+Software 
+25/27 
+1
+2
+3
+4
+5 Capability Relative to MAX2 
+Logic (Arithmetic) per node 
+FPGA memory per node 
+Memory bandwidth per FPGA 
+On-chip memory per FPGA 
+MAXELER Technology Roadmap 
+2009: MaxBox+MAX2C Summer 2010: MAX3 2011: MAX4 
+Silicon process 65nm 40nm 32nm 
+MaxCard compute 
+capability per node 
+1,920 LC 3,800 LC 7,600 LC 
+MaxCard mem / node 96GB 192GB 384GB 
+DRAM bandwidth 15GB/s 39GB/s 51GB/s 
+Local On-chip memory 2.25MB 4.67MB 9.4MB 
+Power Consumption 417W 550W 680W 
+0
+2009: MaxBox+MAX2C Summer 2010: MAX3 2011: MAX4 
+Capability Relative to MAX2 
+Q4 
+Q4 
+26/27 

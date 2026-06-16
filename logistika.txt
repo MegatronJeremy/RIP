@@ -1,0 +1,70 @@
+Logistika kursa (od Nikole, preneto sa WhatsApp-a)
+====================================================
+
+Termini
+-------
+Veljko Milutinović ce sa nama biti 6 puta, uvek od 16:15 do 17:15, bez pauze.
+Sledeceg petka cas nece biti odrzan.
+
+Napomena: ovaj predmet drzi i na Univerzitetu Purdue u SAD, gde u tom semestru
+ima tacno 120 studenata sa obaveznim prisustvom (kontrolisano sa "picture id").
+Gost na casu mu je bio Janko Tufegdzic.
+
+Datumi odbrane domacih
+----------------------
+08. maj   -> domaci 1+2
+15. maj   -> domaci 3+4
+22. maj   -> domaci 5+6
+29. maj   -> domaci 7+8
+05. jun   -> domaci 9+10
+12. jun   -> domaci 11+12
+
+Svaki domaci se radi u parovima i brani se kao .pptx.
+Odbrana ide 5 minuta po domacem -> za 12 studenata na predmetu, sve odbrane
+jednog termina uzimaju 60 min + ~30 min diskusija = 90 min (tacno 2 skolska casa).
+
+Teme domacih (po parovima)
+---------------------------
+1+2   CF multicore / CF manycore
+3+4   GaAs / 2+6
+5+6   DF maxDFE / DF googleTPU
+7+8   IoT / WSN
+9+10  Opto / Quantum
+11+12 Bio / Chem
+
+Za CF (multicore/manycore) ne trebaju AmazonAWS ni MSAzure - dovoljno je ono
+sto je svuda oko nas, osim ako ne zelite da probate na masini koja "jede zivu decu".
+
+Bodovanje
+---------
+Za 50 poena kod VM: 12 domacih nosi 48 poena (4 po domacem = 2 za slajdove + 2 za pricu).
+Usmeni ispit (vezan za predavanja, sto nije obuhvaceno domacima) nosi jos 12 poena.
+Ukupno: 60 poena.
+
+Skala (Veljkov deo):
+  50+ poena = 10
+  40+ poena = 9
+  30+ poena = 8
+  20+ poena = 7
+  10+ poena = 6
+
+VAZNO: za prelaznu ocenu svaki domaci mora dobiti 2 ili vise poena!
+
+Referenca: pogledati AAI 2026.
+
+Resursi (od Mladena)
+---------------------
+VLSI predavanja (slajdovi):
+  http://home.etf.rs/~vm/os/vlsi/predavanja/slides/indexOskar.html
+
+Maxeler:
+  http://home.etf.rs/~vm/os/vlsi/predavanja/maxeler.php
+  username: vm
+  password: student
+
+Referentni PDF (verovatno osnova predavanja):
+  https://indico.global/event/13497/attachments/55029/105761/4.The%20Ultimate%20-%20Long%20=%20CMOQ.pdf
+
+Napomene sa predavanja (Mladen, 10.05.2026):
+  - Uglavnom je vise pricao anegdote i prelazio jednu prezentaciju.
+  - Domaci se radi u parovima - ako treba par, Mladen jos nije krenuo/nema para.

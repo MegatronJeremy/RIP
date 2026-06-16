@@ -1,0 +1,86 @@
+Maximum Performance  
+Computing at Exascale 
+Running Exascale  
+applications in 3MW by 2018 
+Maxeler Technologies is a leader in the market for High Perform-
+ance Computing solutions.  
+Applications accelerated on Maxeler’s Dataflow Compute Engines 
+have shown speed ups in processing time of 20 to 50x. Thus, a 1U 
+MaxNode enables over 90% reduction in energy usage and can 
+provide the same compute performance as a 20 -50x larger conven-
+tional system. We provide complete and scalable solutions includ-
+ing hardware platforms, software programming tools and applica-
+tion consulting.   
+Simply scaling conventional multicore processors will not deliver 
+exascale performance in less than 100MW. Maxeler’s answer is 
+Maximum Performance Computing, which achieves exascale per-
+formance for specific applications with over 20x lower power con-
+sumption. 
+The Challenges of Exascale 
+We identify five major challenges that are impeding progress to-
+wards exascale computing: 
+ Power 
+ Programmability 
+ Communication 
+ Space 
+ Reliability 
+We address these challenges by having 20 to 50 times fewer accel-
+erated compute nodes, reducing space and power consumption, 
+while increasing reliability.  
+We define exascale performance as delivering application perform-
+ance equivalent to a conventional supercomputer with 1 exaflop 
+peak performance. 
+To illustrate this, we can compare programming a exascale super-
+For more information visit our website: 
+http://www.maxeler.com/ 
+In a Maxeler dataflow  compute engine, large volumes of data stream from 
+memory through multiple function elements on chip before the final results 
+are written back to memory 
+Graph  showing  how the number of Maxeler nodes and power consumption 
+required to reach Exascale application performance decreases over time. 
+computer built from conventional multi -core processors to one 
+built using Maxeler accelerated compute nodes, to run a large 3D 
+convolution.  
+To achieve 1 exaflop using conventional CPU cores, with 8FLOPS/
+clock at 2.5GHz, requires 50 million cores, which would currently 
+require over 1000MW of power, and is likely to require at least 
+100MW in the 2018-19 timeframe.  
+ 
+We define our convolution problem as follows: 
+ 
+ Regular 3D grid, 10,000 points in each dimension  = 1 terapoint  
+ 13x13x13 convolution stencil 
+With 50M cores, our 1 terapoint grid gives us only 20k points in 
+each core’s subdomain, which means that for every 1 output point 
+calculated, the core must access 2 halo points from other cores. The 
+convolution calculation is therefore no longer localized, and be-
+comes completely limited by the performance of the interconnect.  
+By 2018 we project that we will be capable of building an exascale 
+supercomputer within 3MW with around 17,500 Dataflow Compute 
+Engines. This means 60 million points per compute engine, a sim-
+pler programming environment and a drastically reduced burden of 
+halo communication , which is further mitigated by the use of our 
+low-latency high-bandwidth interconnect  between processing ele-
+ments, MaxRing. 
+ 
+Reliability is significantly improved by having many fewer compute 
+nodes, since the mean -time-to-failure of a single node remains the 
+same. Our custom compute fabric allows us to further increase 
+reliability by implementing application -specific error checking and 
+rollback mechanisms.  
+1
+10
+100
+1000
+10000
+100000
+1000000
+1
+10
+100
+2010 2012 2014 2016 2018 2020 2022
+Power in MW
+Year
+MW Per Exaflop
+Nodes Per Exaflop
+Nodes

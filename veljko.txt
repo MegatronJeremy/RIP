@@ -1,0 +1,28 @@
+Prezentacija sustine ovog nekog naucnog rada kojeg cemo izabrati
+18. uvece slece neko???
+19. od 10-10:45 prica u fiskulturnoj sali za sve djake 
+u Kragujevcu dan kasnije prica u matematickoj gimnaziji
+
+Svaki slajd - ne samo koji po redu nego od kojeg ukupno
+Jedan red jedna misao za bullet point
+Jedan video/animaciju ubaciti negde
+Zadnji slajd - uvek email ili anegdotu/mudru recenicu tako da svi pamte do kraja zivota
+
+Veljko voli formalno - slajdovi, bulleti, nema semantickog cepanja itd. - da je sve lepo formatirano
+Jednostavniji algoritam - suboptimalni - drugi naziv aproksimativni
+-> Bitno - u svim aplikacijama mnogo jednostavniji
+-> U nekima - samo malo slabiji
+-> Imaju nesto drugo - idu na brzim tehnologijama jer su jednostavniji
+-> GaAs bolji ako se mnozi sa brzim clockom (4GHz obican procesor a GaAs je 100GHz npr)
+
+Neki algoritam:
+- multi-core (CPU acceleration)
+- many-core (GPU acceleration)
+- GaAs (galium arsenide + intel 8085)
+
+implementacija
+
+Uradjene teme su:
+matmul (gemm)
+softmax
+obrada slike - mnozenje filterom 

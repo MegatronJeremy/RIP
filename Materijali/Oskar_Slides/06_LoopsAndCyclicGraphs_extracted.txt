@@ -1,0 +1,487 @@
+--- Slide 1 ---
+Presenter
+MaxAcademy Lecture Series – V1.0, September 2011
+Loops and cyclic graphs
+--- Slide 2 ---
+Classifying Loops
+Attributes and measures
+Simple Fixed Length Stream Loops 
+Example vector add
+Custom memory controllers
+Nested Loops
+Counter chains
+Streaming and unrolling
+How to avoid cyclic graphs
+Variable Length Loops
+Convert to fixed length
+Loops with dependence cycles
+How to build cyclic data-flow graphs
+How to exploit pipelining in cyclic graphs
+2
+Overview of Accelerating Loops
+Objective: understand how to get from source-code loops to MaxCompiler configurations
+That go fast
+--- Slide 3 ---
+Loop Attributes:
+Array access
+pattern is important (stride)
+Iteration: loop-carried dependency 
+distance is important 
+fixed distance (good) or variable distance (bad)
+
+Loop performance metrics:
+Computation to memory-access ratio
+Working set size => custom memory hierarchy
+Loop bottlenecks: CPU or Memory or IO
+3
+Classifying Loops
+for (i=0; i<N; ++i) {
+  A[i] = ...B[i]...
+             ...B[i*M]...
+             ...B[C[i]]...
+}
+
+for (i=0; i<N; ++i) {
+  A[i] = ...A[i-1]...
+             ...A[i-100]...
+             ...A[i-k]...
+}
+--- Slide 4 ---
+4
+Overview of Accelerating Loops
+Classifying Loops
+Attributes and measures
+Simple Fixed Length Stream Loops 
+Example vector add
+Custom memory controllers
+Nested Loops
+Counter chains
+Streaming and unrolling
+How to avoid cyclic graphs
+Variable Length Loops
+Convert to fixed length
+Loops with dependence cycles
+How to build cyclic data-flow graphs
+How to exploit pipelining in cyclic graphs
+--- Slide 5 ---
+The Stream Loop
+5
+HWVar A = io.input(”input” , hwUInt(32));
+HWVar B = A + 1;
+io.output(”output” , B , hwUInt(32));
+A
++
+1
+B
+uint A[...]; uint B[...];
+for (int count=0; ; count += 1)
+   B[count] = A[count] + 1;
+--- Slide 6 ---
+Adding a Loop Counter
+6
+HWVar A = io.input(”input” , hwUInt(32));
+HWVar count = control.count.simpleCounter(32);
+HWVar B = A + count;
+io.output(”output” , B , hwUInt(32));
+A
++
+count
+B
+for (int count=0; ; count += 1)
+   B[count] = A[count] + count;
+--- Slide 7 ---
+Adding a Loop Counter
+7
+HWVar A = io.input(”input” , hwUInt(32));
+HWVar count = control.count.simpleCounter(32);
+HWVar B = A + count;
+io.output(”output” , B , hwUInt(32));
+for (int count=0; ; count += 1)
+   B[count] = A[count] + count;
+If the array subscripts are more complicated, you need to think about how to generate addresses for the DRAM
+--- Slide 8 ---
+8
+Overview of Accelerating Loops
+Classifying Loops
+Attributes and measures
+Simple Fixed Length Stream Loops 
+Example vector add
+Custom memory controllers
+Nested Loops
+Counter chains
+Streaming and unrolling
+How to avoid cyclic graphs
+Variable Length Loops
+Convert to fixed length
+Loops with dependence cycles
+How to build cyclic data-flow graphs
+How to exploit pipelining in cyclic graphs
+--- Slide 9 ---
+int count = 0;
+for (int i=0; i<N; ++i) {
+	for (int j=0; j<M; ++j) {
+		B[count] = A[count]+(i*M)+j;
+	     count += 1;
+   }
+}
+Loop Nest without Dependence
+9
+HWVar A = io.input(”input” , hwUInt(32));
+CounterChain chain = control.count.makeCounterChain();
+HWVar i = chain.addCounter(N, 1).cast(hwUInt(32));
+HWVar j = chain.addCounter(M, 1).cast(hwUInt(32));
+HWVar B = A + i*100 + j;
+io.output(”output” , B , hwUInt(32));
+A
++
+B
+j
+100
+i
++
+*
+Use a chain of counters to generate i and j
+--- Slide 10 ---
+for (i = 0; ; i += 1)  {
+   float d = input[count];
+   float v = 2.91 – 2.0*d;
+   for (iter=0; iter < 4; iter += 1) 
+	    v = v * (2.0 - d * v);
+   output[i] = v;
+}
+Loop Unrolling with Dependence
+10
+HWVar d = io.input(”d”, hwFloat(8, 24));
+HWVar TWO= constant.var(hwFloat(8,24), 2.0);
+HWVar v = constant.var(hwFloat(8,24), 2.91) − TWO*d;
+
+for ( int iteration = 0; iteration < 4; iteration += 1) {
+	v = v*TWO− d*v;
+}
+io.output(”output” , v, hwFloat(8, 24));
+--- Slide 11 ---
+for (i = 0; ; i += 1)  {
+   float d = input[count];
+   float v = 2.91 – 2.0*d;
+   for (iter=0; iter < 4; iter += 1) 
+	    v = v * (2.0 - d * v);
+   output[i] = v;
+}
+Loop Unrolling with Dependence
+11
+HWVar d = io.input(”d”, hwFloat(8, 24));
+HWVar TWO= constant.var(hwFloat(8,24), 2.0);
+HWVar v = constant.var(hwFloat(8,24), 2.91) − TWO*d;
+
+for ( int iteration = 0; iteration < 4; iteration += 1) {
+	v = v*TWO− d*v;
+}
+io.output(”output” , v, hwFloat(8, 24));
+The software loop has a cyclic dependence (v)
+But the unrolled datapath is acyclic
+--- Slide 12 ---
+12
+Overview of Accelerating Loops
+Classifying Loops
+Attributes and measures
+Simple Fixed Length Stream Loops 
+Example vector add
+Custom memory controllers
+Nested Loops
+Counter chains
+Streaming and unrolling
+How to avoid cyclic graphs
+Variable Length Loops
+Convert to fixed length
+Loops with dependence cycles
+How to build cyclic data-flow graphs
+How to exploit pipelining in cyclic graphs
+--- Slide 13 ---
+Variable Length Loop
+for (count=0; ; count += 1) {
+  int d = input[count];
+  int shift = 0;
+  while (d != 0 && ((d & 0x3FF) != 0x291)) {
+   shift = shift + 1;
+   d = d >> 1;
+  }
+  output[count] = shift;
+}
+// converted to fixed length
+for (count=0; ; count += 1) {
+  int d = input[counCt];
+  int shift = 0;
+  bool finished = false;
+  for (int i = 0; i < 22; ++i) {
+    bool condition = (d != 0 && ((d & 0x3FF) != 0x291));
+    finished = condition ? true : finished; // loop-carried
+    shift = finished ? shift : shift + 1;   // dependencies
+    d = d >> 1;
+  }
+  output[count] = shift;
+}
+What do we do with a while loop (or a loop with a “break”)?
+Find maximum number of iterations
+Predicate execution of loop body
+Using a bool that is set to false when the while loop condition fails
+Count
+Condition
+Finished
+shift
+1
+f
+f
+1
+2
+f
+f
+2
+3
+f
+f
+3
+4
+f
+f
+4
+5
+t
+t
+5
+6
+f
+t
+5
+7
+f
+t
+5
+8
+f
+t
+5
+9
+F
+t
+5
+13
+--- Slide 14 ---
+Variable Length Loop – in hardware
+14
+for (count=0; ; count += 1) {
+  int d = input[count];
+  int shift = 0;
+  bool finished = false;
+  for (int i = 0; i < 22; ++i) {
+    bool condition=(d!=0&&((d&0x3FF)!=0x291));
+    finished = condition ? true : finished;
+    shift = finished ? shift : shift + 1;
+    d = d >> 1;
+  }
+  output[count] = shift;
+}
+
+HWVar d = io.input(”d”, hwUInt(32));
+HWVar shift = constant.var(hwUInt(5), 0);
+HWVar finished = constant.var(hwBool(), 0);
+for ( int i = 0; i < 22; ++i) {  // unrolled
+	HWVar condition = d.neq(0)&((d&0x3FF).neq(0x291)); 
+	finished = condition ? constant.var(1) : finished ;
+	shift = finished ? shift : shift + constant.var(1);
+	d = d >> 1;
+}
+// Output
+io.output(”output” , shift , hwUInt(5));
+--- Slide 15 ---
+Variable Length Loop – in hardware
+15
+for (count=0; ; count += 1) {
+  int d = input[count];
+  int shift = 0;
+  bool finished = false;
+  for (int i = 0; i < 22; ++i) {
+    bool condition=(d!=0&&((d&0x3FF)!=0x291));
+    finished = condition ? true : finished;
+    shift = finished ? shift : shift + 1;
+    d = d >> 1;
+  }
+  output[count] = shift;
+}
+
+HWVar d = io.input(”d”, hwUInt(32));
+HWVar shift = constant.var(hwUInt(5), 0);
+HWVar finished = constant.var(hwBool(), 0);
+for ( int i = 0; i < 22; ++i) {  // unrolled
+	HWVar condition = d.neq(0)&((d&0x3FF).neq(0x291)); 
+	finished = condition ? constant.var(1) : finished ;
+	shift = finished ? shift : shift + constant.var(1);
+	d = d >> 1;
+}
+// Output
+io.output(”output” , shift , hwUInt(5));
+Again, the unrolled loop is acyclic
+--- Slide 16 ---
+Loop Unrolling 
+Gets rid of loop-carried dependency by creating a long pipeline
+Requires O(N) space on the chip...what if it does not fit?
+
+If we can’t unroll, we end up with a cycle in the dataflow graph
+
+As we will see, we need to take care to make sure the cycle is compatible with the pipeline depth
+
+Variable-length loop (with loop-carried dependency)
+Can be fully unrolled, BUT need to know maximal number of iterations 
+Utilization depends on actual data...
+What if max iterations is much larger than average? Or max is not known? Or max iterations don’t fit on the chip?
+16
+To Unroll or Not to Unroll
+--- Slide 17 ---
+17
+Overview of Accelerating Loops
+Classifying Loops
+Attributes and measures
+Simple Fixed Length Stream Loops 
+Example vector add
+Custom memory controllers
+Nested Loops
+Counter chains
+Streaming and unrolling
+How to avoid cyclic graphs
+Variable Length Loops
+Convert to fixed length
+Loops with dependence cycles
+How to build cyclic data-flow graphs
+How to exploit pipelining in cyclic graphs
+--- Slide 18 ---
+Cyclic Data Flow with MaxCompiler
+18
+int count = 0;
+for (int i=0; ; i += 1)  {
+  sum[i] = 0.0;
+  for (int j=0; j<M; j += 1) {
+  	sum[i] = sum[i] + input[count];
+	count += 1;
+  }
+  output[i] = sum[i];
+}
+HWVar jCounter = control.count.simpleCounter(32, M);
+HWVar carry = scalarType.newInstance(this);
+
+HWVar sum = jCounter.eq(0) ? 0.0 : carry;
+sum = input + sum;
+
+carry.connect(stream.offset(sum, −13)); // trial-and error => -13 
+io.output(”output” , sum, scalarType, jCounter.eq(M − 1));
+-13
+--- Slide 19 ---
+Pipeline Depth, Why -13
+The multiplexer has a pipeline depth of 1 
+
+The floating-point adder has 
+a pipeline depth of 12
+
+Total loop latency = 13 cycles,
+
+
+carry.connect(stream.offset(sum, −13));
+19
+-13
+--- Slide 20 ---
+1
+2
+3
+4
+5
+6
+7
+8
+9
+1
+2
+3
+4
+5
+6
+7
+8
+9
+1
+2
+3
+4
+5
+6
+7
+8
+9
+1
+2
+3
+4
+5
+6
+7
+8
+9
+Output[0]
+input[0,0], input[0,1], input[0,2]...
+input[1,0], input[1,1], input[1,2]...
+input[2,0], input[2,1], input[2,2]...
+input[3,0], input[3,1], input[3,2]...
+Output[1]
+Output[2]
+Output[3]
+After an initial pipeline fill phase, all 13 pipeline stages are occupied
+13 independent summations are computed in parallel
+0.0
+0.0
+0.0
+0.0
+time
+--- Slide 21 ---
+Pipeline Depth and Loop-Carry Distance
+21
+for (i=0;i<N;i++){
+	for (j=0;j<M;j++)
+       v[i]=v[i]*v[i]+1; // distance 1
+}
+Now the j-loop has a loop-carried dependency with distance 1, i.e. Each loop needs the v[i] result of the previous loop, BUT the v[i]*v[i]+1 operations have X stages and thus take X clock cycles.
+
+Note that v[i]s are independent, i.e. the i-loop has no dependency!
+We thus need X activities (v[i]s) to be in the loop at all times to fully utilize all stages of the multiplication pipeline.
+
+for (i=0;i<N/X;i++){
+  for (j=0;j<M;j++)
+    for (k=0;k<X;k++) // distance X
+      v[i*X+k]=v[i*X+k]*v[i*X+k]+1;
+}
+--- Slide 22 ---
+22
+Loop interchange
+Example: Row-wise summation is serial due to chain of dependence
+Column-wise summation would be easy of course
+So we can keep the pipeline in a cyclic data datapath full by flipping the problem – ie by interchanging the loops
+--- Slide 23 ---
+Loop Tiling reduces local BRAM requirement
+Idea: sum a block of rows at a time (“tiling”)
+We can choose the tile size
+Just big enough to fill the pipeline
+so no unnecessary buffering is needed
+23
+--- Slide 24 ---
+Summary
+Loops are where parallelism comes from
+The loop control variables are generated using counters
+In a nested loop this needs a counter chain
+Inner loops with small bounds can be unrolled
+Loops with dependences lead to acyclic graphs when unrolled
+Loops with variable/unknown bounds (while loops) need to be converted into for-loops with predication
+If a loop with a loop-carried dependence cannot be unrolled, we need to build a cyclic data flow graph
+Each pipeline stage in the cycle needs to be occupied by an independent operation
+Interchanging loops can avoid this problem – by making the loop-carried dependence distance sufficiently large
+Splitting loops into blocks (“tiling”) allows us to control the amount of buffering required
+24
+--- Slide 25 ---
+Write a MaxCompiler kernel that computes the Mandelbrot set.  Compare (a) fully unrolled and (b) partially unrolled with loop implementation.
+25
+Exercises

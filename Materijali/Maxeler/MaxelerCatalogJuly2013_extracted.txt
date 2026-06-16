@@ -1,0 +1,1696 @@
+Maximum 
+Performance 
+Computing
+Product Catalog
+September 2012
+www.maxeler .com
+July 2013 - December 2013
+Product Catalog
+www.maxeler .com
+2
+Choosing a Maxeler system for HPC ..........................4
+Common compute system arrangements ................6
+MPC-X Series ......................................................................7
+MPC-C Series .....................................................................8
+CPU Servers .......................................................................10
+Network Architectures ....................................................12
+Network Switches .............................................................13
+High Performance Storage............................................14
+MaxRack Infrastructure ..................................................14
+Example MaxRack Systems ...........................................15
+Choosing a Maxeler system for networking .............20
+Common networking system arrangements ...........21
+MPC-N Series .....................................................................22
+MPC-N4x Series ................................................................24
+Desktop ................................................................................26
+Development Tools ..........................................................28
+Securities Trading Interfaces ........................................29
+Dataflow Engines ..............................................................30
+>>
+Contents
+Maxeler provides a wide range of 
+hardware and software products 
+to allow you to exploit dataflow 
+computing technology 
+to address your 
+computational and business challenges. If you 
+know precisely which Maxeler product you would 
+like information on, please turn to the page for 
+that specific product. 
+If you would like to specify a complete MaxRack 
+high performance computing system, we 
+recommend starting on page 4 
+If you would like to specify a network processing 
+system, we recommend starting on page 20
+Welcome
+
+3
+Development tools
+General purpose development tools for Maxeler systems as well as domain specific languages to enable rapid development 
+of applications in specific problem domains. 
+ 
+Securities trading interfaces
+Plugins to provide full support for market data and order management for security trading.
+Dataflow Engines
+Specifications for each architecture of Maxeler Dataflow Engine (DFE)
+Multi-core CPU servers
+1U, 2U or 1/2 U multi-core compute 
+nodes, ready to connect to MPC-X
+series dataflow nodes or act as
+head or management nodes in a 
+MaxRack cluster . 
+High Performance storage
+Rack-level storage systems to add 
+shared storage capacity to a
+MaxRack cluster . 
+ 
+ 
+MaxRack infrastructure
+12U ‘in-office’, 42U or 48U data center 
+racks with network switches and 
+power distribution. 
+ 
+Maxeler Product Range
+MaxWorkstation
+Dataflow Engines shared over Infiniband
+MPC-X series dataflow nodes provide multiple dataflow engines as shared 
+resources on the network, allowing them to be used by applications running 
+anywhere on the cluster . The MPC-X series provides maximum flexibility and 
+performance density for the widest range of HPC applications. 
+Tightly integrated Dataflow Engines and CPUs
+MPC-C series nodes have the closest coupling of dataflow engines and multi-core 
+CPUs within the same chassis. The MPC-C series are suitable for small systems or 
+HPC applications requiring the most data transfer between CPUs and DFEs.
+Low latency connectivity
+MPC-N series nodes provide direct network connections to dataflow engines 
+allowing ultra low latency line-rate processing of multiple 10-40Gbit data streams. 
+Dataflow computing on the desktop
+MaxWorkstation and MaxWorkstation10G are small form factor PCs that bring the 
+power of dataflow computing to the desktop. Ideal for software developers as well 
+as users who desire a dedicated compute resource on their desk.
+Page 7
+Page 8
+Page 22
+Page 26
+Page 10 Page 14 Page 14
+Page 28
+Page 29
+Page 30
+
+4 5
+> >
+>
+>
+1. Choose a system arrangement that matches your requirements
+2. Configure your MPC nodes and CPU-only nodes
+4. Choose network architecture & network switches
+3. Do you want separate “Cluster Management”node(s)?
+HPC clusters with dataflow computing technology can be built around different combinations of 
+MPC-X series and MPC-C series dataflow nodes.
+•	MPC-X series systems provide both high density and flexibility. MPC-X nodes can be connected directly to CPU-only 
+nodes via single or dual Infiniband cables, or via an Infiniband switch to share dataflow engines across the network.
+•	MPC-C series systems are ideal for small deployments, or for applications that require the most data transfer between 
+DFEs and CPUs.
+Maxeler MPC nodes and CPU only nodes can be configured to match a wide range of application requirements. 
+•	MPC-X series nodes can be configured with the type and number of DFEs, amount of DFE RAM & interconnect. Page 7
+•	MPC-C series nodes can be configured with the type and number of DFEs, amount of DFE RAM, CPU type and main 
+memory size, in-node disk storage and interconnect. Page 8
+•	CPU only nodes can be configured to select CPU type and main memory size, storage and interconnect.  Page 10
+You can choose a network architecture depending on the system arrangement you have selected and how you wish 
+to integrate into the rest of the data center. Typically MaxRack systems contain a low-speed Ethernet management 
+network (used to remotely monitor and control nodes) and a high-speed data network utilizing Ethernet and/or 
+Infiniband. Options include:
+•	Single 1Gb Ethernet network for data and management. Requires at least 1 Ethernet switch.
+•	1Gb Ethernet management network, Infiniband data network. Requires at least 1 Ethernet and 1 Infiniband switch.
+•	1Gb Ethernet management network, 1GbE or 10GbE data network. Requires at least 2 Ethernet switches.
+•	1Gb Ethernet management network, Infiniband data network and Ethernet data network. Requires at least 2 Ethernet 
+switches and 1 Infiniband switch.
+“Cluster Management” nodes are standard CPU nodes which run software to perform functions such as job 
+distribution, database hosting or system provisioning. If a MaxRack system is intended to function standalone, 
+management nodes are recommended. If you intend to integrate into a larger cluster, management nodes may not 
+be necessary. Management nodes need not have the same configuration as other CPU nodes in a MaxRack cluster. 
+•	For system management MaxRack head nodes run xcat cluster management software. 
+•	For job management, MaxRack head nodes can run open source job distribution systems such as Grid Engine or 
+Maxeler can develop a custom engineered solution for your requirements using Maxeler ClusterMap technology.
+> >
+>
+Choosing a Maxeler system for HPC
+Page 6
+Page 7-11
+Page 10
+Page 12
+
+4 5
+Rack enclosures must have enough space to support all the nodes, switches and power distribution you have 
+selected. Multiple racks may be necessary for large systems.
+•	For data center environments, we recommend either 42U or 48U rack enclosures
+•	For office environments, we can provide 12U enclosed racks with sound proofing and active noise-cancelling.
+It is important to specify power feeds that match the types available in your deployment environment and your 
+requirements for the MaxRack system. Power distribution units (PDUs) in the MaxRack will distribute power from 
+the input feed to individual nodes.
+•	MaxRack systems can be configured with 16A, 32A or 3-phase power feeds. For office environments, small MaxRack 
+systems can be connected directly to multiple wall sockets.
+•	For power feed redundancy, make sure to only utilize nodes that support redundant power supplies then specify a 
+complete set of PDUs for each feed. Each node should be connected to one PDU on feed A and one PDU on feed B, 
+and PDUs should only be loaded to half their rated current to allow them to continue functioning if one feed fails.
+6. Choose power feed type
+8. Check overall requirements against data center requirements
+9. Choose development software
+7. Choose enclosure form factor
+5. Do you want dedicated shared storage for the cluster?
+Once you’ve configured your MaxRack system, you can double check the system against the requirements for your 
+data center. We recommend checking the following information in particular:
+Rack enclosure size support
+Size and number of racks to support required number of nodes, switches, PDUs and cabling
+Type and number of external network connections
+Type and number of external power feeds
+Maximum power dissipation per rack supported by data center cooling 
+Floor loading requirement 
+MaxCompiler is required for programming Maxeler dataflow computing systems. Make sure to select the MaxCompiler 
+edition supporting the DFE architecture in your MPC nodes. In addition, you may wish to utilize our domain specific 
+languages which build on top of MaxCompiler to add particular support for specific application areas:
+•	For 3D finite difference applications such as seismic Forward Modeling, Reverse Time Migration and Full Waveform 
+Inversion, we recommend MaxGenFD.
+A MaxRack cluster can make use of dedicated shared storage to hold input/output data or shared scratch data for 
+easy access by the cluster nodes. Rack-level storage can be optimized for the needs of the MaxRack system.
+>>
+> >
+> > >
+>
+Page 14
+Page 14
+Page 15
+Page 28
+
+6 7
+MPC-X series nodes can be directly connected to CPU nodes via Infiniband cables 
+without a switch. Each MPC-X node can have 1 or 2 Infiniband connections which 
+can be connected to a single CPU node (to provide maximum bandwidth between 
+the MPC-X DFEs and the CPU node) or two CPU nodes (to allow both CPU nodes 
+to share a single MPC-X node).  
+ 
+In the illustrated configuration, MPC-X nodes are connected to high density 
+CPU-C nodes, providing 32 DFEs and 4 CPU nodes in 6U, with a ratio of 8 DFEs 
+to 1 CPU node. Each CPU node can utilize 1 or 2 Infiniband uplinks depending on 
+the desired bandwidth.
+For disk bound applications, DFE compute resource and disk capability must be 
+balanced. If the application requirements are static, MPC-X series nodes can be 
+directly connected to high disk capability CPU-B nodes. 
+ 
+In the illustrated configuration, a single MPC-X node is directly connected to two 
+CPU-B nodes, providing 8 DFEs and 2 CPU nodes in 5U with a ratio of 4 DFEs to 
+1 CPU node. 
+For smaller systems, a homogeneous cluster of MPC-C series nodes can be the 
+most suitable solution. Individual MPC-C nodes can be configured to handle the 
+demands of the application and then this single node unit can be replicated to 
+build larger systems.  
+ 
+MPC-C series clusters are also well suited for applications which demand the 
+highest levels of bandwidth between DFEs and CPUs, with a direct PCI Express 
+connection to each DFE.
+Where application requirements are not static at runtime, or multiple 
+applications with differing requirements should be able to run on the same 
+hardware, MPC-X nodes provide the most flexibility by supporting a switched 
+interconnection between multiple MPC-X nodes and multiple CPU nodes. 
+Any CPU node can utilize any number of DFEs on the Infiniband network and 
+utilization of DFEs is maximized by making them available to any CPU node that 
+might wish to use them. Excess CPU node capacity can be utilized to run CPU-
+only processes. 
+ 
+In the illustrated configuration, multiple MPC-X series nodes and multiple 
+general-purpose CPU-A nodes are connected to a 1U Infiniband switch. 
+Directly connected for compute bound applications
+Directly connected for disk bound applications
+Homogenous cluster of nodes
+Switched DFE-CPU allocation for dynamic applications
+Common compute system arrangements
+MPC-X
+MPC-X
+MPC-X
+MPC-X
+IB Switch
+MPC-C
+MPC-C
+MPC-C
+MPC-C
+CPU 
+with 26 disks 
+CPU 
+with 26 disks 
+MPC-X
+MPC-X
+MPC-X
+MPC-X
+CPU
+CPU
+CPU
+CPU
+CPU
+CPU
+
+6 7
+MPC-X Series
+† 2 independent 1D networks of 4 DFEs 
+Specifications
+MPC-X Chassis
+MPC-X1000 MPC-X1200 MPC-X2000
+Form factor 1U
+DFE Architecture vectis coria maia
+DFE LMEM 24 GB per DFE 24 GB per DFE 
+or 
+48 GB per DFE 
+24 GB per DFE 
+or 
+ 48 GB per DFE 
+Number of DFEs 1 or 4 or 8
+MaxRing    
+Interconnect 1x Infiniband 
+or 
+2x Infiniband
+Redundant power supplies 
+Power consumption 830W 850W 950W
+Weight 21kg
+Dimensions 434mm x 43mm x 840mm
+Availability Now Now Now
+MPC-X series dataflow nodes provide 
+multiple dataflow engines as shared 
+resources on the network, allowing 
+them to be used by applications 
+running anywhere on the cluster . 
+The MPC-X series provides maximum 
+flexibility and performance density for 
+the widest range of HPC applications.
+MPC-X Series Architecture
+Front Rear
+ DFE
+ DFE
+ DFE
+ DFE
+ DFE
+ DFE
+ DFE
+ DFE
+SWITCH FABRIC
+MaxRing
+Inﬁniband
+LMEM
+48GB
+ DFE
+Dataﬂow Cores
+MaxRing
+†
+
+8 9
+MPC-C Series
+MPC-C600/1000 Chassis
+MPC-C500 Chassis
+MPC-C series nodes have the closest 
+coupling of dataflow engines and 
+multi-core CPUs within the same 
+chassis. The MPC-C series are suitable 
+for small systems or HPC applications 
+requiring the most data transfer 
+between CPUs and DFEs.
+Front
+Front
+Rear
+Rear
+Ethernet
+or 
+Inﬁniband
+ DFE
+ DFE
+ DFE
+ DFE
+CPU CPU
+CPU CPU
+CPU CPU
+CPU CPU
+PCI EXPRESS
+MaxRing
+LMEM
+48GB
+ DFE
+Dataﬂow Cores
+MaxRing
+Reset button Power button
+Drive Bays
+Power supply
+Drive Bays 
+Control panel
+IPMI Ethernet
+VGAUSB
+1Gb EthernetPSU
+PCIe slot
+ 
+DFE cards DFE cards
+VGAUSB Ports 1Gb Ethernet
+IPMI Ethernet PCIe Slot
+RS-232
+MPC-C Series Architecture
+
+8 9
+MPC-C500 MPC-C600 MPC-C1000
+Form factor 1U
+DFE Architecture vectis coria maia
+DFE LMEM 24 GB per DFE 24 GB per DFE 
+or 
+48 GB per DFE
+Number of DFEs 1, 2, 3 or 4
+CPU 2x Intel Xeon X5650 
+12 cores @ 2.66GHz 
+or 
+2x Intel Xeon X5680 
+12 cores @ 3.33GHz
+2x Intel Xeon E5-2640 
+12 cores @ 2.5GHz 
+or 
+2x Intel Xeon E5-2670 
+16 cores @ 2.6GHz
+Memory 48GB 
+or 
+96GB 
+or 
+192GB
+64GB 
+or 
+128GB
+Interconnect 2x 1GbE 
+or 
+2x 1GbE and 1x FDR Infiniband 
+or  
+2x 1GbE and 2x 10GbE
+Storage 2x1TB in RAID1 (1TB usable) 
+or 
+4x1TB in RAID5 (3TB usable) 
+or 
+2x1TB in RAID1 + 2x 240GB SSD in RAID0 (1TB system + 480GB scratch usable)
+RAID Software
+Operating System CentOS 5 / RHEL 5 
+or 
+CentOS 6 / RHEL 6
+CentOS 6 / RHEL 6
+MaxRing 
+Redundant power supplies
+Power consumption 560W (X5650 CPUs) 600W (E5-2640 CPUs)
+Dimensions 437mm x 43mm x 
+716mm
+437mm x 43mm x 876mm
+Weight 17kg 18kg 18kg
+Availability Now Q4 2013 Now
+Specifications
+
+10 11
+Maxeler can offer a range of standard HPC servers to accompany our MPC-X Series compute nodes or otherwise form part 
+of a MaxRack system. 
+ 
+Select CPU-A for a balanced system configuration, CPU-B for maximum disk performance or CPU-C for maximum 
+compute density.
+CPU Servers
+CPU-B Chassis
+CPU-C Chassis
+CPU-A Chassis
+Front
+Front
+Rear
+Rear
+Front
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+Power Button VGA
+USB Ports
+Drive Bays
+Power + Reset Buttons
+Drive Bays
+VGARS-232 Infiniband
+1Gb Ethernet
+Power Supply
+IPMI Ethernet
+PCIe Slots
+USB Ports Rear
+1 4
+52
+3
+6
+7
+IPMI Ethernet VGA
+RS-232
+USB Ports
+PCI Express slots (3 full size, 3 low profile)
+PSU21Gb Ethernet 1-4 PSU1
+Extra drive bays
+0
+1
+3
+4
+3
+4
+3
+4
+3
+4
+Drive baysVGA
+Front panel USB
+Reset buttonPower button
+USB Ports
+PCIe slots
+RS232IPMI Ethernet PSU1 PSU21Gb Ethernet 
+1-4
+VGA
+* Please note that the labels are applicable for the other 3 nodes  
+ in the chassis
+
+10 11
+CPU-A CPU-B CPU-C
+Form factor 1U 2U 4 nodes in 2U
+CPU 2x Intel Xeon E5-2640 
+12 cores @ 2.5GHz 
+or 
+2x Intel Xeon E5-2670 
+16 cores @ 2.6GHz 
+or 
+2x Intel Xeon E5-2690 
+16 cores @ 2.9GHz
+2x Intel Xeon E5-2640 
+12 cores @ 2.5GHz 
+or 
+2x Intel Xeon E5-2670 
+16 cores @ 2.6GHz
+Memory 64GB 
+or 
+192GB 
+or 
+384GB
+64GB 
+or 
+128GB
+Interconnect 4x 1GbE and 1x FDR IB 
+or 
+4x 1GbE and 2x FDR IB 
+or 
+4x 1GbE and 2x10GbitE 
+or 
+4x 1GbE and 1x FDR IB and 2x 10GbitE
+2x 1GbE and 1x FDR IB 
+or 
+2x 1GbE and 2x FDR IB 
+or 
+2x 1GbE and 1x FDR IB 
+and 2x 10GbitE
+Storage 2x1TB in RAID1 
+(1TB usable) 
+or 
+4x1TB in RAID5 
+(3TB usable) 
+or 
+2x1TB in RAID1 + 2x 
+240GB SSD in RAID0 
+(1TB O/S + 480GB 
+scratch usable)
+2x1TB in RAID1 for 
+system plus 24x data 
+disks in 2 RAID5 groups: 
+ 
+1TB (22TB usable) 
+or 
+600GB 10k RPM  
+(13TB usable) 
+or 
+240GB SSD (5TB usable)
+2x1TB in RAID1 
+(1TB usable) 
+or 
+4x1TB in RAID5 
+(3TB usable) 
+or 
+2x1TB in RAID1 + 2 
+x 240GB SSD in RAID0 
+(1TB O/S + 480GB 
+scratch usable)
+RAID Hardware Hardware Software
+Operating System CentOS 6 / RHEL 6
+Redundant power supplies   
+Power consumption 400W (E5-2670 CPUs) 450W (E5-2670 CPUs, 
+24 data disks)
+400W (E5-2670 CPUs) 
+per node 
+Dimensions 437mm x 43mm x 
+736mm
+444mm x 88mm x 
+723mm
+438mm x 88mm x 
+697mm
+Weight 19kg 33kg (24 data disks) 39kg per 4 nodes
+Availability Now Now Now
+Specifications
+
+12 13
+Network Architectures
+Ethernet Switch
+Ethernet Switch
+Ethernet Switch
+Ethernet Switch
+IB Switch
+IB Switch
+Ethernet Switch
+Ethernet Switch
+Node
+Node
+Node
+Node
+Node
+Node
+Node
+Node
+Node
+Node
+Node
+Node
+uplinks
+Data networkData networkData networks
+IB
+Ethernet
+Management networkManagement networkManagement network
+uplinks
+uplinks
+uplinks
+Ideal for small systems with a few nodes and low data movement 
+requirements, requiring only a single Ethernet switch. 
+Suitable for MPC-X Series based clusters with switched interconnect 
+between MPC-X nodes and CPU nodes, or clusters with high data 
+transfer requirements. If the MaxRack should be connected to an 
+external data network based on Ethernet, a CPU head node equipped 
+with both Infiniband and Ethernet interfaces can be used to bridge 
+between the cluster’s Infiniband network and the external Ethernet 
+network. Requires at least 1 Ethernet and 1 Infiniband switch.
+Suitable where compute nodes need individual connections to an 
+upstream Ethernet data network.
+Suitable where the MaxRack requires a high-bandwidth internal 
+network between nodes, or MPC-X series nodes are connected to CPU 
+nodes via a switched interconnect, but each node also requires a direct 
+connection to an external Ethernet data network. The Ethernet data 
+network could be either 1Gb or 10Gb.
+Single 1Gb Ethernet network for data and management 
+1Gb Ethernet management network, 
+Infiniband data network
+1Gb Ethernet management network, 
+1GbE or 10GbE data network
+1Gb Ethernet management network, 
+Infiniband data network and Ethernet data network 
+
+12 13
+Network Switches
+Ethernet Switches
+Infiniband Switches
+Cisco Nexus 5548UP Cisco Nexus 3048
+Form factor 1U
+Ports 48 x 10GbE 48 x 1GbE + 4x10GbE SFP+
+Redundant power supplies  
+Power consumption 390W 120W
+Weight 16kg 9.3kg
+Mellanox SX6506 Mellanox SX6025
+Form factor 7U 1U
+Ports 108 36
+Redundant power supplies  
+Power consumption 1400W 113W
+Weight 80kg 9.3kg
+Single 1Gb Ethernet network for data and management 
+1Gb Ethernet management network, 
+Infiniband data network
+
+14 15
+MaxRack Infrastructure
+You may choose to add additional shared cluster-level storage to your MaxRack. This can be beneficial as a staging area 
+for input data, temporary store for scratch data, or to consolidate output data. A shared fileserver exporting NFS to client 
+machines offers a good balance for most applications or for ultimate performance scalability, you can specify a Lustre-based 
+parallel file system.
+NFS Fileserver Lustre Parallel File System
+Form factor 2U 2U + 2U per unit (minimum 2 units, 6U)
+Interconnect 4x 1GbE and 1x FDR IB 
+or 
+4x 1GbE and 2x10GbitE
+1x FDR Infiniband + 1x FDR 
+Infiniband per unit
+Main storage 20TB for linear I/O (2x RAID5,10+1) 
+or 
+11TB for random I/O (RAID10)
+Per unit 
+11TB for random I/O (RAID10)
+Hot spare drives 2 2 per unit
+Redundant power supplies  
+Redundant servers Optional  
+(add additional 2U head node and 
+specify double storage capacity)
+Power consumption 450W 530W + 450W per storage unit
+Dimensions 444mm x 88mm x 723mm 444mm x 88mm x 723mm  
+for head node and for each storage unit
+Weight 33kg 29kg + 33kg per unit (minimum 111kg)
+Availability Now Now
+Racks
+12U Enclosed 
+‘Quiet rack’
+42U data centre 48U data centre
+Rack units 12U 42U 48U
+Dimensions (WxDxH) 716mm x 780mm x 
+1210mm
+600mm x 1200mm x 
+1991mm
+750mm x 1200mm x 
+2258mm
+Weight 118kg 134kg 186kg
+Power distribution
+16A Feed 32A Feed 3 Phase
+Form factor 1U 1U Vertical (2 fit per rack)
+Input current 16A 32A 3 phase
+Num outputs 8 8 24
+Maximum load 3,680W @ 230V 
+3,328W @ 208V 
+7,360W @ 230V 
+6,656W @ 208V
+22,080W @ 32A-230V 
+19,968W @ 32A-208V
+The choice of specific power distribution units for your Maxeler system depends on type of power feeds you wish to use 
+(voltage, current, 1-phase/3-phase and connector type). For rack planning purposes we recommend using the details below.
+High Performance Storage
+14 15
+Example MaxRack Systems
+48 Ethernet switch (management)
+47 Ethernet switch (data)
+46
+45
+44 PDU (feed B)
+43 PDU (feed B)
+42
+41
+40 PDU (feed A)
+39 PDU (feed A)
+38
+37 CPU-A
+36 CPU-A
+35 CPU-A
+34 CPU-A
+33 CPU-A
+32 CPU-A
+31 CPU-A
+30 CPU-A
+29 CPU-A
+28 CPU-A
+27 CPU-A
+26 CPU-A
+25 CPU-A
+24 CPU-A
+23 CPU-A
+22 CPU-A
+21 PDU (feed B)
+20 PDU (feed B)
+19 PDU (feed A)
+18 PDU (feed A)
+17 MPC-X
+16 MPC-X
+15 MPC-X
+14 MPC-X
+13 MPC-X
+12 MPC-X
+11 MPC-X
+10 MPC-X
+9 MPC-X
+8 MPC-X
+7 MPC-X
+6 MPC-X
+5 MPC-X
+4 MPC-X
+3 MPC-X
+2 MPC-X
+1 MPC-X
+48 Ethernet switch (management)
+47 Ethernet switch (data)
+46 PDU (feed B)
+45 PDU (feed B)
+44 PDU (feed A)
+43 PDU (feed A)
+42 CPU-A
+41 CPU-A
+40 CPU-A
+39 CPU-A
+38 CPU-A
+37 CPU-A
+36 CPU-A
+35 CPU-A
+34 CPU-A
+33 CPU-A
+32 CPU-A
+31 CPU-A
+30 CPU-A
+29 CPU-A
+28 CPU-A
+27 CPU-A
+26 PDU (feed B)
+25 PDU (feed B)
+24 PDU (feed A)
+23 PDU (feed A)
+22 MPC-X
+21 MPC-X
+20 MPC-X
+19 MPC-X
+18 MPC-X
+17 MPC-X
+16 MPC-X
+15 MPC-X
+14 MPC-X
+13 MPC-X
+12 MPC-X
+11 MPC-X
+10 MPC-X
+9 MPC-X
+8 MPC-X
+7
+ 
+Infiniband Switch
+6
+5
+4
+3
+2
+1
+This configuration is optimized for 
+dynamic applications consisting of 
+many small processing jobs, such 
+as financial risk analytics. Any CPU 
+in the system can utilize any DFE, 
+allowing optimum load balancing 
+across the cluster .
+Key statistics:
+•	Two 48U racks
+•	256 DFEs in 32 MPC-X nodes
+•	512 CPU cores in 32 CPU nodes
+•	8 DFEs per CPU node
+•	42kW power consumption
+•	Redundant 32A power feeds
+Analytics Cluster
+48U Rack48U Rack
+16 17
+48 Ethernet switch (management)
+47 Ethernet switch (data)
+46  
+45 PDU 
+44 PDU 
+43 PDU 
+42 PDU
+41
+40 MPC-X
+39
+CPU-B
+38
+37
+CPU-B
+36
+35 MPC-X
+34
+CPU-B
+33
+32
+CPU-B
+31
+30 MPC-X
+29
+CPU-B
+28
+27
+CPU-B
+26
+25 MPC-X
+24
+CPU-B
+23
+22
+CPU-B
+21
+20 MPC-X
+19
+CPU-B
+18
+17
+CPU-B
+16
+15 MPC-X
+14
+CPU-B
+13
+12
+CPU-B
+11
+10 MPC-X
+9
+CPU-B
+8
+7
+CPU-B
+6
+5 MPC-X
+4
+CPU-B
+3
+2
+CPU-B
+1
+This configuration is optimized for I/O intensive applications, such as seismic 
+Reverse Time Migration with stored snapshots. The cluster balances DFE 
+compute resource with high disk capacity and performance. 
+The cluster is built from a repeating unit of a single MPC-X series dataflow 
+node connected to two disk-intensive CPU-B nodes. Each CPU-B node uses 
+24 high performance disks to store temporary data generated during the 
+computation. MPC-X nodes are statically connected to the CPU nodes via 
+direct Infiniband cables, so no Infiniband switches are required.
+Key statistics:
+•	One 48U rack
+•	64 DFEs in 8 MPC-X nodes
+•	256 CPU cores in 16 CPU nodes
+•	4 DFEs per CPU node
+•	14kW power consumption
+•	32A power feeds (non-redundant)
+Cluster for I/O intensive applications
+48U Rack
+Example MaxRack Systems
+
+16 17
+42
+41 Ethernet switch (management)
+40
+39 PDU (feed A)
+38 PDU (feed A)
+37 PDU (feed B)
+36 PDU (feed B)
+35
+34 CPU-A
+33 CPU-A
+32 CPU-A
+31 CPU-A
+30 CPU-A
+29 CPU-A
+28 CPU-A
+27 CPU-A
+26 CPU-A
+25 CPU-A
+24 CPU-A
+23 CPU-A
+22 CPU-A
+21 CPU-A
+20 CPU-A
+19 CPU-A
+18
+17 Infiniband Switch
+16
+15 PDU (feed A)
+14 PDU (feed A)
+13 PDU (feed B)
+12 PDU (feed B)
+11
+10 MPC-X
+9 MPC-X
+8 MPC-X
+7 MPC-X
+6 MPC-X
+5 MPC-X
+4 MPC-X
+3 MPC-X
+2
+CPU-B (Management node)
+1
+42U Rack
+This configuration is optimized for medium-scale compute intensive 
+applications. The compute cluster is self-contained, with a CPU management 
+node providing job distribution, management and results aggregation. 
+The cluster uses CPU-A nodes which can utilize DFEs from multiple MPC-X 
+nodes. The main data network is provided with a single 36-port Infiniband 
+switch of which 3A  ports are utilized for the CPU nodes (1 port per node), 
+MPC-X nodes (2 ports per node) and management node (2 ports). Multiple 
+clusters of this size can be connected together using the remaining 2 ports 
+as uplinks between the two cluster switches. 
+Key statistics:
+•	One 42U rack
+•	64 DFEs in 8 MPC-X nodes
+•	256 CPU cores in 16 CPU nodes
+•	4 DFEs per CPU node
+•	15kW power consumption
+•	Redundant 32A power feeds
+Mid-sized Cluster for compute intensive applications
+18 19
+Example MaxRack Systems
+42
+CPU-B (Management node)
+41
+40 Ethernet switch (management)
+39 PDU 
+38 PDU 
+37 CPU CPU
+36 CPU CPU
+35 CPU CPU
+34 CPU CPU
+33 CPU CPU
+32 CPU CPU
+31 Infiniband Switch
+30 MPC-X
+29 MPC-X
+28 MPC-X
+27 MPC-X
+26 MPC-X
+25 MPC-X
+24 MPC-X
+23 MPC-X
+22 MPC-X
+21 MPC-X
+20 PDU 
+19 PDU 
+18 PDU 
+17 CPU CPU
+16 CPU CPU
+15 CPU CPU
+14 CPU CPU
+13 CPU CPU
+12 CPU CPU
+11 Infiniband Switch
+10 MPC-X
+9 MPC-X
+8 MPC-X
+7 MPC-X
+6 MPC-X
+5 MPC-X
+4 MPC-X
+3 MPC-X
+2 MPC-X
+1 MPC-X
+42U Rack
+This configuration is optimized for high compute density within a relatively 
+small 42U data center rack. The cluster is self-contained with a CPU 
+management node, and a large number of high density CPU-C nodes and 
+MPC-X nodes providing compute resources. 
+The main data network is provided by two 36-port Infiniband switches.  Each 
+Infiniband switch has connections to 10 MPC-X nodes and 12 CPU nodes and 
+also an uplink to the management node. The switches are cross-linked by up 
+to 3 Infiniband connections. This provides a high density network with only 2U 
+required for Infiniband switching, suiting applications where there is significant 
+locality between a CPU node and the MPC-X node from which it will use DFEs, 
+since there is somewhat limited bandwidth available between the two switches.
+Key statistics:
+•	One 42U rack
+•	160 DFEs in 20 MPC-X nodes
+•	384 CPU cores in 24 CPU nodes
+•	6.7 DFEs per CPU node
+•	30kW power consumption
+•	32A power feeds (non-redundant)
+High density compute cluster
+18 19
+12 Ethernet switch (management + data)
+11 PDU
+10 PDU
+9 PDU                                 
+8 CPU-A
+7 Infiniband Switch
+6 MPC-X
+5 MPC-X
+4 MPC-X
+3 MPC-X
+2 MPC-X
+1 MPC-X
+12 Ethernet switch (management + data)
+11 PDU
+10 PDU
+9 PDU
+8 MPC-C
+7 MPC-C
+6 MPC-C
+5 MPC-C
+4 MPC-C
+3 MPC-C
+2 MPC-C
+1 MPC-C
+12U Rack
+12U Rack
+This configuration is for small-scale in-office deployments in a 12U sound-proof 
+rack environment. The system is optimized for a high ratio of DFE computation 
+to CPU computation, found in application such as cryptography, searching or 
+pattern matching. 
+A single CPU node acts as the main node in the system, and dispatches work to 
+multiple DFEs in MPC-X nodes.
+Key statistics:
+•	12U sound-proof noise cancelling rack
+•	48 DFEs in 6 MPC-X nodes
+•	16 CPU cores in 1 CPU node
+•	48 DFEs per CPU node
+•	6kW power consumption
+•	Three 13A @ 230V wall socket power feeds
+This configuration is for small-scale in-office deployments in a 12U sound-proof 
+rack environment. The system uses MPC-C series nodes to provide a balanced 
+(static) ratio of CPU cores to DFEs.
+Key statistics:
+•	12U sound-proof noise cancelling rack
+•	32 DFEs and 96 CPU cores in 8 MPC-C nodes
+•	4 DFEs per CPU node
+•	5kW power consumption
+•	Two 13A @ 230V wall socket power feeds
+In-office Cluster for DFE-dominated computations 
+In-office Cluster for balanced CPU/DFE computations
+
+20 21
+Each MPC-N series node can be configured with multiple network connected DFEs. Each isca DFE can support 
+1, 2 or 3 QSFP+ 40Gbit network connections (or each 40Gbit port can be split into 4x10Gbit port). vectis DFEs 
+support 2x SFP+ 10Gbit network connections. All MPC-N Series nodes also support additional 40Gbit or 10Gbit 
+connections direct to the CPUs and are available in either 1U or 2U form factors. You may select 1U form factors for 
+maximum density, or 2U for expandability and resiliency with dual redundant power supplies and support for up to 16 
+hard drives.
+•	MPC-N320 is 1U form factor and provides up to 4 isca DFEs.
+•	MPC-N322 is 2U form factor with up to 4 isca DFEs.
+•	MPC-N40 is a 1U form factor system with up to 2 vectis DFEs.
+•	MPC-N42 is a 2U form factor system with up to 2 vectis DFEs.
+Choosing a Maxeler system for networking 
+>
+1. Select a system arrangement that matches your requirements
+4. Choose financial exchange interface libraries
+5. Choose development tools
+3. Select network switch(es)
+Dataflow computing technology can be utilized at various points in a network, including as a client or server , data 
+distributor , aggregator or gateway.
+Maxeler’s fully maintained Market Data and Order Management libraries offer seamless connectivity to financial 
+venues. To connect to financial exchanges, select the interface libraries you would like to use. 
+MaxCompiler and MaxCompilerMPT are recommended for programming Maxeler networking systems. 
+For system arrangements that involve attaching MPC-N series systems to Ethernet switches, you can use any existing 
+switch infrastructure, or acquire switches from Maxeler as part of your system.
+>>
+2. Configure MPC-N system(s)
+>>
+Page 21
+Page 22
+Page 13
+Page 27
+Page 26
+
+20 21
+Common networking system arrangements
+>>
+MPC-N
+MPC-N
+MPC-N
+downlink
+uplink
+MPC-N series nodes can function as gateways between different networks or 
+as a bridge between one or multiple clients and upstream servers. Example 
+application areas include firewalls, network forensics and Direct Market Access 
+gateways.
+Each DFE in an MPC-N series node has two network ports, one of which can be 
+connected to the upstream and one to the downstream network.
+Distribution arrangements pre-process data from an upstream network and then 
+dispatch data to downstream clients. An example of this type of application is 
+financial market data transformation, pre-processing exchange data feeds into a 
+form optimized for use by downstream nodes. 
+ 
+One network port in an MPC-N DFE can be connected to the upstream network 
+and a second can be connected to a downstream Ethernet switch to distribute 
+data to multiple downstream clients.
+As network endpoints, MPC-N DFEs implement full network clients or servers. 
+Example applications include low latency financial trading engines, cache or 
+database servers, webservers etc.  
+ 
+A single network port on an MPC-N DFE can be connected to the network, 
+or multiple ports can be utilized to either provide additional bandwidth or to 
+separate logically different parts of a connection (e.g. a trading engine may 
+receive market data on one port, and communicate orders with the exchange on 
+the second port).
+MPC-N nodes can aggregate multiple upstream data feeds into a single feed, pre-
+processing and filtering data before passing a more manageable data stream to 
+a downstream node.  
+ 
+One network port in an MPC-N DFE can be connected to an upstream network 
+switch and the node can listen to data from many independent data sources 
+connected to that switch. A second network port on the DFE can be connected to 
+the downstream node.
+Gateway
+Distribution system
+Endpoint
+Aggregator
+Switch
+Switch
+Client
+Client
+MPC-N
+
+22 23
+10GigE
+CPU CPU
+CPU CPU
+CPU CPU
+CPU CPU
+PCI EXPRESS
+ DFE
+ DFE
+ DFE
+ DFE
+Timing
+Ethernet
+PTP/PPS/IRIG
+10-40 Gbit links (multiple)
+ DFE
+Dataﬂow Cores
+MaxRing
+LMEM
+24GB
+QMEM
+72MB
+LMEM
+24GB
+Timing
+Ethernet
+PTP/PPS/IRIG
+10-40 Gbit links (multiple)
+Timing
+Ethernet
+PTP/PPS/IRIG
+10-40 Gbit links (multiple)
+Timing
+Ethernet
+PTP/PPS/IRIG
+10-40 Gbit links (multiple)
+MPC-N Series
+MPC-N series nodes provide direct 
+network connections to dataflow 
+engines allowing ultra low latency 
+line-rate processing of multiple data 
+streams. MPC-N32x series nodes use 
+isca dataflow engines supporting 
+high performance 10Gbit or 40Gbit 
+connectivity. For MPC-N4x series 
+nodes see page 24.
+Front
+Rear
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+Power 
+Button
+VGA
+LCD Screen
+Drive Bays
+Reset Button
+Front Panel USB
+Identification Button
+1 4
+52
+3
+6
+7
+Optional
+10Gb
+Ethernet
+PSU1
+Isca DFEsIsca DFEs
+IPMI Ethernet VGA
+RS-232
+USB Ports
+1Gb Ethernet 1-4 PSU2
+Front
+Rear
+Power supply
+Drive Bays 
+Control panel
+USB Ports 1Gb Ethernet
+IPMI Ethernet PCIe slot (optional 10GbE)
+RS-232
+VGAIsca Isca DFEsDFEs
+MPC-N32x Series Architecture
+MPC-N320 Chassis
+MPC-N322 Chassis
+* See table on page 31 for information on isca connectivity options
+22 23
+1 4
+52
+3
+6
+7
+Optional
+10Gb
+Ethernet
+PSU1
+Isca DFEsIsca DFEs
+IPMI Ethernet VGA
+RS-232
+USB Ports
+1Gb Ethernet 1-4 PSU2
+MPC-N320 MPC-N322
+Form factor 1U 2U 
+DFE Architecture isca
+DFE LMEM 24 GB per DFE
+DFE connectivity 1, 2 or 3 QSFP 40Gbit connections per DFE (each can be used as 4x10Gbit)
+Number of DFEs 1 or 2 or 3 or 4
+CPUs 2x Intel Xeon X5650 
+12 cores @ 2.66GHz 
+or 
+2x Intel Xeon X5680 
+12 cores @ 3.33GHz
+2x Intel E5-2640 
+12 cores @ 2.5GHz 
+or 
+2x Intel Xeon E5-2670 
+16 cores @ 2.6GHz 
+or 
+2x Intel Xeon E5-2690 
+16 cores @ 2.9GHz
+Memory 48GB 
+or 
+96GB 
+or 
+192GB
+64GB 
+or 
+192GB 
+or 
+384GB
+Interconnect 2x 1GbE and 2x 10GbE 
+or 
+2x 1GbE and 2x 40GbE/FDR Infiniband
+4x 1GbE and 2x 10GbE 
+or 
+4x 1GbE and 2x 40GbE/FDR Infiniband 
+or 
+4x 1GbE and 6x 10GbE
+Storage 2x1TB in RAID1 (1TB usable) 
+or 
+4x1TB in RAID5 (3TB usable) 
+or 
+2x1TB in RAID1 + 2x 240GB SSD in 
+RAID0 (1TB O/S + 480GB scratch 
+usable)
+2x1TB in RAID1 (1TB usable) 
+or 
+2x1TB in RAID1 + 4x 240GB SSD in 
+RAID0 (1TB O/S + 960GB scratch 
+usable) 
+or 
+2x1TB in RAID1 for system 
+plus 14x data disks of: 
+1TB (13TB usable) 
+or 
+600GB 10k RPM (8TB usable) 
+or 
+240GB SSD (3TB usable)
+RAID Software Hardware
+Operating System CentOS 5/RHEL 5 
+or 
+CentOS 6/RHEL 6
+CentOS 6/RHEL 6 
+Redundant power supplies 
+Power consumption 470W (X5680 CPUs, 2 DFEs) 570W (E5-2690 CPUs, 2 DFEs) 
+Weight 16kg 25kg (with 2 disks)
+Availability Now Now
+Specifications
+* See table on page 31 for information on isca connectivity options
+24 25
+10GigE  DFE
+ DFE
+CPU CPU
+CPU CPU
+CPU CPU
+CPU CPU
+PCI EXPRESS
+10GigE10GigE
+SFP+ 1
+SFP+ 2
+CX4
+SFP+ 1
+SFP+ 2
+CX4
+LMEM
+24GB
+ DFE
+Dataﬂow Cores
+MaxRing
+MPC-N4x Series
+MPC-N4x Series nodes provide 
+direct network connections to vectis 
+dataflow engines allowing ultra 
+low latency line-rate processing of 
+multiple 10Gbit data streams.
+Front Rear
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+Power 
+Button
+VGA
+LCD Screen
+Drive Bays
+Reset Button
+Front Panel USB
+Identification Button
+1 4
+52
+3
+6
+7
+Optional
+10Gb
+Ethernet
+PSU1
+MAX3/CH2 DFE cards
+(Pair A)
+MAX3/CH2 DFE cards
+(Pair B)
+IPMI Ethernet VGA
+RS-232
+USB Ports
+1Gb Ethernet 1-4 PSU2
+Front Rear
+Power supply
+Drive Bays 
+Control panel
+USB Ports 1Gb Ethernet
+IPMI Ethernet PCIe slot (optional 10GbE)
+RS-232
+VGA
+MAX3/CH2 
+DFE cards
+(Pair B optional)
+MAX3/CH2
+DFE cards
+(Pair A)
+MPC-N 4x Series Architecture
+MPC-N40 Chassis
+MPC-N42 Chassis
+24 25
+MPC-N40 MPC-N42
+Form factor 1U 2U 
+DFE Architecture vectis
+DFE LMEM 24 GB per DFE
+DFE connectivity 2x SFP+ and 1x CX4 10GBit connections per DFE
+Number of DFEs 1 or 2
+CPUs 2x Intel Xeon X5650 
+12 cores @ 2.66GHz 
+or 
+2x Intel Xeon X5680 
+12 cores @ 3.33GHz
+2x Intel E5-2640 
+12 cores @ 2.5GHz 
+or 
+2x Intel Xeon E5-2670 
+16 cores @ 2.6GHz 
+or 
+2x Intel Xeon E5-2690 
+16 cores @ 2.9GHz
+Memory 48GB 
+or 
+96GB 
+or 
+192GB
+64GB 
+or 
+192GB 
+or 
+384GB
+Interconnect 2x 1GbE and 2x 10GbE 
+or 
+2x 1GbE and 1x FDR Infiniband
+4x 1GbE and 2x 10GbE 
+or 
+4x 1GbE and 2x 10GbE and 
+1x FDR Infiniband 
+or 
+4x 1GbE and 6x 10GbE
+Storage 2x1TB in RAID1 (1TB usable) 
+or 
+4x1TB in RAID5 (3TB usable) 
+or 
+2x1TB in RAID1 + 2x 240GB SSD in 
+RAID0 (1TB O/S + 480GB scratch 
+usable)
+2x1TB in RAID1 (1TB usable) 
+or 
+2x1TB in RAID1 + 4x 240GB SSD in 
+RAID0 (1TB O/S + 960GB scratch 
+usable) 
+or 
+2x1TB in RAID1 for system 
+plus 14x data disks of: 
+1TB (13TB usable) 
+or 
+600GB 10k RPM (8TB usable) 
+or 
+240GB SSD (3TB usable)
+RAID Software Hardware
+Operating System CentOS 5/RHEL 5 
+or 
+CentOS 6/RHEL 6
+CentOS 6/RHEL 6 
+Redundant power supplies 
+Power consumption 450W (X5680 CPUs) 550W (E5-2690 CPUs) 
+Weight 16kg 25kg (with 2 disks)
+Availability Now Now
+Specifications
+26 27
+VGA
+DVI SP/DIF
+HDMI USB Ports PCIe slot MAX3/CH2
+DFE cards10Gb Ethernet
+PSU
+PS/2
+Power LED
+HDD LED
+DVD-RW Drive
+Reset Button USB Ports
+Headphone
+Unused
+Microphone
+Desktop
+MaxWorkstation and MaxWorkstation10G are small form factor PCs that bring the power of dataflow computing to the 
+desktop. Ideal for software developers as well as users who desire a dedicated compute resource on their desk.
+MaxWorkstation10G Chassis
+MaxWorkstation40G Chassis
+MaxWorkstation Chassis
+Front
+Front
+Front
+Rear
+Rear
+Rear
+Power LED
+HDD LED
+DVD-RW Drive
+Reset Button USB Ports
+Headphone
+Unused
+Microphone
+Power LED
+HDD LED
+DVD-RW Drive
+Reset Button USB Ports
+Headphone
+Unused
+Microphone
+VGA
+DVI SP/DIF
+HDMI USB Ports PCIe slot Isca DFE10Gb Ethernet
+PSU
+PS/2
+VGA
+DVI
+SP/DIF
+HDMI
+USB Ports DFEPCIe slot
+PSU
+PS/2
+
+26 27
+VGA
+DVI SP/DIF
+HDMI USB Ports PCIe slot Isca DFE10Gb Ethernet
+PSU
+PS/2
+MaxWorkstation MaxWorkstation10G MaxWorkstation40G
+Form factor Small form factor Desktop
+DFE Architecture vectis or coria or maia vectis isca
+DFE DRAM 24GB (vectis) or 48GB 
+(coria or maia)
+24GB 24GB
+DFE connectivity None 2x SFP+ and 1x CX4 10GBit 
+connections per DFE
+1, 2 or 3 QSFP 40Gbit 
+connections (each can be 
+used as 4x10Gbit)
+Number of DFEs 1 or 2 1 1
+CPUs Intel core i7-2600S 
+4 cores at 2.8GHz
+Memory 32GB
+Interconnect 2x 1GbE  
+or 
+2x 1GbE and 2x 10GbE (with 
+1 DFE only)
+2x 1GbE  
+or 
+2x 1GbE and 2x 10GbE
+2x 1GbE 
+or 
+2x 1GbE and 2x10GbE 
+or 
+2x 1GbE and 2x 40GbE
+Storage 2x500GB in RAID1 
+(500GB usable)
+Operating System CentOS 6 CentOS 6 CentOS 6
+Redundant power 
+supplies
+Power consumption 140W (1 DFE) 150W 160W
+Weight 8kg 8kg 8kg
+Availability Now (vectis + maia) 
+Q4 2013 (coria)
+Now Now
+Specifications
+28 29
+Maxeler software tools enable scientists and software engineers to rapidly develop and deploy accelerated applications on 
+our high-performance dataflow systems. Maxeler development tools are supported on Red Hat / CentOS versions 5 and 6.
+MaxCompiler is a general-purpose development tool suite that is required for all DFE development. Maxeler’s Domain 
+Specific Language (DSL) libraries work in conjunction with MaxCompiler to enable rapid application development in 
+particular problem domains. We recommend selecting the right mix of development tools depending on your target 
+application area. 
+MaxCompiler includes the Maxeler Kernel compiler , Manager compiler , MaxIDE graphical development environment and high 
+speed DFE simulator . Select the edition that matches your target DFE architecture.
+MaxGenFD enables geoscientists to rapidly develop 3D finite difference applications such as seismic Forward Modeling, 
+Reverse Time Migration and Full Waveform Inversion. It includes support for automatic parallelization across multiple DFEs, 
+wavefield and earth model compression and in-built boundary conditions.
+MaxCompilerMPT enables development of low-latency and/or high throughput networking applications. It includes UDP and 
+TCP/IP protocol support, network frame kernel compiler , latency optimized compilation flow.
+Development Tools
+MaxCompilerMPT
+MaxGenFD
+MaxCompiler
+Domain Specific Languages
+Domain Specific Language Modules
+MaxCompiler MaxGenFD MaxCompilerMPT
+Financial analytics 
+Low latency trading  
+Networking  
+Geoscience  
+Life science 
+General HPC 
+S Edition V Edition A Edition C Edition
+Simulation    
+Vectis  
+Coria  
+Maia  
+Isca  
+License terms: Maxeler development tools are licensed per developer seat (node locked), with annual maintenance 
+subscription. Maintenance subscription entitles you to receive updated versions of the software released during the 
+maintenance period.  
+Domain Specific Language Modules
+
+28 29
+Market Data Order Entry
+CME Globex FIX/FAST / ILink FIX Production Production
+Eurex NTA ETI / EMDI Production Production
+ICE IMpact Multicast / FIX Planned (2013) Planned (2013)
+BATS Multicast PITCH/BZX/BYX BOE Planned (2013) Planned (2013)
+NASDAQ TotalView-ITCH 4.1 / OUCH 4.2 Planned (2013) Planned (2013)
+DirectEdge EdgeBook Multicast MD / MEP Planned (2013) Planned (2013)
+NYSE Euronext Planned (2013) Planned (2013)
+Maxeler provide a suite of fully maintained Market Data and Order Entry Interfaces to financial venues.   Each Interface has a 
+complete hardware and software configuration interface to manage all aspects of exchange connectivity.  
+Market Data Interfaces
+•	Real-time A/B Feed arbitration and gap-fill
+•	Line rate operation
+•	Customizable order book and trade view
+•	Configurable mid-message updates
+Securities Trading Interfaces
+Order Entry Interfaces
+•	Multi-session support with Hardware / Software 
+interlocking  for volume / order control
+•	Customizable order submission through ultra-low 
+latency hardware interface
+•	Low-latency full-featured Software Interface 
+- New Order / Replace / Cancel
+•	Session and User Management 
+- Gap Fill / Replay 
+- Heartbeats
+User space Processing on Multi-core CPU
+Maxeler Accelerated Exchange Interfaces (In hardware)
+Customer Application (C++/Java etc.)
+10GE
+Maxeler Order Data APIMaxeler Market Data API
+Maxeler Market
+Data
+Decoder/Order
+book Manager
+Maxeler
+Order
+Entry
+User-
+deﬁned 
+Algorithm
+30 31
+Maxeler hardware systems contain multiple Dataflow Engines (DFEs) providing the dataflow computing resource. Each DFE 
+contains a large configurable logic fabric, off-chip memory and interconnect. DFEs have several kinds of memory resources: 
+•	FMEM: ultra fast on-chip memory
+•	QMEM: fast off-chip memory with low latency
+•	LMEM: large off-chip memory for bulk data storage
+DFEs also have interconnect to/from CPU (via Infiniband in MPC-X Series systems, or PCI Express in MPC-C or MPC-N Series) 
+and MaxRing connections to other DFEs. Some DFEs also support direct low-latency network connectivity to the DFE. 
+Maxeler provides several different DFE architectures optimized for different use cases. Raw specifications are tabulated below.
+Dataflow Engines
+Vectis Coria Maia Isca
+Compute resources
+Logic fabric size 475k 460k 700k 950k
+Multipliers 2000 3000 4000 700
+On-chip FMEM
+Capacity 4MB 5MB 6MB 6.5MB
+Max bandwidth 10.4TB/s 11.0TB/s 14.0TB/s 14.4TB/s
+Average latency 1 cycle e.g. 5ns at 200MHz
+Off-chip LMEM
+Capacity 24GB 48GB 48GB 24GB
+Max bandwidth 38.4GB/s 51.2GB/s 76.8GB/s 38.4GB/s
+Average latency 250ns
+Off-chip QMEM
+Capacity — — — 72MB
+Max bandwidth — — — 9.9GB/s 
+bidirectional (19.8 
+GB/s aggregate)
+Average latency — — — 32ns
+Interconnect
+Max bandwidth to CPU 2GB/s 3GB/s 3GB/s 3GB/s
+Max MaxRing bandwidth* 2GB/s 1GB/s (standard**) 
+4GB/s 
+(5gbit/s optical)
+1GB/s (standard**) 
+4.7GB/s 
+(5gbit/s optical)
+4.7GB/s 
+(5gbit/s optical)
+Direct network connectivity 2x SFP+ & 1x CX4 
+10Gbit 
+(via CH2 adapter)
+_ _ 1, 2 or 3 QSFP 
+40Gbit connections 
+(can be used as 
+4x10Gbit)
+* MaxRing Bandwidth is bi-directional for each link direction. So aggregate MaxRing bandwidth per DFE is 4x this number .
+** Only available in MPC-X
+30 31
+A B C
+Network Connectivity
+User-configurable QSFP 
+ports (4x10Gbps/1x40Gbps)
+1 2 3
+Full-duplex Bandwidth 40 Gbps 80 Gbps 120 Gbps
+Precision Timing
+PTPv2 (IEEE1588-2008)   
+PPS (pulse-per-second) 
+IRIG-B 
+Each user-configurable QSFP port can be configured as a single 40Gibit link or up to four 10Gbit links.  The ports can use QSFP 
+to QSFP, QSFP to 4xSFP+ direct attach cables or 40Gbps / 4x10Gbps QSFP optical modules. For single SFP+ connectivity, QSFP 
+to SFP+ adapters are available.
+Isca Port Configurations
+Isca DFEs are available in three different port configurations, with different connectivity supported in each configuration.
+Next Steps
+To request more information or a quote, please contact your Maxeler 
+representative, email us at info@maxeler .com or contact us by telephone:
+US Office
+Maxeler Technologies Inc
+Pacific Business Center , Suite 214
+2225 E. Bayshore Road 
+Palo Alto, CA 94303, USA.
+Tel: +1 (650) 320 1614
+UK Office
+Maxeler Technologies Ltd
+1 Down Place
+London 
+W6 9JH, UK.
+Tel: +44 (0) 208 762 6196 
+July 2013

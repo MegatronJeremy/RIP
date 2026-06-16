@@ -1,0 +1,1500 @@
+The 
+Ultimate SuperComputer-on-a-Chip 
+for 
+Massive Big Data and Highly Iterative Algorithms
+Veljko Milutinović
+The Flynn's Classification of Computer Systems:
+•SISD
+•SIMD
+•MISD
+•MIMD
+
+Early 80s: DARPA's First GaAs Microprocessor (SISD)
+Lesson Learned:
+Mere technological change is NOT a solution,
+due to large OFF-CHIP/ON-CHIP delays,
+leading fast to asymptotic saturations
+of the achievable speedup!
+MICROPROCESSORS
+DARPA EYES 100-MIPS GaAs CHIP FOR STAR WARS
+PALO ALTO
+For its Star Wars program, the Department of Defense
+intends to push well beyond the current limits of technol-
+ogy. And along with lasers and particle beams, one piece of
+hardware it has in mind is a microprocessor chip having as
+much computing power as 100 of Digital Equipment
+Corp.’s VAX-11/780 superminicomputers.
+One candidate for the role of basic computing engine for
+the program, officially called the Strategic Defense
+Initiative [ElectronicsWeek, May 13, 1985, p.  28], is a gal-
+lium arsenide version of the Mips reduced-instruction-set
+computer (RISC) developed at Stanford University. Three
+teams are now working on the processor. And this month,
+the Defense Advanced Projects Research Agency closed the
+request-for-proposal (RFP) process for a 1.25- µm silicon
+version of the chip.
+Last October, Darpa awarded three contracts for a 32-bit
+GaAs microprocessor and a floating-point coprocessor. One
+went to McDonnell Douglas Corp., another to a team
+formed by Texas Instruments Inc. and Control Data Corp.,
+and the third to a team from RCA Corp. and Tektronix Inc.
+The three are now working on processes to get useful
+yields. After a year, the program will be reduced to one or
+two teams. Darpa’s target is to have a 10,000-gate GaAs
+chip by the beginning of 1988.
+If it is as fast as Darpa expects, the chip will be the basic
+engine for the Advanced Onboard Signal Processor, one of
+the baseline machines for the SDI. “We went after RISC
+because we needed something small enough to put on
+GaAs,” says Sheldon Karp, principal scientist for strategic
+technology at Darpa. The agency had been working with
+the Motorola Inc. 68000 microprocessor, but Motorola
+wouldn’t even consider trying to put the complex 68000
+onto GaAs, Karp says.
+A natural. The Mips chip, which was originally funded by
+Darpa, was a natural for GaAs. “We have only 10,000 gates
+to work with,” Karp notes. “And the Mips people had taken
+every possible step to reduce hardware requirements. There
+are no hardware interlocks, and only 32 instructions.”
+Even 10,000 gates is big for GaAs; the first phase of the
+work is intended to make sure that the RISC architecture
+can be squeezed into that size at respectable yields, Karp
+says.
+Mips was designed by a group under John Hennessey at
+Stanford. Hennessey, who has worked as a consultant with
+Darpa on the SDI project, recently took the chip into the
+private sector by forming Mips Computer Systems of
+Mountain View, Calif. [ ElectronicsWeek, April 29, 1985,
+p. 36]. Computer-aided-design software came from the
+Mayo Clinic in Rochester, Minn.
+The silicon Mips chip will come from a two-year effort
+using the 1.25-µm design rules developed for the Very High
+Speed Integrated Circuit program. (The Darpa chip was not
+made part of VHSIC in order to open the RFP to
+contractors outside that program.)
+Both the silicon and GaAs microprocessors will be full 32-
+bit engines sharing 90% of a common instruction core.
+Pascal and Air Force 1750A compilers will be targeted for
+the core instruction set, so that all software will be inter-
+changeable.
+The GaAs requirement specifies a clock frequency of
+200 MHz and a computation rate of 100 million instructions
+per second. The silicon chip will be clocked at 40 MHz.
+Eventually, the silicon chip must be made radiation-hard;
+the GaAs chip will be intrinsically rad-hard.
+Darpa will not release figures on the size of its RISC ef fort.
+The silicon version is being funded through the Air Force’s
+Air Development Center in Rome, N.Y.
+–Clifford Barney
+The GaAs chip
+will be clocked at 200 MHz,
+the silicon at 40 MHz
+
+Mid 80s: DARPA's First GaAs Systolic Array 4096 (SIMD)
+Lesson Learned: Good Mostly for TENSOR CALCULUS!
+(now optimal: Google TPU)
+
+Late 80s: The AeroSpace Fourier Transform Engine (MISD)
+Lesson Learned: Good Mostly for TRANSFORMATIONAL ALGORITHMS
+(now optimal: Intel MultiCore)
+16, Q16
+1, Q1Sj; j = 1 t o 64 Slave 1
+PI(S1)
+PO(S1)
+Slave 16
+PI(S16)
+PO(S16)
+
+MASTER
+PO(M)
+PI1(M)PI16(M)
+
+A/D USRT
+S(t) {bm}
+F1=75 Hz (IREQ) F2=2400 Hz
+IREQ
+End 80s: The NCR Vertical Migration Engine (MIMD)
+Lesson Learned: Good Mostly for IMAGE UNDERSTANDING
+(now optimal: nVidia ManyCore)
+
+ControlFlow: Inherent Characteristics Represent Limitations
+• SISD: IEEE T/Computers
+• SIMD: IEEE T/Communications
+• MISD: IEEE T/ASSP
+• MIMD: IEEE T/Software
+Helbig, W., & Milutinovic, V. (1989). A dcfl e/d-mesfet gaas experimental risc machine.
+IEEE transactions on computers, 
+38(2), 263-274.
+Milutinovic, V. (1988). A comparison of suboptimal detection algorithms
+applied to the additive mix of orthogonal sinusoidal signals. 
+IEEE transactions on communications, 36(5), 538-543.
+Milutinovic, V., Fortes, J., & Jamieson, L. (1986). A multimicroprocessor architecture
+for real-time computation of a class of DFT algorithms. IEEE transactions on acoustics,
+speech, and signal processing, 34(5), 1301-1309.
+Milutinovic, V. (1987). A simulation study of the Vertical-Migration 
+microprocessor architecture.
+IEEE transactions on software engineering, (12), 1265-1277.
+DataFlow: New Paradigms Badly Needed,
+NOT to Substitute,
+BUT to Supplement!
+• The First FineGrain DataFlow Idea: Proceedings of the IEEE
+• The First FineGrain DataFlow Implementation: Communications of the ACM 
+Milutinovic, V. (1989).
+Mapping of neural networks on the honeycomb architecture.
+Proceedings of the IEEE, 77(12), 1875-1878.
+Flynn, M. J., Mencer, O., Milutinovic, V., Rakocevic, G., Stenstrom, P., Trobec, R., & Valero, M. (2013).
+Moving from petaflops to petadata.
+Communications of the ACM, 56(5), 39-42.
+
+Conclusion: Synergy of ControlFlow and DataFlow
+N.B. Successful marriage is THE solution!
+
+The Optimal Architecture
+CF (ControlFlow):
+• N MultiCore CPUs
+• 1000N ManyCore GPUs (10000N, etc…)
+DF (DataFlow):
+• An ASIC SystolicArray (Fixed)
+• An FPGA ExecutionGraph (Reconfigurable)
+Peripherals to External Accelerators (EnergyFlow):
+• Chemical
+• Molecular
+• Opto
+• Quantum
++ Memory and I/O + Peripherals to WSN and IoT (DiffusionFlow)
+
+Optimal Distribution of Transistor Budget
+• Ceiling-Dependent:
+• VLSI: 100BTr
+• WSI: 1TTr
+• Application-Dependent:
+• SW DataFlow
+• ML ControlFlow
+• Strategy-Dependent:
+• CF-Oriented
+• DF-Oriented
+• Memory-Dependent!
+
+Company Product name Country City Number of CPU cores Number of GPU cores CPU clock rate Launched
+Alibaba XT910 China Hangzhou 1/2/4 per cluster N/A 2.0 – 2.5 GHz 2020
+RISC-V Micro Magic RISC-V Core [39] US San Francisco 1 N/A 4.25 – 5.19 
+GHz
+2020
+SiFive FU740 RISC-V SoC [25] US San Francisco 4 1 1.4 – 1.5 GHz 2020
+AMD AMD Ryzen™ 5 3400G with Radeon™ RX 
+Vega 11 Graphics [24]
+US Santa Clara 4 11 3.7 – 4.2 GHz 2019
+Nvidia Tegra Xavier [28] US Santa Clara 8 512 CUDA N/A 2019
+Esperanto Technologies US Mountain 
+View
+16 ET-Maxion cores 4096 
+ET-Minion cores + ET-
+Graphics [26,27]
+2+GHz 2018
+Intel Intel Sandy Bridge [23] US Santa Clara 1-4 (4-6 Extreme, 2-8 
+Xeon)
+6 1.60 – 3.60 
+GHz
+2011
+Moscow Center of SPARC 
+Technologies (MCST)
+Elbrus-2S+ 
+(1891ВМ7Я) [29]
+Russia Moscow 2 Elbrus 2000 cores 4 DSP Elcore-09 cores 300 – 800 MHz2011
+Pioneering Efforts:
+• Biren (77BTr@2023) = Chip Integration (China)
+• Cerebras (1.4TTr@2023) = Wafer Integration (California)
+State of the Art:
+Past Experiences: 
+MultiCore
+• Split Cache
+• Milutinovic, V. (1996). 
+The Split Temporal/Spatial Cache: 
+Initial Performance Analysis.
+SCIzzL-5, March 1996, 63-69.
+
+Past Experiences: 
+ManyCore
+• GaAs Microprocessor
+• Milutinovic, V., Fura, D., & Helbig, W. 
+(1986).
+An Introduction To GaAs 
+Microprocessor Architecture for VLSI.
+Computer, (3), 30-42.
+
+Past Experiences: 
+SystolicArrays
+• GaAs Systolics
+• Fortes, J. A., Milutinovic, V.,
+(1986, January).
+A High-Level Systolic Architecture 
+for GaAs. 
+In Proc. 19th Ann. Hawaii Int'l Conf. 
+System Sciences (pp. 253-258).
+
+Past Experiences: 
+ExecutionFlow
+• DataFlow
+• Milutinović, V., Salom, J., Trifunović, N., 
+& Giorgi, R. (2015). 
+Guide to DataFlow Supercomputing.
+Cham: Springer Nature.
+
+
+3D Implementations Offer Effective Cooling
+⚫ In a hybrid processor,
+multi-layer semiconductor structure fabrication can spread:
+− MultiCore on the entire chip surface,
+− ManyCore on the entire chip surface, and
+− DataFlow on the entire chip surface.
+⚫ Thus, for jobs that use predominantly one paradigm,
+the frequencies of other chiplets could be lowered by:
+− Hardware (automatically) [1], or
+− Software (scheduled) [2].
+[1] Lakhani, S., Wang, Y., Milenković, A., & Milutinović, V. (1996). 2D matrix multiplication on a 3D systolic array. Microelectronics journal, 27(1), 11-22.
+[2] Milenkovic, A., & Milutinovic, V. (1998). A quantitative analysis of wiring lengths in 2D and 3D VLSI. Microelectronics journal, 29(6), 313-321.
+
+Current Research:
+Research in computing-intensive simulations for nature-oriented civil-engineering and related scientific fields, using machine learning and big data: an overview of open problems
+Zoran Babović, Branislav Bajat, Vladan Đokić, Filip Đorđević, Dražen Drašković, Nenad Filipović, Borko Furht, Nikola Gačić, Igor Ikodinović, Marija Ilić, Ayhan Irfanoglu, Branislav 
+Jelenković, Aleksandar Kartelj, Gerhard Klimeck, Nenad Korolija, Miloš Kotlar, Miloš Kovačević, Vladan Kuzmanović, Marko Marinković, Slobodan Marković, Avi Mendelson, Veljko
+Milutinović, Aleksandar Nešković, Nataša Nešković, Nenad Mitić, Boško Nikolić, Konstantin Novoselov, Arun Prakash, Ivan Ratković, Zoran Stojadinović, Andrey Ustyuzhanin, Stan Zak 
+Journal of Big Data volume 10, Article number: 73 (2023)
+Handbook of Research 
+on Methodologies and Applications 
+of Supercomputing
+• An introduction to Controlflow and Dataflow Supercomputing
+• Introduction to Control Flow
+• Optimal Scheduling of Parallel Jobs With Unknown Service Requirements
+• Intelligent Management of Mobile Systems Through Computational Self-Awareness
+• Paradigms for Effective Parallelization of Inherently Sequential Graph Algorithms 
+• Data Flow Implementation of Erosion and Dilation
+• Transforming the Method of Least Squares to the Dataflow Paradigm
+• Forest Fire Simulation: Efficient Realization Based on Cellular Automata
+• High Performance Computing for Understanding Natural Language
+• Deposition of Submicron Particles by Chaotic Mixing in the Pulmonary Acinus
+Table of Contents #1
+• Recommender Systems in Digital Libraries Using Artificial Intelligence and Machine Learning
+• Unified Modeling for Emulating Electric Energy Systems: Toward Digital Twin That Might Work
+• A Backtracking Algorithmic Toolbox for Solving the Subgraph Isomorphism Problem
+• AI Storm ... From Logical Inference and Chatbots to Signal Weighting, Entropy Pooling...
+• Efficient End-to-End Asynchronous Time-Series Modeling 
+• Mind Genomics With Big Data for Digital Marketing on the Internet
+• Supercomputing in the Study and Stimulation of the Brain
+• An Experimental Healthcare System: Essence and Challenges
+• What Supercomputing Will Be Like in the Coming Years
+• The Ultimate Data Flow for Ultimate Super Computers-on-a-Chip
+Table of Contents #2
+Reviews and Testimonials 
+of 8 Nobel Laureates
+• "I want to commend Dr. Veljko Milutinovic
+and Dr. Milos Kotlar for having completed 
+this volume in the timely field of 
+supercomputing in these difficult times, and 
+I want to share their optimism regarding its 
+use as a textbook around the world."
+• – Prof. Kurt Wüthrich, Nobel Laureate, 
+Switzerland
+"Our complex and fast-moving world meets big data 
+issues that call for reliable, efficient analysis and 
+prompt response. A most advanced approach to 
+dealing with these issues is presented in this book 
+where algorithms of Control Flow represent the host 
+architecture of supercomputers and Data Flow 
+represents the acceleration architecture. A 
+comprehensive list of applications is illustrated in the 
+book including natural language processing, medical 
+research, customer-oriented studies, and many more.“
+– Prof. Dan Shechtman, Nobel Laureate, Israel
+
+• "Supercomputers have become a ubiquitous 
+instrument in many areas of science and technology. 
+Very hard to imagine modern physics, biology or 
+chemistry without the use of this versatile tool. The 
+breakthroughs in the development of supercomputers 
+expand the range of problems we can tackle. 
+Supercomputers, as well as specialised computers will 
+undoubtedly contribute significantly to the overall 
+landscape of discoveries in many different disciplines 
+in the future."
+• – Prof. Konstantin Novoselov, Nobel Laureate, 
+National University of Singapore, Singapore– Prof. 
+Kurt Wüthrich, Nobel Laureate, Switzerland
+• "It’s clear that computers can do anything, 
+as the pioneers already recognised, and it’s 
+probably only a matter of time before they 
+can perform any of the kinds of tasks we 
+humans take for granted quicker than 
+blinking. I guess this book represents a 
+stage on this exciting and very important 
+journey."
+• – Prof. Tim Hunt, Nobel Laureate, UK
+
+• "Computers have become essential tools for the 
+pursuit of both experimental and theoretical 
+physics, as well as synthetic chemistry, 
+paleontology, the medical sciences, economics the 
+social sciences and so much more. Science, being 
+the most international of all endeavors, will be well 
+served by this important book, which honors the 
+golden anniversary of the creation of Montinegro’s 
+Academy of Science."
+• – Prof. Sheldon Glashow, Nobel Laureate, Boston 
+University and Harvard University, USA
+• "Humankind’s continuing quests to uncover, 
+understand, and utilize the secrets of nature 
+have been greatly enhanced and will be 
+further extended by the power of 
+supercomputers."
+• – Prof. Jerome I Friedman, Nobel Laureate, 
+USA
+
+• "I wish to congratulate very warmly the 
+Montenegrin Academy of Arts and 
+Sciences on the occasion of its 50th 
+Anniversary and wish the CANU a highly 
+successful future. Science shapes the 
+Future of Mankind."
+• – Prof. Jean-Marie Lehn, Nobel Laureate, 
+France
+• "Aim high, stay grounded! These four crisp 
+words of wisdom accompany the best 
+wishes for the 50th anniversary of the 
+Montenegrin Academy of Sciences and 
+Arts."
+• – Prof. Stefan Hell, Nobel Laureate, 
+Germany
+
+V. Milutinovic, University of Indiana, Bloomington, USA
+Acknowledgements: O. Mencer, Imperial College, London, GBR, M.J. Flynn, Stanford University, Palo Alto, USA,
+M. Kotlar, School of Electrical Engineering, University of Belgrade, SRB
+32
+
+A. Richard Feynman:
+Impact of logic/arithmetic and memory/IO
+Compiler-generated execution graph
+B. Ilya Prigogine:
+Impact of energy, entropy, order, and optimization
+Compiler-generated data separation
+C. Daniel Kahneman:
+Impact of approximate computing on precision
+Compiler-controlled approx computing
+D. Tim Hunt:
+Impact of system latency on precision
+Compiler-controlled system latency
+33
+A. Whenever the Technology changes,
+the Fundamental Paradigm of Computer Architecture
+has to change, too. 
+aSoG (not: FPGA)
+B.  If several paradigms are available,
+the most suitable paradigm for adoption
+is the one most effective for modern Applications.
+BrontoData (not: ExaBigData)
+Is the von Neumann Paradigm still the most effective one?
+A. MultiCores?
+B. ManyCores?
+34
+Architecture
+Technology
+-Size
+-Power
+-Speedup
+-Precision
+35
+Applications
+36
+37
+• Moving data off-chip will use 200x more energy than computing!
+The Power Challenge
+2015 2020
+Double precision FLOP 100pj 10pj
+Moving data to off-chip memory 5000pj 2000pj
+38
+The Data Movement Challenge
+• Conclusion: We are getting close to the Feynman Asymptote!
+• Important: Power and speed could be traded!
+• Moving data in 1940s was using 1/60x ...
+State of the Art in Technology Today
+7/60
+The Maxeler Technology Vision: MultiScale DataFlow
+❑Thinking in space 
+rather than in time
+❑Difficult change in mindset 
+to overcome
+❑Transformation of data 
+through flow over time
+❑Instructions are parallelized 
+across the available space
+Flow / Time
+Space
+39
+Optimal Solution: Execution Graph
+● The Von-Neumann paradigm resembles an old wall clock
+● The Feynman paradigm resembles lightning! Why? 40
+von Neumann:
+The Program Moves Data
+Feynman:
+The Program Configures Hardware
+What moves data?
+External sources till input.
+Voltage difference through aSoG! 
+Voltage difference moves the important stuff!
+41
+42
+Simulator builder
+Hardware builder
+2n+3
++ Tests
+11/60
+The Maxeler Generic Architecture Application
+Important: Supporting any CL and any OS!
+aSoG
+Nobel Laureate Ilya Prigogine:
+Injecting Energy to Decrease Entropy!
+Corollary:
+Burning energy to split spatial and temporal
+decreases the entropy of computing
+and enables the DataFlow compiler
+to create a maximally effective execution graph.
+Final goal:
+The execution graph with the minimal length of edges.
+43
+44
+13/60
+
+● Intel acquired Altera
+● Qualcomm and IBM teaming up with Xilinx
+However:
+C C C
+OpenCL(I) OpenCL(A) MaxCompiler
+Intel Altera Altera@MaxZ
+1 X>>1 Y>>X
+45
+● Invisible on the DataFlow Concept Level
+● Invisible to DataFlow Programmers
+● Visible to the MaxCompiler
+● The MaxCompiler knows how to utilize them
+Best protected by two aSoG (now FPGA) protection levels 
+and two Vendor (e.g., Maxeler) protection levels!
+46
+/6047
+Publications of Interest for NanoAcceleration
+========================================================================================================
+1. Flynn, M., Mencer, O., Milutinovic, V., Rakocevic, G., Stenstrom, P., Trobec, R., Valero, M.,
+Moving from Petaflops (on Simple Benchmarks) to Petadata per Unit of Time and Power (On Sophisticated Benchmarks),
+Communications of the ACM (nano-acceleration), May 2013.
+2. Trobec, R., Vasiljevic, R., Tomasevic, M., Milutinovic, V., Beiveide, M., Valero, M., 
+Interconnection Networks for SuperComputing,
+ACM Computing Surveys (nano-acceleration) , 2017.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Milutinovic, V., Tomasevic, M., Markovic, B., Tremblay, M.,
+The Split Temporal/Spatial Cache: Initial Performance Analysis,
+Proceedings of the SCIzzL-5, Santa Clara, California, USA, March 26, 1996, pp 72-78.
+4. Milutinovic, V., Tomasevic, M., Markovic, B., Tremblay, M.,
+The Split Temporal/Spatial Cache: Initial Complexity Analysis,
+Proceedings of the SCIzzL-5, Santa Clara, California, USA, September, 1996.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. Milutinovic, V.,
+A Comparison of Suboptimal Detection Algorithms Applied to the Additive Mix of Orthogonal Sinusoidal Signals,
+IEEE Transactions on Communications, Vol. COM-36, No. 5, May 1988, pp. 538-543.
+6. Milutinovic, V.,
+Mapping of Neural Networks on the Honeycomb Architectures,
+Proceedings of the IEEE, Vol. 77, No 12, December 1989, pp. 1875-1878.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+7. Helbig, W., Milutinovic, V.,
+The RCA's DCFL E/D MESFET GaAs 32-bit Experimental RISC Machine,
+IEEE Transactions on Computers, Vol. 36, No. 2, February 1989, pp. 263-274.
+8. Jovanovic, Z., Milutinovic, V., 
+FPGA Accelerator for Floating-Point Matrix Multiplication,
+IEE Computers & Digital Techniques (nano-acceleration), 2012, 6, (4), pp. 249-256. 
+The IET 2014 Premium Award for Computing & Digital Techniques.
+========================================================================================================
+Feynman
+Prigogine
+Kahneman
+Hunt
+Inspired by:
+Inspired by:
+Inspired by:
+Inspired by:
+/60
+Feynman
+48
+/60
+Prigogine
+49
+/60
+Kahneman
+50
+/60
+Hunt
+51
+Special Acknowledgements to: 
+Simon Aglionby, Georgi Gaydadjiev, Itay Greenspon, and Nemanja Trifunovic
+IF(2012)=3.80
+IF (2007) = 15
+
+Essence: Feynman Enabled by Prigogine
+• TALU possible at zero power (Arithmetic+Logic)
+• TCOMM not possible at zero power (MEM+MPS)
+
+Essence: Feynman
+• TALU possible at zero power (Arithmetic+Logic)
+• TCOMM not possible at zero power (MEM+MPS)
+
+Essence: Feynman
+• TALU possible at zero power (Arithmetic+Logic)
+• TCOMM not possible at zero power (MEM+MPS)
+
+a DSL acting as a SuperSet of classical Java:
+A. A vector of built-in domain-specific classes
+B. Two sets of variables: SW + HW
+MaxJ is a SubSet of OpenSPL,
+created by the Imperial-Stanford-Tokyo-Tsinghua consortium.
+Possible Future Mutations of OpenSPL:
+MaxPython and/or MaxR
+(lower Kolmogorov complexity)
+MaxHaskel and/or MaxScala
+(easier extension to approximate computing).
+MaxJ, the Maxeler Java,
+Note: Small approximations in one domain 
+may bring large benefits in another domain
+Example: Weather forecast
+A 15-bit computational precision (rather than the 64-bit precision)
+may decrease the forecast precision for only 2%,
+and at the same time, 
+may increase the grid precision 25 times,
+and the forecast precision at grid intersections up to 104.
+Easily doable in DataFlow, difficult to do in ControlFlow.
+Note: Small latencies in time domain 
+may bring large benefits in precision domains
+Example: Optimal utilization of internal DataFlow pipelines
+Compiler optimizations create internal pipelines 
+that experienced DataFlow programmers know how to utilize
+Delayed Decision for Better Precision: 
+Hunt
+Applications
+Architecture
+Technology
+20-200 [Size]
+20-200 [Power]
+20, 200, 2000, 20000 [Speedup]
+20+ [Precision]
+20 [Size]
+20 [Power]
+20, 200 [Speedup]
+20 [Precision]
+Existing Maxeler-based publications: Ultimate aSoG-based future:
+61
+• Software Based Solution 
+• Dataflow Computing in the Datacentre
+The CPU
+Conventional CPU cores and 
+up to 6 DFEs with 288GB of RAM
+The Dataflow Appliance
+Dense compute with 8 DFEs, 
+768GB of RAM and dynamic 
+allocation of DFEs to CPU servers 
+with zero-copy RDMA access
+The Networking Appliance
+Intel Xeon CPUs and 4 DFEs with 
+direct links to up to twelve 40Gbit 
+Ethernet connections
+Maxeler Dataflow Appliance
+1U: Good for Fog
+40U: Good for Cloud
+MicroMAX.5: Good for Dew (Edge Processing of IoT Data)
+
+The Major Application Successes
+• Finances:
+• Credit derivatives
+• Risk assessment
+• Stability of economical systems
+• Evaluation of econo-political mechanisms
+• GeoPhysics:
+• Oil&Gas
+• Weather forecast
+• Astronomy
+• Climate changes
+• Science:
+• Physics
+• Chemistry
+• Biology
+• Genomics
+• Engineering: Synergy of all the Above (ML, etc...)
+62
+63
+28/60
+6429/60
+The know-how needed for deep security!
+65
+30/60
+6631/60
+Juniper for Online Trading
+NASDAQ
+67
+ 32/60
+Seismic Imaging
+• Running on MaxNode servers
+- 8 parallel compute pipelines per chip
+- 10x less power: 150MHz vs 1.5GHz
+- 30x faster than microprocessors
+An Implementation of the Acoustic Wave Equation on FPGAs 
+T. Nemeth†, J. Stefani†, W. Liu†, R. Dimond‡, O. Pell‡, R.Ergas§
+†Chevron, ‡Maxeler, §Formerly Chevron, SEG 2008
+68
+▪ Equations: Shallow Water Equations (SWEs)
+▪ Atmospheric equations
+Global Weather Simulation: Size is Relevant
+[L. Gan, H. Fu, W. Luk, C. Yang, W. Xue, X. Huang, Y. Zhang, and G. Yang,  Accelerating solvers for 
+global atmospheric equations through mixed-precision data flow engine, FPL2013] 69Tsinghua
+Weather Model – Performance Gain
+Platform Performance
+()
+Speedup
+6-core CPU 4.66K 1
+Tianhe-1A node 110.38K 23x
+MaxWorkstation 468.1K 100x
+MaxNode 1.54M 330x
+14x
+70
+Weather Model -- Power Efficiency 
+Platform Power Efficiency
+( )
+Speedup
+6-core CPU 20.71 1
+Tianhe-1A node 306.6 14.8x
+MaxWorkstation 2.52K 121.6x
+MaxNode 3K 144.9x
+9 x
+71
+Weather and Climate Models: Precision
+Which one is better?
+Finer grid and higher precision are obviously preferred
+but the computational requirements will increase  Power usage → $$
+What about using reduced precision? (15 bits instead of 64 double precision FP) 
+72
+73
+Maxeler Running Smith Waterman
+
+74
+Niederman-Wuensch
+8/11
+Analysis of the Tensor Calculus Operations on DataFlow
+(PhD Thesis by Miloš Kotlar, on DataFlow-based Machine Learning)
+The speedup of 6.75x achieved as early as for KiloData (Perceptron),
+with 10x less on-chip transistors and the power savings of 4.6x
+
+Conditions for the Y-Chart-Based “Kernelization” of Loops @ML
+(PhD Thesis by Nenad Korolija, on the Mapping of Algorithms onto DataFlow)
+1. BigData (RAM vs. STREAM) O(n2)
+2. Code reusability (WORO vs. WORM) +
+3. Overall application tolerance to latency +
+4. Over 95% of run time in loops ++
+5. Reusability of the data in loops ++
+6. Potential for utilization of pipes O(n)
+Essentials for speedup:
+algorithmic modifications,
+pipeline utilization,
+data choreography, 
+decision making on precision
+Value profiling
+PDE(FE) for risk assessment
+PDE(FD) for emergency warnings
+BOTH for complex simulations
+ML for intelligence upgrade (TENSOR CALCULUS)
+Input: Output:
+vectors to analyse min-max values
+Reducing precision
++, -, *, / operators overloading with custom (reduced precision).
+79appgallery.maxeler.com
+http://www.mi.sanu.ac.rs/~appgallery.maxeler/
+80
+81
+82appgallery.maxeler.com
+http://www.mi.sanu.ac.rs/~appgallery.maxeler/
+
+webide.maxeler.com
+https://maxeler.mi.sanu.ac.rs
+83
+webide.maxeler.com
+https://maxeler.mi.sanu.ac.rs
+84
+
+85
+48/60
+86
+49/60
+MultiCore
+DualCore?
+Which way are the horses 
+going?
+87
+• Is it possible
+to use 2000 chicken instead of two horses?
+ManyCore
+?
+==
+88
+● What is better, real and anecdotic?
+DataFlow
+How about 2 000 000 ants?
+89/115
+
+DataFlow
+Big Data Input
+90/115
+DataFlow
+Big Data Input
+91/115
+FPGA
+Marmelade
+DataFlow
+Big Data Input
+92/115
+Results
+FPGA
+An Edited Book Covering the Applications
+❑ http://www.amazon.com/Dataflow-Processing-Volume-Advances-
+Computers/dp/0128021349
+❑ http://www.elsevier.com/books/dataflow-processing/milutinovic/978-
+0-12-802134-7
+Indexed by: WoS (SCI)
+93
+Contributions welcome for the follow-ups: Vol. 102 + Vol. 104 + Vol.126 + etc…
+An Original Book Covering the Essence
+❑ http://www.amazon.com/Guide-DataFlow-Supercomputing-
+Concepts-Communications/dp/3319162284
+❑ http://www.springer.com/gp/book/9783319162287
+94
+The first source to use the term the Feynman Paradigm in contrast with the Von Neumann Paradigm
+95Alibaba recently did the same!
+96
+Intel says logic is faster than GPUs 
+Alibaba recently claimed the same!
+
+QoL
+Maxeler is one of the Top 10 HPC projects
+to impact QoL in the World :)
+Scientific Computing
+[www.scientificcomputing.com/articles/2014/11]
+by
+Don Johnson
+of
+Lawrence Livermore National Labs
+[editor@ScientificComputing.com] 97
+How About QoL?
+98
+DataFlow
+SW
+HW
+AW
+99
+Essence of the Paradigm:
+For Big Data algorithms 
+and for the same hardware price as before, 
+achieving:
+a) speed-up, 20-200  
+b) monthly electricity bills, reduced 20 times
+c) size, 20 times smaller
+d) precision, X times better
+The major issues of engineering are: design cost and design complexity.
+Remember, economy has its own rules: production count and market demand!
+100
+• Factor: 20 to 200
+Why is DataFlow so Much Faster?
+MultiCore/ManyCore DataFlow
+Machine Level Code
+Gate Transfer Level
+101
+• Factor: 20
+Why are Electricity Bills so Small?
+MultiCore/ManyCore DataFlow
+102
+
+• Factor: 20
+Why is the Cubic Foot so Small?
+Data Processing
+Process Control Data Processing
+Process Control
+MultiCore/ManyCore DataFlow
+103
+• Factor: X
+Why is the Precision Better?
+104
+
+© H. Maurer
+105
+vm@etf.rs
+Q&A
+
+106
+
+
+BQCD on a Maxeler Dataflow Computer
+109
+⬥Quantum Chromodynamics (QCD): models interactions of subatomic particles
+⬥Lattice QCD (LQCD): its discretisation, suitable for numerical computation
+⬥Berlin QCD (BQCD): most popular implementation of the LQCD algorithm
+⬥Conjugate Gradient (CG): Majority of the compute time (benchmark: 68%)
+⬥ CG iteratively solves linear algebra problem of form Mx = b
+⬥ Operator M contains Wilson-dslash and Clover operators
+⬥PROJECT TARGET 40x speedup of CG part of BQCD, 
+followed by speedup of the entire application by 20x 
+comparing same size boxes Dataflow vs BlueGene/Q
+BQCD on a Dataflow Computer
+Porting BQCD from BlueGene to a Maxeler Dataflow Computer
+
+110
+Maxeler QCD - Deployment
+Maxeler QCD solution is deployed at Jülich Supercomputing Center,
+running on a Maxeler Dataflow system (TEV = 682.38).
+2 racks of Jülich BlueGene/Q 
+machine
+On-premise Maxeler Dataflow 
+system: scale to 1PF equivalent
+Factor
+Volume 6.75 m3 0.87 m3 7.76
+Overall Time to Solution 1576.60 s 689 s 2.29
+Overall Energy to Solution 169.6 kWh 4.42 kWh 38.4
+Volume x TTS 10,642.05 m3s 599.43 m3s 17.8
+111
+Maxeler QCD on Amazon EC2 F1
+74
+112
+QCD Demo
+75
+113
+QCD Demo
+76
+114
+subEdge: microMAX5
+Purdue, IU, MIT, Harvard, Boston, NEU, Dartmouth, U of Massachusetts at
+Amherst, USC, UCLA, Columbia, NYU, Princeton, NJIT, CMU, Temple U,
+UIUC, Michigan, Wisconsin, Minnesota, FAU, FIU, Miami, Central Florida,
+U of Alabama, U of Kentucky, GeorgiaTech, Ohio State, Imperial, King's,
+Manchester, Huddersfield, Cambridge, Oxford, Dublin, Cork, Cardiff,
+Edinburgh, EPFL, ETH, TUWIEN, UNIWIE, Graz, Linz, Karlsruhe, Stuttgart,
+Bonn, Frankfurt, Heidelberg, Aachen, Darmstadt, Dortmund, KTH, Uppsala,
+Karlskrona, Karlstad, Napoli, Salerno, Siena, Pisa, Barcelona, Madrid,
+Valencia, Oviedo, Ankara, Bogazici, Koc, Istanbul, Technion, Haifa,
+BerSheba, Eilat, Belgrade, Podgorica, Koper, Ljubljana, Maribor, Nova
+Gorica, etc, etc. Also at the World Bank in Washington DC, IMF,
+the Telenor Bank of Norway, the Raiffeisen Bank of Austria, Brookhaven
+National Laboratory, Lawrence Livermore National Laboratory, IBM TJ
+Watson, HP Encore Labs, Intel, Qualcomm VP, NCR, RCA, Fairchild,
+Honeywell, Yahoo NY, Google CA, Microsoft, Finsoft, ABB Zurich, Oracle
+Zurich, and many other industrial labs, as well as at Tsinghua University,
+Shandong, NIS of Singapore, NTU of Singapore, Tokyo, Sendai, Seoul,
+Pusan, Sydney University of Technology, University of Sydney, Hobart,
+Auckland, Toronto, Montreal, Durango, MontereyTech, Cuernavaca, UNAM,
+Kragujevac, Novi Sad...
+
+117
+Design of
+an 
+S
+IMD Multimicroprocessor
+for 
+RCA
+GaAs Systolic Array Based on 4096 Node Processor Elements
+Adaptive signal processing is of crucial importance for advanced radar and communications 
+systems. In order to achieve real-time throughput and latencies, one is forced to use advanced 
+semiconductor technologies (e.g., gallium arsenide, or similar) and advanced parallel 
+architectures (e.g., systolic arrays, or similar).
+The systolic array described here was designed to support two important applications: (a) 
+adaptive antenna array beam forming, and (b) adaptive Doppler spectral filtering. In both cases, 
+in theory, the system output is calculated as the product of the signal vector x (complex 
+N-dimensional vector) and the weight vector w (optimal N-dimensional vector).
+Complex vector x is obtained by multiplying N input samples with the corresponding window 
+weighting function consisting of N discrete values. Optimal vector w is obtained as:
+.*1*1 vMsRw −− ==
+118
+Symbol R refers to the N-by-N inverse covariance matrix of the signal with the (i,j)-th component defined as:
+and symbol      refers to N-dimensional vector which defines the antenna direction
+(in the case of adaptive antenna beamforming) 
+or Doppler peak (in the case of adaptive Doppler spectral filtering).
+Symbols M and v represent scaled values of R and s, respectively.
+In practice, the scaled values M and v may be easier to obtain,
+and consequently the remaining explanation is adjusted.
+The core of the processing algorithm is the inversion of a N-by-N matrix in real time.
+This problem can be solved in a number of alternative ways which are computationally less complex.
+The one chosen here includes the operations explained in Figure abcd.
+,xxr T
+j
+*
+ii,j=
+*s
+119
+Positive semi definite matrix M can be defined as:
+M = U D UT
+Matrices U and D are defined using the formula:
+which is recursively updated using the formula:
+a.
+Legend:
+SAA1 – Cells involved in root covariance update, and the first step of back substitution;
+SAA2 - Cells involved in root covariance update, and in both steps of back substitution;
+U – Lower triangular matrix with unit diagonal elements
+D – Diagonal matrix with positive or zero diagonal elements
+b – A scalar initially set to 1
+K – Iteration count. 
+,XXΥDUΜ
+Κ
+1ι
+Τ
+ji
+Τ
+ΚΚΚΚ 
+=
+==
+.111
+T
+KK
+T
+KKK
+T
+KKK bxxUDUUDU += −−−
+120
+121
+122
+Veljko Milutinović
+VLSI for SuperComputing: 
+From Applications and Algorithms to Masks and Chips
+123
+World Top Foundries 
+in VLSI for SuperComputing
+■ #1?
+124
+World Top Foundries 
+in VLSI for SuperComputing
+■ #1? Qualcomm
+125
+World Top Foundries 
+in VLSI for SuperComputing
+■ #1? Qualcomm
+■ #2? 
+126
+World Top Foundries 
+in VLSI for SuperComputing
+■ #1? Qualcomm
+■ #2? Intel
+127
+World Top Foundries 
+in VLSI for SuperComputing
+■ #1? Qualcomm
+■ #2? Intel
+■ #3? 
+128
+World Top Foundries 
+in VLSI for SuperComputing
+■ #1? Qualcomm
+■ #2? Intel
+■ #3? TSM (Taiwan Semiconductor Manufacturing)
+129
+World Top Foundries 
+in VLSI for SuperComputing
+■ #1? Qualcomm
+■ #2? Intel
+■ #3? TSM
+■ The Qualcomm VP/TD started from this course
+(first as my PhD student and later as the course TA)
+130
+World Top Foundries 
+in VLSI for SuperComputing
+■ #1? Qualcomm
+■ #2? Intel
+■ #3? TSM
+■ The Qualcomm VP/TD started from this course
+(first as my PhD student and later as the course TA)
+■ An Intel VP/TD took the IR4RVL in-a-nut-shell
+(at my past IEEE/ACM tutorial)
+131
+World Top Foundries 
+in VLSI for SuperComputing
+■ #1? Qualcomm
+■ #2? Intel
+■ #3? TSM
+■ The Qualcomm VP/TD started from this course
+(first as my PhD student and later as the course TA)
+■ An Intel VP/TD took the IR4RVL in-a-nut-shell
+(at my past IEEE/ACM-HICSS conference tutorial)
+■ Maybe, 
+a Next Gen VP/TD comes from ETF
+132
+World Top Foundries 
+in VLSI for SuperComputing
+■ #1? Qualcomm
+■ #2? Intel
+■ #3? TSM
+■ The Qualcomm VP/TD started from this course
+(first as my PhD student and later as the course TA)
+■ An Intel VP/TD took the IR4RVL in-a-nut-shell
+(at my past IEEE/ACM-HICSS conference tutorial)
+■ Maybe, 
+a next TSM VP/TD comes from ETF
+or MAT
+133
+World Top Foundries 
+in VLSI for SuperComputing
+■ #1? Qualcomm
+■ #2? Intel
+■ #3? TSM
+■ The Qualcomm VP/TD started from this course
+(first as my PhD student and later as the course TA)
+■ An Intel VP/TD took the IR4RVL in-a-nut-shell
+(at my past IEEE/ACM-HICSS conference tutorial)
+■ Maybe, 
+a next TSM VP/TD comes from ETF
+or MAT or FFH
+134
+World Top Foundries 
+in VLSI for SuperComputing
+■ #1? Qualcomm
+■ #2? Intel
+■ #3? TSM
+■ The Qualcomm VP/TD started from this course
+(first as my PhD student and later as the course TA)
+■ An Intel VP/TD took the IR4RVL in-a-nut-shell
+(at my past IEEE/ACM-HICSS conference tutorial)
+■ Maybe, 
+a next TSM VP/TD comes from ETF
+or MAT or FFH or FON 
+135
+Who works here? 
+136
+The Holistic Foundry (R&DFab)
+in VLSI for SuperComputing
+■ Phase#1: From Applications to Algorithms
+Phase#2: From Algorithms to Masks
+Phase#3: From Masks to Chips
+Phase#4: From Chips to Applications
+137
+The Holistic Foundry (R&DFab)
+in VLSI for SuperComputing
+■ Phase#1: From Applications to Algorithms
+Phase#2: From Algorithms to Masks
+Phase#3: From Masks to Chips
+■ Verification is crucial 
+in each one of these phases,
+and related teaching is done in coop 
+with ELSYS or HDLDH!
+138
+The Holistic Foundry (R&DFab)
+in VLSI for SuperComputing
+■ Phase#1: From Applications to Algorithms
+Phase#2: From Algorithms to Masks
+Phase#3: From Masks to Chips
+Phase#4: From Chips to Applications
+■ Verification is crucial 
+in each one of these phases,
+and related teaching is done in coop with ELSYS or HDLDH!
+■ Management issues of importance for an R&D Fab
+are covered in the accompanying course: IR4USP 
+(including 12 related homework assignments)!
+139
+Contents: 
+From Algorithms to Masks
+■ Part#1: VLSI for ControlFlow SuperComputing
+■ Part#2: VLSI for DataFlow SuperComputing
+■ Part#3: VLSI for WirelessFlow SuperComputing
+■ Part#4: VLSI for EnergyFlow SuperComputing (QMOC)
+140
+VLSI for ControlFlow SuperComputing
+ManyCore Systems:
+• Enabler Technology: VHDL vs Verilog (0.5 weeks)
+• Design and Programming of a 200MHz RISC Microprocessor (2.5 weeks) + HW#1
+MultiCore Systems:
+• Enabler Technology: Verification by Elsys (2 weeks) + Lab#1
+• Design of MicroProcessor and MultiMicroProcessor Systems by Wiley (1 week)
+141
+142
+143
+VLSI for DataFlow SuperComputing
+FineGrain DataFlow:
+• Enabler Technology: Altera vs Xilinx (0.5 weeks)
+• Design and Programming of the 200MHz Maxeler Machine (3.5 weeks) + HW#2
+SystolicArray DataFlow:
+• Enabler Technology: Systolic Array Architectures (0.5 weeks)
+• Design of DARPA Systolic Architectures (0.5 weeks) + Lab#2
+144
+On Flexible DataFlow:
+■ Advances in Computer Architecture 
+(North Holland)
+by Veljko M. Milutinovic 
+with a contribution from John Hennessy
+145
+On Fixed DataFlow:
+■ High-Level Language Computer Architecture 
+(Elsevier Computer Science Press)
+by Veljko M. Milutinovic 
+with a contribution from Michael Flynn
+146
+VLSI for WirelessFlow SuperComputing
+WSNs: Part#1
+• Hardware (0.25 weeks)
+• Software (0.25 weeks)
+WSNs: Part#2
+• Systems (SUN+Slimmer) (0.25 weeks)
+• Applications (UbiComputing@WSN+DataMining@WSN) (0.25 weeks)  
+147
+The stress is on integration of WSNs, IoT, Ethernet, and Internet:
+Z. Babovic et al., “Web Performance Evaluation of Internet of Things Applications,” IEEE Access 2016. 
+148
+149
+opt.html
+VLSI for Quantum, Molecular, Optical, and Chemical
+SuperComputing
+Basics:
+• Hardware (N weeks)
+• Software (N weeks)
+Advances:
+• Systems (N weeks)
+• Applications (N weeks)  
+150
+Optional class projects for extra points!
+Quantum Computing
+■ A quantum computer uses qubits
+to run multidimensional quantum algorithms.
+■ Their processing power increases exponentially 
+as qubits are added. 
+■ A classical processor uses bits 
+to operate various programs. 
+■ Their power increases linearly as more bits are added.
+Potentials:
+■ Quantum computing is 158 million times faster 
+than the most sophisticated supercomputer 
+we have in the world today. 
+■ It is a device that could do in four minutes 
+what it would take a traditional supercomputer 
+10,000 years to accomplish.
+Reality:
+
+The First Eight Companies 
+in Quantum Computing:
+■ Atom Computing
+■ Xanadu
+■ IBM
+■ ColdQuanta
+■ Zapata Computing
+■ Azure Quantum
+■ D-Wave
+■ Strangeworks
+Beginnings:
+
+The Best Quantum Computing Stocks:
+■ IBM (NYSE: IBM)
+■ Alphabet (Nasdaq: GOOG, Nasdaq: GOOGL)
+■ Intel (Nasdaq: INTC)
+■ Microsoft (Nasdaq: MSFT)
+■ Amazon (Nasdaq: AMZN)
+■ Quantum Computing (OTC: QUBT)
+Libraries:
+■ TensorFlow Quantum (TFQ)
+is a quantum machine learning library 
+for rapid prototyping 
+of hybrid quantum-classical ML models.
+■ Interfacing for control-flow. 
+Tensor Flow Quantum:
+■ TensorFlow Quantum focuses on quantum data
+and building hybrid quantum-classical models. 
+■ It integrates quantum computing algorithms 
+and logic designed in Cirq, 
+and provides quantum computing primitives compatible 
+with existing TensorFlow APIs, 
+along with high-performance 
+quantum circuit simulators.
+A Programming Example:
+# A hybrid quantum-classical model.
+model = tf.keras.Sequential
+([
+# Quantum circuit data comes in inside of tensors.
+tf.keras.Input(shape=(), dtype=tf.dtypes.string),
+# Parametrized Quantum Circuit (PQC) provides output
+# data from the input circuits run on a quantum computer.
+tfq.layers.PQC(my_circuit, [cirq.Z(q1), cirq.X(q0)]),
+# Output data from quantum computer passed through model.
+tf.keras.layers.Dense(50)
+])
+Molecular Computing
+■ Molecular computing is a branch of computing 
+that uses DNA, biochemistry, 
+and molecular biology hardware,
+instead of traditional 
+silicon-based computer technologies,
+to achieve dense computing!
+■ Applications for dense computing are many!
+
+Who invented DNA computing?
+■ Leonard Adleman, 
+professor of computer science and molecular biology 
+at the University of Southern California, USA, 
+who pioneered the field 
+when he built the first DNA based computer.
+■ L. M. Adleman, Science 266, 1021–102; 1994.
+Essence:
+■ With DNA, 
+the way the molecules can be triggered 
+to bind with each other 
+can be used to create a circuit
+of logic gates in test tubes. 
+■ Compatible with nature based computing!
+Techniques:
+■ Many gates can be combined in a circuit: 
+■ Each output DNA will bind to the next logic gate 
+until some predictable terminal output strand 
+is liberated,
+to produce an intermediate or final result.
+N.B.:
+■ In DNA computing, information is represented 
+using the four-character genetic alphabet: 
+A [adenine], G [guanine], C [cytosine], and T [thymine].
+■ The core advantage of molecular computing is its potential 
+to pack vastly more circuitry onto a microchip 
+than silicon will ever be capable of—and to do it cheaply. 
+Miniaturization:
+■ Molecules are only a few nanometers in size.
+■ Making it possible to manufacture chips 
+that contain billions, even trillions,
+of switches and components.
+Can DNA be programmed?
+■ Researchers at The University of Texas at Austin 
+have programmed DNA molecules
+to follow specific instructions 
+to create sophisticated molecular machines 
+that could be capable of communication, 
+signal processing, problem-solving, decision-making, 
+and control of motion in living cells.
+■ Libraries under construction at MIT.
+How does DNA computing work?
+■ In one method, called DNA strand displacement,
+the input of DNA that binds to a DNA logic gate 
+displaces a strand of DNA that serves as the output.
+■ Many gates can be combined in a circuit: 
+Each output DNA will bind to the next logic gate 
+until some predictable terminal output strand 
+is liberated.
+An Experiment:
+
+Flexibility:
+■ With the flexible molecular algorithms on the rise, 
+one might be able to assemble a complex entity 
+on the nanoscale
+with the reprogrammable tile set.
+■ Flexibility is the issue 
+for a great number of applications!
+Amato and Rauchwerger, UIUC, USA
+Do DNA computers exist?
+■ The DNA Computing Technology is in the research phase.
+■ DNA computers can't be found 
+at your local electronics store yet. 
+■ The technology is still in development; 
+it didn't even exist as a concept a decade ago. 
+
+Connecting Living Neurons Through Synapses
+⚫ Systolic array connected through resistors
+(varied electrical conductivity represents the strength of the connection
+between the neurons/resistors - adaptable based learning)
+⚫ To match the world of computing to the needs of AI, we must build computers with a 
+structure inspired by the brain. These computers should have no separation between 
+storage and computation, but instead use units capable of calculating and saving the 
+values simultaneously. Electrical circuits inspired by the brain are called neuromorphic 
+circuits
+⚫ Electronic circuits that mimic the behavior of neurons in the human body. 
+Neuromorphic circuits can be combined to create neuromorphic computers.
+⚫ In neuromorphic circuits, the same electronic components are used to both perform a 
+calculation and to store the result locally. The structure of such a computer is completely 
+different from a von Neumann machine, and it looks like a neural network in the brain.
+⚫ Researchers from John Hopkins University and Cortical Labs suggest that it’s time to 
+create a new type of computer that uses biological components. They believe that 
+biological computers could outperform electronic computers in certain applications and use 
+significantly less electricity.
+Courtesy of Prof. Josep Torrellas, Prof. Shahar Kvatinsky, and
+Researchers from John Hopkins University and Cortical Labs 
+Optical Computing
+■ Optical computing or photonic computing
+uses light waves produced by lasers
+or incoherent sources for data processing, 
+data storage or data communication for computing.
+■ For decades, photons have shown promise 
+to enable a higher bandwidth
+than the electrons used in conventional computers.
+Essence:
+■ “Computation-by-propagation, 
+where the computation takes place 
+as the wave propagates through a medium, 
+can perform computation at the speed of light!”
+■ Speed of light = 300.000km/sec
+Applications:
+■ Application-specific devices, 
+such as synthetic-aperture radar (SAR) 
+and optical correlators, 
+have been designed 
+to use the principles of optical computing. 
+■ Correlators can be used, for example, 
+to detect and track objects, 
+and to classify serial time-domain optical data.
+Techniques:
+■ Techniques have been developed 
+that can perform continuous Fourier Transform 
+optically, by utilizing the natural
+Fourier transforming property of lenses. 
+■ The input is encoded using 
+a liquid crystal spatial light modulator.
+Artificial Neural Network 
+with Optical Components:
+■ Early optical neural networks 
+used a photorefractive Volume Hologram
+to interconnect arrays of input neurons 
+to arrays of output.
+■ With synaptic weights in proportion 
+to the multiplexed hologram's strength. 
+Optical Neural Networks:
+■ Some artificial neural networks 
+that have been implemented 
+as optical neural networks 
+include the Hopfield neural network.
+■ Also the Kohonen map 
+with liquid crystal spatial light modulators.
+Do Photonic Chips Exist?
+■ Now scientists have developed 
+a deep neural network on a photonic microchip
+that can classify images in less than a nanosecond, 
+roughly the same amount of time 
+as a single tick of the kind of clocks 
+found in state-of-the-art electronics.
+■ A lot more effective 
+compared to microprocessor based design!
+An Application:
+
+Chemical Computing
+■ Computing with real molecules 
+like programming electronic devices, 
+but using principles taken from chemistry
+and appropriate chemical processes.
+■ Effective for simulations in chemistry 
+and physical chemistry!
+An Example:
+
+A chemical computer, also called 
+a reaction-diffusion computer:
+■ Belousov–Zhabotinsky (BZ) computer, 
+or gooware computer, 
+is an unconventional computer
+based on a semi-solid chemical "soup" 
+where data are represented 
+by varying concentrations of chemicals.
+■ The computations are performed 
+by naturally occurring chemical reactions.
+Origins:
+■ Originally chemical reactions were seen 
+as a simple move towards a stable equilibrium 
+which was not very promising for computation. 
+■ This was changed by a discovery made 
+by Boris Belousov, a Soviet scientist, in the 1950s. 
+Belousov:
+■ Belousov created a chemical reaction
+between different salts and acids 
+that swing back and forth 
+between being yellow and clear.
+■ This is because the concentration 
+of the different components 
+changes up and down in a cyclic way.
+Adamatzky:
+■ Andrew Adamatzky
+at the University of the West of England
+has demonstrated simple logic gates 
+using reaction–diffusion processes.
+■ An important step towards programmability.
+An Implementation:
+
+European Projects
+ESF:
+• RoMoL: Riding on Moore's Law (0 weeks)
+• HiPeac: Parallel Programming Models (0 weeks)
+FP7/H20:
+• FP7: ProSense (0 weeks)
+• FP7: BalCon (0 weeks)
+187
+USA Projects
+■ Nature Based Construction and Computing:
+■ Purdue (X weeks)
+■ Indiana University (X weeks)
+■ Nature Based Media and Computing:
+■ MIT (X weeks)
+■ Harvard (X weeks)
+Example Algorithms for Practical Implementations
+Engineering:
+• Computer Engineering (M weeks)
+• Financial Engineering (M weeks)
+Science:
+• Physical Chemistry (M weeks)
+• Computer Science (M weeks)
+189
+SOME PREVIOUS OFFERINGS OF THIS TECH COURSE
+Previous offerings of the related MGMT course: Amherst, Dartmouth, Harvard, MIT Media, Pisa, Genova.
+190
+■ Purdue, Indiana;
+■ MIT, Harvard;
+■ Imperial, Kings;
+■ ETH, EPFL;
+■ UNIWIE, TUWIEN;
+■ Siena, Salerno, Barcelona, Madrid;
+■ Ljubljana, Koper, Zagreb, Rijeka, Podgorica, Sarajevo;
+■ Technion, Jerusalem;
+■ Bogazici, Koc;
+■ Tsinghua, Shandong.
+BOTTOM LINE: 
+BRINGING ADVANCED INDUSTRIAL EXPERIENCE INTO THE 
+CLASSROOM
+191
+BOTTOM LINE: 
+BRINGING ADVANCED INDUSTRIAL EXPERIENCE INTO THE 
+CLASSROOM
+192
+BOTTOM LINE: 
+BRINGING ADVANCED INDUSTRIAL EXPERIENCE INTO THE 
+CLASSROOM
+193
+BOTTOM LINE: 
+BRINGING ADVANCED INDUSTRIAL EXPERIENCE INTO THE 
+CLASSROOM (2)
+
+BOTTOM LINE: 
+BRINGING ADVANCED INDUSTRIAL EXPERIENCE INTO THE 
+CLASSROOM (2)
+
+BOTTOM LINE: 
+BRINGING ADVANCED INDUSTRIAL EXPERIENCE INTO THE 
+CLASSROOM (2)
+
+197
+BOTTOM LINE: 
+BRINGING ADVANCED INDUSTRIAL EXPERIENCE INTO THE 
+CLASSROOM (3)
+
+198
+BOTTOM LINE: 
+BRINGING ADVANCED INDUSTRIAL EXPERIENCE INTO THE 
+CLASSROOM (3)
+
+199
+BOTTOM LINE: 
+BRINGING ADVANCED INDUSTRIAL EXPERIENCE INTO THE 
+CLASSROOM (3)
+Wireless Sensor Networks: ApplicationDesign and DataMining
+
+200
+SUGGESTED READINGS:
+• Z. Babovic, V. Milutinovic, “Novel System Architectures for Semantic-Based Integration
+of Sensor Networks,” Elsevier, Advances in Computers, 2013.
+• Z. Babovic, “DataFlow systems: From their origins to future applications in data analytics,
+deep learning, and the Internet of Things,”
+In V. Milutinovic et al. “DataFlow Supercomputing Essentials,” Springer, 2017.
+• IPSI TIR (Transactions on Internet Research), 2024.
+• IPSI TAR (Transactions on Advanced Research), 2024.
+• Special Issues of Elsevier – Advances in Computers 2024.
+• Special Issues of Springer – Journal of Big Data, 2024, 2025.
+Powered by: Amazon AWS and Microsoft AZURE
+Google: prof vm
+202

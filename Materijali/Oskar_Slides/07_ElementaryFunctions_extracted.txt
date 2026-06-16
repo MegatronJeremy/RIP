@@ -1,0 +1,277 @@
+--- Slide 1 ---
+Presenter
+MaxAcademy Lecture Series – V1.0, September 2011
+Elementary Functions
+--- Slide 2 ---
+Motivation
+How to evaluate functions
+Polynomial and rational approximation
+Table-based methods
+Shift and add methods
+2
+Lecture Overview
+--- Slide 3 ---
+Elementary function are required for compute intensive applications, for example:
+
+2D/3D graphics: trigonometric functions
+Image Processing: e.g. Gamma Function
+Signal Processing, e.g. Fourier Transform
+Speech input/output
+Computer Aided Design (CAD): geometry calculations
+and of course Scientific Applications:
+Physics, Biology, Chemistry, etc…
+3
+Motivation
+--- Slide 4 ---
+3 steps to compute f(x)
+Given argument x, find x’=g(x) with x’ in [a,b], and 
+    f(x) = h( f( g(x) )) 
+
+Step 1: Argument Reduction = g(x)
+Step 2: Approximation over interval [a,b]
+			I.e. compute  f( g(x) )
+Step 3: Reconstruction:
+			f(x) = h( f(g(x) ) )
+4
+Evaluating Functions
+--- Slide 5 ---
+Example: sin(float x) 
+ 		float sin(float x){
+		   float y = x mod (π/2); // reduction
+		   float r1 = c0*y*y+c1*y+c2;
+		   float r2 = c3*y*y+c4*y+c5;
+		   return (r1/r2);       // rational approx.
+		}
+
+c0-c5 are coefficients of a rational approximation of 
+sin(x) in [0, π/2 ]. (note: no reconstruction is needed)
+5
+Example: sin(x)
+--- Slide 6 ---
+x / (0.5 ln 2) = N +  r/(0.5 ln 2)
+x = N (0.5 ln 2) + r
+exp(x) = 2^ (0.5 N) *exp(r)
+Step 1: 
+N = integer quotient of x/(0.5 ln 2) 
+r = remainder of x/(0.5 ln 2)
+Step 2: 
+Compute exp(r) by approximation (e.g. polynomial)
+Step 3: 
+Compute exp(x) = 2^ (0.5 N) *exp(r) which is just a shift!!
+6
+Example f(x) = exp(x)
+--- Slide 7 ---
+Polynomial and rational approximations
+1 full lookup table
+Bipartite tables (2 tables + 1 add/sub)
+Piecewise affine approximation (tables + mult/add)
+Shift-and-add methods (with small tables)
+7
+2nd Step:  Approximations in [a,b]
+--- Slide 8 ---
+Horner Rule transforms polynomial into a “Multiply-Add Structure”
+As a consequence, DSP Microprocessors have a Multiply-Add Instruction (Madd) by simply adding another row to an array multiplier.
+8
+Evaluating Polynomials
+--- Slide 9 ---
+Polynomial and Rational Approximation
+9
+“Rational Approximation”
+“Polynomial Approximation”
+--- Slide 10 ---
+Taylor series finds optimal coefficient for a specific point x=x0.
+We need optimal coefficient for an entire interval [a,b]. Software such as Maple computes optimal coefficients for polynomial and rational approximations with Remez’s method (a.k.a. minimax coefficients).
+Bottom line: we can find optimal coefficients for any function and any interval [a,b].
+10
+Finding the Coefficients
+--- Slide 11 ---
+Full table lookup: N-bit input, M-bit output
+Lookup Table Size = M2N bits
+Delay of a lookup in large tables increases with size!
+For N > 8 bits we need to use smaller tables:
+Add elementary operations to reduce table size
+Tables + 1 Add/Sub
+Tables + Multiply
+Tables + Multiply-Add
+Tables + Shift-and-Add
+11
+Table-based Methods
+--- Slide 12 ---
+Bi-Partite Tables
+12
+̃̃
+--- Slide 13 ---
+f(x)
+n
+n0 , n1 , n2
+SBTM
+Standard
+Compression
+1/x
+16
+7, 3, 5
+210 x 17 + 211 x 7
+215 x 15
+15.5
+1/x
+20
+8, 5, 6
+213 x 21 + 213 x 8
+219 x 19
+41.9
+1/x
+24
+9, 7, 7
+216 x 25 + 215 x 9
+223 x 23
+99.8
+√x
+16
+5, 5, 6
+210 x 17 + 210 x 6
+216 x 15
+41.9
+√x
+20
+6, 7, 7
+213 x 21 + 212 x 7
+220 x 19
+99.3
+√x
+24
+8, 7, 9
+215 x 25 + 216 x 9
+224 x 23
+273.9
+sin (x)
+16
+6, 4, 6
+210 x 18 + 211 x 7
+216 x 16
+32.0
+sin (x)
+20
+7, 4, 7
+213 x 22 + 213 x 8
+220 x 20
+85.3
+sin (x)
+24
+8, 8, 8
+216 x 26 + 215 x 9
+224 x 24
+201.4
+log2 (x)
+16
+7, 3, 5
+210 x 18 + 211 x 8
+215 x 16
+15.1
+log2 (x)
+20
+8, 5, 6
+213 x 22 + 213 x 9
+219 x 20
+41.3
+log2 (x)
+24
+9, 7, 7
+216 x 26 + 215 x 10
+223 x 24
+99.1
+2x
+16
+5, 5, 6
+210 x 17 + 210 x 7
+216 x 15
+40.0
+2x
+20
+6, 7, 7
+213 x 21 + 212 x 8
+220 x 19
+97.3
+2x
+24
+8, 7, 9
+215 x 25 + 216 x 10
+224 x 23
+261.7
+13
+Symmetric Bipartite Tables Sizes
+--- Slide 14 ---
+f(x) = ax+b with a,b stored in tables
+
+
+
+
+
+
+
+Xm are leading bits of X which determine which linear piece of f(x) should be used.
+14
+Table + Multiply Add
+--- Slide 15 ---
+Fixed shift in Hardware = shifted wiring  no cost
+Fixed shift = multiply by 2x
+Modify Multiply-Add algorithms to only multiply by powers of 2.
+
+
+
+Is this possible ? How do we choose the k’s, c’s?
+15
+Shift-and-Add Methods
+--- Slide 16 ---
+Iterations:
+
+
+
+
+
+e(i) = table lookup
+μ = {-1,0,1}
+di = ±sign(z(i))
+16
+CORDIC
+--- Slide 17 ---
+CORDIC on Xilinx XC4000
+17
+X
+Y
+X’
+Y’
+{ X’ , Y’ }
+--- Slide 18 ---
+In general we trade area for speed.
+18
+Area-Time Tradeoff
+small
+fast
+Tables+Add/Sub                                       Tables + Mult-Add                                           Shift-and-Add
+--- Slide 19 ---
+3 steps to compute f(x)
+Step 1: Argument Reduction = g(x)
+Step 2: Approximation over interval [a,b]
+Lookup Table for a small number of bits.
+Lookup Table + Add/Sub  => Bi-partite tables
+Lookup Table + Mult-Add => Piecewise Linear Approx.
+Shift-and-Add Methods => e.g. CORDIC
+Polynomial and Rational Approximations  
+Step 3: Reconstruction = h(x)
+19
+Summary
+--- Slide 20 ---
+J.M. Muller, “Elementary Functions,” Birkhaeuser, Boston, 1997.
+Story, S. and Tang, P.T.P., "New algorithms for improved transcendental functions on IA-64," in Proceedings of 14th IEEE symposium on computer arithmetic, IEEE Computer Society Press, 1999.
+D.E. Knuth, “The Art of Computer Programming”, Vol 2, Seminumerical Algorithms, Addison-Wesley, Reading, Mass., 1969. 
+ C.T. Fike, “Computer evaluation of mathematical functions,”
+	Englewood Cliffs, N.J., Prentice-Hall, 1968. 
+L.A. Lyusternik, “Handbook for computing elementary functions”, available in english translation.
+20
+Further Reading on Function Evaluation
+--- Slide 21 ---
+Write a MaxCompiler kernel which takes an input stream x and computes a polynomial approximation of sin(x). Draw the dataflow graph.
+
+Write a MaxCompiler kernel that implements a CORDIC block. Vary the number of stages in the CORDIC and evaluate the impact on the result.
+21
+Exercises

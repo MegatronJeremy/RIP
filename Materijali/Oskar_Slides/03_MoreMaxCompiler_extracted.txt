@@ -1,0 +1,285 @@
+--- Slide 1 ---
+Presenter
+MaxAcademy Lecture Series – V1.0, September 2011
+More MaxCompiler Programming
+--- Slide 2 ---
+Counters / loop iteration variables
+Ways of getting data in and out of the chip
+Stream offsets
+How MaxCompiler maps to hardware
+Lecture Overview
+2
+--- Slide 3 ---
+How can we implement this in MaxCompiler?
+3
+Working with Loop Counters
+for (int i = 0; i < N; i++) {
+	q[i] = p[i] + i;
+}
+Yes…. But, now we need to create an array i in software and send it to the FPGA as well
+--- Slide 4 ---
+There is very little ‘information’ in the i stream. 
+Could compute it directly on the FPGA itself
+4
+Working with Loop Counters
+HWVar p = io.input(“p”, hwInt(32));
+HWVar i = control.count.simpleCounter(32, N);
+
+HWVar q = p + i;
+
+io.output(“q”, q, hwInt(32));
+Half as many inputs
+Less data transfer
+Counters can be used to generate sequences of numbers
+Complex counters can have strides, wrap points, triggers:
+E.g. if (y==10) y=0; else if (en==1) y=y+2;
+--- Slide 5 ---
+Stream inputs/outputs process arrays
+Read and write a new value each cycle
+Off-chip data transfer required: O(N)
+Counters can compute intermediate streams on-chip
+New value every cycle
+Off-chip data transfer required: None
+Compile time constants can be combined with streams
+Static value through the whole computation
+Off-chip data transfer required: None
+What about something that changes occasionally?
+Don’t want to have to recompile  Scalar input
+Off-chip data transfer required: O(1)
+5
+Scalar Inputs
+--- Slide 6 ---
+Consider:
+
+
+In fn2, we can change the value of C without recompiling, but it is constant for the whole loop
+MaxCompiler equivalent:
+6
+Scalar Inputs
+void fn1(int N, int *q, int *p) {
+	for (int i = 0; i < N; i++)
+		q[i] = p[i] + 4;
+}
+void fn2(int N, int *q, int *p, int C) {
+	for (int i = 0; i < N; i++)
+		q[i] = p[i] + C;
+}
+VS.
+--- Slide 7 ---
+Things that do not change every cycle, but do change sometimes and we do not want to rebuild the .max file.
+
+Constants in expressions
+Flags to switch between two behaviours
+result = enabled ? x+7 : x;
+Control parameters to counters, e.g. max, stride, etc
+if (cnt==cnt_max) cnt=0; else cnt = cnt + cnt_step;
+7
+Common uses for Scalar Inputs
+--- Slide 8 ---
+An FPGA has a few MB of very fast block RAM
+Can be used to explicitly store data on chip:
+Lookup tables
+Temporary Buffers
+Mapped ROMs/RAMs can also be accessed by host
+8
+On-chip memories / tables
+d
+q
+HWVar p = io.input(“p”, hwInt(10));
+
+HWVar q = mem.romMapped(“table”, p,                         hwInt(32), 1024);
+
+io.output(“q”, q, hwInt(32));
+Mapped ROM table
+Written by host
+for (i = 0; i < N; i++) {
+	q[i] = table[ p[i] ];
+}
+--- Slide 9 ---
+In general we have streams, ROMs (tables) and scalars
+Use the most appropriate mechanism for the type of data and required host access speed. 
+Stream inputs/outputs can operate for a subset of cycles using a control signal to turn them on/off
+9
+Getting data in and out of the chip
+Type
+Size (items)
+Host write speed
+Chip area cost
+Scalar input/output
+1
+Slow
+Low
+Mapped memory
+(ROM / RAM)
+Up to a few thousand
+Slow
+Moderate
+Stream input/output
+Thousands to billions
+Fast
+Highest
+--- Slide 10 ---
+So far, we’ve only performed operations on each individual point of a stream
+The stream size doesn’t actually matter (functionally)!
+At each point computation is independent
+Real world computations often need to access values from more than one position in a stream
+For example, a 3-pt moving average filter:
+10
+Stream Offsets
+--- Slide 11 ---
+Stream offsets allow us to compute on values in a stream other than the current value.
+Offsets are relative to the current position in a stream; not the start of the stream
+Stream data will be buffered on-chip in order to be available when needed  uses BRAM
+Maximum supported offset size depends on the amount of on-chip BRAM available. Typically 10s of thousands of points.
+11
+Stream Offsets
+--- Slide 12 ---
+Moving Average in MaxCompiler
+12
+--- Slide 13 ---
+Kernel Execution
+13
+--- Slide 14 ---
+Kernel Execution
+14
+--- Slide 15 ---
+Kernel Execution
+15
+--- Slide 16 ---
+Kernel Execution
+16
+--- Slide 17 ---
+Kernel Execution
+17
+--- Slide 18 ---
+Kernel Execution
+18
+--- Slide 19 ---
+Boundary Cases
+19
+What about the boundary cases?
+--- Slide 20 ---
+To handle the boundary cases, we must explicitly code special cases at each boundary
+20
+More Complex Moving Average
+--- Slide 21 ---
+Kernel Handling Boundary Cases
+21
+--- Slide 22 ---
+Streams are one-dimensional but can be interpreted as multi-dimensional structures
+Just like arrays in CPU memory
+A multidimensional offset, is the distance between the points in the one dimensional stream  linearize
+22
+Multidimensional Offsets
+for (int y = 0; y < N; y++) 
+for (int x = 0; x < N; x++) 
+    p[y][x] = q[y-1][x] + q[y][x-1] + q[y][x] + q[y][x+1] + q[y+1][x]
+for (int y = 0; y < N; y++) 
+for (int x = 0; x < N; x++)
+   p[y*N+x] = 	q[(y-1)*N+x] + q[y*N+x-1] + 		q[y*N+x] + q[y*N+x+1] + q[(y+1)*N+x]
+And of course we now need to handle boundaries in both dimensions…
+--- Slide 23 ---
+MaxCompiler generates VHDL ready for FPGA vendor tools
+Synthesis transforms VHDL into logical “netlist” – sets of basic logic expressions
+Map fits basic logic into N-input look-up tables
+Place puts LUTs, DSPs, RAMs etc at specific locations on chip
+Route sets up wiring between blocks
+23
+Stages of Compilation
+MaxCompiler compilation
+Synthesis
+Map
+Place
+Route
+Generate Maxfile
+VHDL
+Complete FPGA
+Netlist
+LUTs
+Placed FPGA
+--- Slide 24 ---
+How it maps to hardware
+24
+Tue 15:00: MaxCompiler version: 2010.1
+Tue 15:00: Build "MovingAverage" start time: Tue Feb 16 15:00:27 GMT 2010
+Tue 15:00: Instantiating manager
+Tue 15:00: Instantiating kernel "MovingAverageKernel"
+Tue 15:00: Compiling manager (PCIe Only)
+Tue 15:00: Compiling kernel "MovingAverageKernel"
+Tue 15:00: Generating hardware for kernel "MovingAverageKernel"
+Tue 15:00: Generating VHDL + netlists (including running CoreGen)
+Tue 15:00: Running back-end hardware build (10 build phases)
+Tue 15:00: (1/10) - GenerateMaxFileDataFile
+Tue 15:00: (2/10) - XST
+Tue 15:02: (3/10) - NGCBuild
+Tue 15:02: (4/10) - ResourceCounter
+Tue 15:03: (5/10) - NGDBuild
+Tue 15:03: (6/10) - MPPR
+Tue 15:19: (7/10) - GenerateMaxFile
+Tue 15:21: (8/10) – XDLBuild
+Tue 15:22: (9/10) - ResourceUsageBuild
+Tue 15:22: (10/10) - ResourceAnnotationBuildPass
+Tue 15:22:
+Tue 15:22: FINAL RESOURCE USAGE
+Tue 15:22: LUTs: 9154 / 149760 (6.11%)
+Tue 15:22: FFs: 10736 / 149760 (7.17%)
+Tue 15:22: BRAMs: 21 / 516 (4.07%)
+Tue 15:22: DSPs: 0 / 1056 (0.00%)
+Tue 15:22:
+Tue 15:22: MAX file: /oliver/builds/MovingAverage/results/MovingAverage.max
+Tue 15:22: Build completed: Tue Feb 16 15:22:25 GMT 2010 (took 21 mins, 57 secs)
+FPGA vendor specific back-end tool flow
+
+Abstracted by MaxCompiler
+--- Slide 25 ---
+Different operations use different resources
+Main resources
+LUTs
+Flip-flops
+DSP blocks (25x18 multipliers)
+Block RAM (36Kbit)
+Routing!
+25
+On-chip Resources
+DSP Block (~2000)
+Block RAM (~1000)
+IO Block
+LUT/FF (~300k)
+--- Slide 26 ---
+Allows you to see what lines of code are using what resources and focus optimization
+Separate reports for each kernel and for the manager
+26
+Resource Usage Reporting
+LUTs     FFs   BRAMs    DSPs : MyKernel.java
+     727     871     1.0       2 : resources used by this file
+   0.24%   0.15%   0.09%   0.10% : % of available
+  71.41%  61.82% 100.00% 100.00% : % of total used
+  94.29%  97.21% 100.00% 100.00% : % of user resources
+                                 :
+                                 : public class MyKernel extends Kernel {
+                                 :   public MyKernel (KernelParameters parameters) {
+                                 :      super(parameters);
+       1      31     0.0       0 :      HWVar p = io.input("p", hwFloat(8,24));
+       2       9     0.0       0 :      HWVar q = io.input("q", hwUInt(8));
+                                 :      HWVar offset = io.scalarInput("offset", hwUInt(8));
+       8       8     0.0       0 :      HWVar addr = offset + q;
+      18      40     1.0       0 :      HWVar v = mem.romMapped("table", addr, 
+                                 :                              hwFloat(8,24), 256);
+     139     145     0.0       2 :      p = p * p;
+     401     541     0.0       0 :      p = p + v;
+                                 :      io.output("r", p, hwFloat(8,24));
+                                 :   }
+                                 : }
+--- Slide 27 ---
+Write a MaxCompiler kernel program (using hwFloat(8,24)) that computes:
+
+
+
+
+	Draw the kernel dataflow graph. 
+
+Write a MaxCompiler kernel program that computes a 3x3 2D moving average on a single input stream of 1024x1024 values, ignoring any boundary conditions.
+
+Extend the 3x3 moving average kernel from (2) to support a variable problem size at run-time, from 2562 to 20482. Hint: you will need to use variable stream offsets (see MaxCompiler Kernel Compiler tutorial for more information).
+27
+Exercises

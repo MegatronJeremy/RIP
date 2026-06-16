@@ -1,0 +1,420 @@
+Ultimate
+Control
+Maxeler RiskAnalytics
+Financial markets are rapidly evolving. Data vol -
+ume and velocity are growing exponentially. To keep 
+ahead of the competition financial institutions need 
+computation platforms that deliver best performance 
+across a wide range of application types driven by 
+diverse markets.
+Only Maxeler Technologies can deliver maximum 
+performance computing spanning the full range from 
+high throughput RiskAnalytics to low latency trading 
+algorithms, all in the same technology platform.
+The Maxeler RiskAnalytics platform is built from the 
+ground up around the concept of dataflow. By stream-
+ing data through our award winning Dataflow Engines 
+we can deliver unparalleled compute performance 
+resulting in unparalleled portfolio transparency. 
+This brochure outlines Maxeler’s RiskAnalytics plat -
+form and describes how it can radically transform 
+your business
+Risk
+Analytics
+Maxeler Technologies
+1 Down Place
+London, W6 9JH
+Tel: +44 (0) 208 762 6196
+stephen.weston@maxeler.com
+steven.hutt@maxeler.com
+RiskAnalytics at hardware speeds,
+imagine the possibilities.
+With full reval VaR, combined with in model 
+dynamic hedging, tail risk metrics behave con-
+sistently with portfolio risk and PnL. In summary, 
+VaR is faster, more accurate and more compre-
+hensive.
+The charts illustrate the impact on VaR accuracy 
+of a 50x increase in the number of Monte Carlo 
+scenarios from 10,000 (Fig. 1) to 500,000 sce-
+narios (Fig. 2). Confidence intervals for VaR (red 
+band) significantly decrease, while granularity in 
+the tail, and hence VaR stability, increases.
+RiskAnalytics Platform
+The RiskAnalytics platform consists of all the 
+components needed for streamlined front-to- 
+back portfolio risk management, including:
+• front end trade booking, portfolio manage-
+ment, model and risk metric selection
+• application layer in software allowing for 
+quick and flexible functional reconfiguration
+• adaptive load balancing
+• database integration
+Designed by quants with over 20 years  top-tier 
+investment banking experience leading front 
+office quant teams, the Maxeler RiskAnalytics 
+platform is truly a step change in risk manage-
+ment capability, bringing you a level of portfolio 
+transparency previously infeasible, whatever 
+your portfolio.
+Compute Book Risk in Real Time 
+Maxeler RiskAnalytics is a hardware acceler-
+ated financial risk management platform, giv-
+ing you the ability to reduce the computation 
+of book risk, including complex exotics, from 
+hours to minutes. We’ve made this possible by 
+accelerating core analytic algorithms in hard-
+ware using our award winning Dataflow Engine 
+technology, and integrating the result into a full 
+featured risk platform. 
+The computation of VaR using conventional 
+technology is often slow, inaccurate and unsta-
+ble. This is especially so for full reval VaR where 
+the entire book value needs to be computed 
+over many thousands of market scenarios. 5f 
+there are insufficient scenarios in the tail, VaR 
+becomes strongly dependent on a few sce-
+narios, rather than the whole tail.The result is 
+uncertainty in attribution and explain as well as 
+difficulty in optimising positions against VaR.
+By massively increasing the number of feasible 
+scenarios, Maxeler RiskAnalytics gives you the 
+ability to see your VaR in new ways. Get higher 
+resolution in the tail for greater precision, signifi-
+cantly improve stability for allocation and attri-
+bution, or see immediately the impact of market 
+and portfolio changes. New approaches to VaR 
+become feasible:
+• pre-horizon cashflow generation and dynam-
+ic portfolio hedging
+• sensitivity metrics for enhanced explain
+• stable and efficient portfolio optimization
+Fig. 1 VaR with 10,000 scenarios
+Fig. 2 VaR with 500,000 scenarios
+Dataflow computing,
+data choreography in action.
+What is dataflow computing?
+Frequency scaling of silicon came to an end 
+about a decade ago, while transistor density 
+continues to increase. In response, implementa-
+tions turned to some form of parallel processing 
+to improve computational performance.
+The obvious form of parallel processor is simply 
+a replication of multiple processors starting with 
+a single silicon die (multi-core) and extended 
+to racks and racks of interconnected proces-
+sor+memory server units. Unfortunately, the 
+more processors used to access common mem-
+ory data the more likely contention develops to 
+limit overall speed.
+Maxeler Technologies has developed an al-
+ternative paradigm to parallel computing: Mul-
+tiscale Dataflow Computing. This approach, 
+popularised in the 1980s, considers an applica-
+tion as a dataflow graph of executable actions 
+whereby data flows through a sea of arithme-
+tic units.There are no time consuming load or 
+store instructions among the operational nodes. 
+However, creating a generalised interconnection 
+among arithmetic units proved to be a signifi-
+cant limitation to dataflow realisations given the 
+technology available at the time.
+Why Dataflow Today?
+Over recent years the extraordinary improve-
+ment in transistor array density has opened 
+up new possibilities. The Maxeler dataflow 
+implementations are a generalization of earlier 
+work employing static, synchronous dataflow 
+with an emphasis on data streaming. Indeed, 
+“multiscale” dataflow incorporates vector and 
+array processing to offer a multifaceted compute 
+platform. 
+Maxeler dataflow engines are currently used 
+by clients across diverse industry backgrounds, 
+including financial risk, high frequency trading, 
+oil and gas exploration, bio informatics and big 
+data.
+Dataflow versus Control flow
+In a software application, a program’s source code is 
+transformed into a list of instructions for a particular 
+processor. Instructions move through the processor 
+which reads or writes data to and from memory. The 
+programming model is inherently sequential and per-
+formance depends heavily on the latency of memory 
+access.
+In a Dataflow Engine (DFE), data streams from mem-
+ory into the processing chip where data is forwarded 
+directly from one arithmetic unit (dataflow core) to 
+another until a chain of processing is complete. In a 
+DFE processing pipeline every dataflow core com-
+putes simultaneously on neighbouring data items in a 
+stream.
+ 
+Unlike control flow cores, where operations are com-
+puted at different points in time on the same compu-
+tational units (computing in time), a dataflow compu-
+tation is laid out spatially on the chip (computing in 
+space). Once a dataflow program has processed its 
+stream of data, the dataflow engine can be reconfig-
+ured for a new application in less than a second.
+LOOP
+CONTROL 
+OPER
+ADDRESS
+MEMORY
+CPU
+REGISTERS
+OPER
+STATE
+MACHINE DFE
+OPER
+MEM
+MEM
+OPER
+The table below illustrates two possible module 
+configurations dependent on the relative cost of 
+each stage:
+The Maxeler OS can programatically allocate 
+resources to optimise performance.
+VaR Computation Example
+Finally, we give a more comprehensive example 
+based on the computation of VaR. In this exam-
+ple we have additional modules including Monte 
+Carlo, Scenario Bumping and Risk Analysis. 
+The modular architecture allows core function-
+ality to be swapped programatically in and out, 
+while maintaining a balanced computational 
+load. Large DRAM memory next to each DFE 
+further extends the load balancing capability, 
+while allowing more complex models such as 
+LMM to be easily supported.
+Massive Parallelism
+All core RiskAnalytics components have been 
+implemented on Dataflow Engines. Each Data-
+flow Engine (DFE) implementation consists 
+of multiple parallel computational pipelines.
+Each pipeline itself consists of many thousands 
+of computational stages. Data is continuous-
+ly streamed in filling the pipeline from top to 
+bottom, with each stage operating on the data 
+as it flows through. In this way many tens of 
+thousands of computations are performed each 
+clock cycle and massive parallelism is achieved. 
+Swap Pricing Example
+The RiskAnalytics platform has been designed 
+in a modular fashion to maximise flexibility of 
+configuration and performance. Each module 
+realises a core analytics component, such as 
+curve bootstrapping or Monte Carlo path gen-
+eration. For maximum flexibility each module is 
+available both as a CPU library and as a DFE. 
+The diagram below illustrates a typical module 
+configuration for pricing interest rate swaps, with 
+each stage representing either a CPU library or 
+a DFE. 
+Modular design allows the Maxeler OS to dy-
+namically load balance between CPUs and 
+DFEs to target heavy compute load to DFEs, 
+leaving CPUs to support application logic and 
+lighter compute loads. DFE functionality can be 
+switched in real time by the Maxeler OS.
+Integrated Risk Management Platform,
+powered by Dataflow Engines.
+bootstrap OIS curve
+bootstrap LIBOR curve
+cashflow generation
+swap pricing
+COMPUTE OIS LIBOR cashflow pricing
+many curves 
+few swaps DFE DFE CPU CPU
+few curves 
+many swaps CPU CPU DFE DFE
+Historical
+Markets
+Bump
+Scenarios
+Monte
+Carlo
+HistoricalBumpsRandom
+Spot Market
+Market
+Scenarios
+Bootstrap
+Market
+Curves
+Market
+Instruments
+Cash/f_low
+Generator
+Trade
+Portfolio
+Cash/f_low
+Generator
+Pricing
+Engine
+Price
+Scenarios
+Risk
+Analysis
+Results
+Aggregation
+DFE
+DFE DRAM
+DFE/CPU
+INPUT DATA
+Fig. 3 Swap pricing pipeline
+Fig. 4 VaR Engine Architecture
+Maxeler finance library,
+product and model coverage.
+Interest Rate Products
+• money market instruments
+• Govt and Corp bonds
+• callable/putable bonds
+• options on bonds
+• forward rate notes
+• vanilla swaps
+• OIS swaps
+• amortizing swaps
+• basis swaps
+• credit contingent swaps
+• capped/floored swaps
+• European swaptions
+• Bermudan swaptions
+• vanilla caps/floors
+• digital caps/floors
+Commodity Products
+• forwards and futures
+• european options on futures
+• american options on futures
+• digital and barrier options
+• options on baskets
+Credit Products
+• credit default swaps
+• recovery swaps and locks
+• credit linked notes
+• options on credit linked notes
+• index default swaps
+• options on index default swaps
+• index CDOs
+• bespoke CDOs
+Equity Products
+• asian options
+• barriers, binaries and digitals
+• options on baskets
+FX Products
+• asian options
+• barriers
+• forward start
+• basket
+Calibration
+• OIS curve boostrap
+• LIBOR curve boostrap
+• hazard curve bootstrap
+• yield curve bootstrap
+• implied volatility surface
+• implied correlation surface
+• implied correlation mapping
+Models
+• Black-Scholes option
+• Black futures option
+• Gaussian copula for CDOs
+• affine multivariate basket model
+• displaced Libor Market Model
+• Ritchken-Sankara spot model
+• local volatility skew
+• stochastic volatility
+• bivariate Credit-FX with jumps
+• top down / bottom up point processes
+• finite difference 3-factor PDE solver
+• generic Monte Carlo simulation engine
+Core Utility Libraries
+• date conventions and holidays
+• solvers and root finders
+• linear algebra
+• probability distribution and sampling
+• statistical and time series analysis
+• function approximation and interpolation
+• sparse matrix library
+Client APIs
+• Java
+• Matlab
+• R
+• Excel
+• Python
+Application case studies in
+extreme performance.
+Real Time Swap Portfolio Risk
+The secret to extreme speed in pricing interest 
+rate swaps lies in the efficient implementation 
+of the date convention and holiday calendar 
+library. This is simply because computing swap 
+schedules is the most time consuming compo-
+nent of any swap pricing. 
+Maxeler has implemented all standard date 
+conventions and date offset functionality directly 
+within the DFE resulting in massive accelera-
+tion for swap pricing. For example, a portfolio 
+of swaps with average maturity 30 years and 
+quarterly tenors can be priced with sustained 
+performance of 32 million swaps per second 
+on a single Maxeler 1U node.
+Utilising on DFE OIS and LIBOR curve boot-
+strapping, real time swap portfolio pricing and 
+risk management is effortlessly supported. 
+Exotic Interest Rate Pricing
+But what if you need to price more exotic prod-
+ucts, such as Bermudan swaptions? The indus-
+try standard model, LMM, employs a high-di-
+mensional Monte Carlo model with complex 
+dynamics and large state space. Pricing in-
+volves a multi-stage algorithm with forward and 
+backward cross-sectional (Longstaff-Schwartz)
+computations across the full path space. Here 
+the challenge is to manage large path data sets, 
+typically several GBs, across multiple stages.
+Instrument CPU 1U-Node Max 1U-Node Comparison
+European Swaptions 848,000 35,544,000  42x
+American Options 38,400,000 720,000,000 19x
+European Options 32,000,000 7,080,000,000  221x
+Bermudan Swaptions 296 6,666  23x
+Vanilla Swaps 176,000 32,800,000 186x
+CDS 432,000 13,904,000 32x
+CDS Bootstrap 14,000 872,000 62x
+DRAM
+LIBOR
+1
+swap rates 
+ exercise values
+2
+swap rates 
+ exercise values
+CashFlow 
+Kernel
+SwapValuation
+Kernel
+OptimalStrategy
+Kernel
+Figure 5 above illustrates the RiskAnalytics DFE 
+implementation, including cashflow generation 
+and Longstaff-Schwartz backward regression,
+By closely coordinating between multiple DFE 
+stages and DRAM memory, 6,700 quarterly 
+30y Bermudan swaptions per second can be 
+priced on a Maxeler 1U node. 
+The table below compares instruments priced 
+per second for a range of instrument types.
+Fig. 5 Bermudan swaptions in LMM
+Risk
+Analytics
+Maxeler Technologies
+1 Down Place
+London, W6 9JH
+Tel: +44 (0) 208 762 6196
+stephen.weston@maxeler.com
+steven.hutt@maxeler.com
+For more information or to request a demo, 
+please contact:
+stephen.weston@maxeler.com
+steven.hutt@maxeler.com
+or visit our website:
+www.maxeler.com
