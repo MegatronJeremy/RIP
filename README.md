@@ -1,8 +1,9 @@
-# RIP
+# RIP — Razvoj i primena računarskih akceleratora
 
-Materijali, beleške i kod za kurs kod profesora **Veljka Milutinovića** (ETF,
-master), u okviru [ETF-Master](https://github.com/MegatronJeremy/ETF-Master)
-repozitorijuma (uključen kao git submodule).
+Materijali, beleške i kod za predmet **Razvoj i primena računarskih akceleratora**
+kod profesora **Veljka Milutinovića** (ETF, master), u okviru
+[ETF-Master](https://github.com/MegatronJeremy/ETF-Master) repozitorijuma
+(uključen kao git submodule).
 
 ## O kursu
 
