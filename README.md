@@ -35,22 +35,23 @@ priču), usmeni ispit nosi 12 poena, ukupno 60. Svaki domaći mora dobiti
 - [`veljko.txt`](veljko.txt) — lične beleške o formatu slajdova koji
   Veljko voli (formalnost, bullet pointovi, struktura) i pregled urađenih
   tema (matmul, softmax, obrada slike).
-- [`Materijali/`](Materijali) — preuzeta predavanja i prateći materijali:
-  - [`Materijali/Oskar_Slides/`](Materijali/Oskar_Slides) — 7 delova
+- [`materijali/`](materijali) — preuzeta predavanja i prateći materijali:
+  - [`materijali/Oskar_Slides/`](materijali/Oskar_Slides) — 7 delova
     teorijskih MaxAcademy predavanja (Oskar Mencer): uvod, MaxCompiler
     programiranje, brojevni sistemi, scheduling, petlje/ciklični grafovi,
     elementarne funkcije.
-  - [`Materijali/Maxeler/`](Materijali/Maxeler) — Maxeler prezentacije,
+  - [`materijali/Maxeler/`](materijali/Maxeler) — Maxeler prezentacije,
     case study-evi (Chevron, Stanford), flyer-i, katalog, brošura o risk
     analitici.
-  - [`Materijali/4_The_Ultimate_Long_CMOQ.pdf`](Materijali/4_The_Ultimate_Long_CMOQ.pdf)
+  - [`materijali/4_The_Ultimate_Long_CMOQ.pdf`](materijali/4_The_Ultimate_Long_CMOQ.pdf)
     — Veljkova duža prezentacija (CMOQ: Chem/Molecular/Opto/Quantum sloj).
-  - [`Materijali/INDEKS.md`](Materijali/INDEKS.md) — sažetak ključnih
+  - [`materijali/INDEX.md`](materijali/INDEX.md) — sažetak ključnih
     poenata iz svakog fajla, sa mapiranjem na teme domaćih zadataka.
   - `*_extracted.txt` fajlovi — sirov tekst izvučen iz odgovarajućih
     pptx/pdf fajlova (za brzu pretragu bez otvaranja originala).
-- [`Prefix_Scan/`](Prefix_Scan) — kod i rezultati benčmarka (`benchmark.py`,
-  `requirements.txt`, `scan_benchmark.png`).
+- [`domaci/`](domaci) — domaći zadaci (Prefix Scan prezentacije) i
+  [`domaci/Prefix_Scan/`](domaci/Prefix_Scan) — kod i rezultati benčmarka
+  (`benchmark.py`, `requirements.txt`, `scan_benchmark.png`).
 
 ## Napomena
 
